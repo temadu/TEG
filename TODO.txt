@@ -1,0 +1,9 @@
+TODO
+--------------------------------------
+- Hacer una lista -completado-
+
+- CARDS countries
+	objectives
+	situation
+	
+- FrontEnd 
