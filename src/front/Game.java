@@ -25,7 +25,7 @@ public class Game extends JPanel implements Runnable {
 	private long targetTime = 1000 / FPS;
 		
 	// Game Manager
-	//private GameStateManager gsm;
+	private GameStateManager gsm;
 	
 	// Graphics
 	private Graphics2D g;
