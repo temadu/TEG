@@ -12,7 +12,7 @@ public class GameBox implements Serializable {
 	private static GameBox game;
 
 	// private Board board;
-	// private List<Player> players;
+	private List<Player> players;
 	
 	private GameBox() {
 		
