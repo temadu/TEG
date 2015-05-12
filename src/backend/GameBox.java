@@ -12,12 +12,12 @@ public class GameBox implements Serializable {
 	private static GameBox game;
 
 	// private Board board;
-	// private List<Player> players;
+	private List<Player> players;
 	
 	private GameBox() {
 		
 		// board = new Board();
-		// players = new ArrayList<Player>();
+		players = new ArrayList<Player>();
 		
 	}
 	
@@ -28,10 +28,10 @@ public class GameBox implements Serializable {
 		return game;
 	}
 	
-	/* public addPlayer(Player p) {
+	public void addPlayer(Player p) {
 		
 		players.add(p);
 		
-	} */
+	}
 	
 }

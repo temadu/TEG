@@ -15,8 +15,8 @@ public class Game extends JPanel implements Runnable {
 	public static final String TITLE = "TEG";
 		
 	// Window Dimensions
-	public static final int WINDOW_WIDTH = 640;
-	public static final int WINDOW_HEIGHT = 480;
+	public static final int WINDOW_WIDTH = 1024;
+	public static final int WINDOW_HEIGHT = 768;
 
 	// Thread
 	private Thread thread;
