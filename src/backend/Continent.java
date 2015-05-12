@@ -1,11 +1,11 @@
 package backend;
 
 public enum Continent {
-	SOUTHAMERICA,
-	NORTHAMERICA,
-	EUROPE,
-	ASIA,
-	AFRICA,
-	OCEANIA;
+	SCHTARIA,
+	GILACIA,
+	ARLAS,
+	ARILLIA,
+	URZA,
+	ALGOS;
 
 }
