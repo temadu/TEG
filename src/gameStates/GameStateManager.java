@@ -10,7 +10,8 @@ public class GameStateManager {
 	// Game States
 	public static final int NUM_GAME_STATES = 2;
 	public final static int MENU_STATE = 0;
-	public final static int TEG_STATE = 1;
+	public final static int GET_WHOS_FIRST_STATE = 1;
+	
 	
 	public GameStateManager() {
 		
@@ -23,7 +24,7 @@ public class GameStateManager {
 		gameStates = new GameState[NUM_GAME_STATES];
 		
 		// Menu State is the first GameState
-		currentState = TEG_STATE;
+		currentState = GET_WHOS_FIRST_STATE;
 		loadState(currentState);
 		
 	}
@@ -40,8 +41,8 @@ public class GameStateManager {
 		if(state == MENU_STATE) {
 			gameStates[state] = new MenuState();
 		}
-		if(state == TEG_STATE) {
-			gameStates[state] = new TegState();
+		if(state == GET_WHOS_FIRST_STATE) {
+			gameStates[state] = new GetWhosFirstState();
 		}
 		
 	}

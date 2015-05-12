@@ -94,7 +94,7 @@ public class Game extends JPanel implements Runnable {
 
 	public void update() {
 		
-		// gsm.update();
+		gsm.update();
 		
 	}
 
