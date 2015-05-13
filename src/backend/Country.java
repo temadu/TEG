@@ -4,6 +4,7 @@ public class Country {
 	
 	private String name;
 	private int soldiers;
+	private Player owner;
 	
 	public Country(String name) {
 		this.name = name;
