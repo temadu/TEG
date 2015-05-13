@@ -2,7 +2,7 @@ TODO
 --------------------------------------
 - Hacer una lista -completado-
 
-- CARDS countries
+- CARDS countries -completado-
 	objectives
 	situation
 	
