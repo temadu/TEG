@@ -1,16 +1,22 @@
 package objectives;
 
+import backend.GameBox;
 import backend.Player;
 
-//TODO Maybe create superclass with general objective and override & recall
-public class DestroyNextPlayerObjective implements Objective {
+public class DestroyNextPlayerObjective extends Objective{
 	
-	private Player player;
+	private String description;
+	private Player enemy;
 	
+	public DestroyNextPlayerObjective() {
+		this.description = "Destruir al ejercito del siguiente jugador";
+		//this.enemy = GameManager.getInstance().getNextPlayer();
+		
+	}
+
 	@Override
 	public boolean checkObjective() {
-		// TODO Create checkObjective
-		return false;
+		return (generalObjectiveCheck() || enemy.hasLost());
 	}
 
 }

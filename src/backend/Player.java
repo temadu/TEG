@@ -32,5 +32,9 @@ public class Player {
 	public boolean hasLost(){
 		return ((totalSoldiers == 0) ? true : false);
 	}
+	
+	public int countriesNumber(){
+		return countries.size();
+	}
 
 }
