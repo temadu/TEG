@@ -2,8 +2,21 @@ TODO
 --------------------------------------
 - Hacer una lista -completado-
 
-- CARDS countries -completado-
-	objectives
-	situation
-	
-- FrontEnd 
+- CARDS
+    -countries   -completado-
+    -objectives  -mejorar/terminar- (hacer una superclase con el objetivo global y que las subclases lo revisen????) 
+    -situation
+- Agregar los objetivos
+- Agregar las situaciones
+- Implementar batalla entre paises
+
+- Armar la matriz y los paises (Revisar si se puede tomar los datos de una spreadsheet)
+- Crear Factories
+
+- Preguntar el jueves si usar un grafo o la matriz (Disculpen que siga molestando con esto)
+- Continent (clase o enum+hashmap?)
+
+- GameManager
+
+
+- FrontEnd
