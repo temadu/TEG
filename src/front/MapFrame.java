@@ -40,13 +40,5 @@ public class MapFrame extends JInternalFrame {
         add(picLabel);
         
     }
-    
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(image, 0, 0,10,10, null);
-        g.drawString("Teo es megahiper homosexual", 100, 100);
-        System.out.println("llegue");
-    }
 	
 }
