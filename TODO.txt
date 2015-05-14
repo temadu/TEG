@@ -4,7 +4,7 @@ TODO
 
 - CARDS
     -countries   -completado-
-    -objectives  -mejorar/terminar- (hacer una superclase con el objetivo global y que las subclases lo revisen????) 
+    -objectives  -completado (falta agregar mas objetivos)-
     -situation
 - Agregar los objetivos
 - Agregar las situaciones
@@ -14,7 +14,7 @@ TODO
 - Crear Factories
 
 - Preguntar el jueves si usar un grafo o la matriz (Disculpen que siga molestando con esto)
-- Continent (clase o enum+hashmap?)
+- Continent (clase o enum+hashmap?) Creo que la clase seria lo logico.
 
 - GameManager
 
