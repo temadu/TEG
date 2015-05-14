@@ -1,7 +1,7 @@
 package backend;
 
 public enum Continent {
-	SCHTARIA,
+	SCHATARIA,
 	GILACIA,
 	ARLAS,
 	ARILLIA,

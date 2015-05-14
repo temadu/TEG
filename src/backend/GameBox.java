@@ -30,7 +30,14 @@ public class GameBox implements Serializable {
 	
 	public void addPlayer(Player p) {
 		players.add(p);
-		
+	}
+
+	public Board getBoard() {
+		return board;
+	}
+
+	public List<Player> getPlayers() {
+		return players;
 	}
 	
 }
