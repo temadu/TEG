@@ -48,7 +48,7 @@ public class Window {
 		gameMenu.add(new JMenuItem("Load Game"));
 		gameMenu.add(new JMenuItem("Save Game"));
 		gameMenu.add(new JMenuItem("End Game"));
-		gameMenu.add(new JMenuItem("Exit"));
+		gameMenu.add(new ExitMenuItem());
 		
 		//Build the show menu.
 		showMenu = new JMenu("Show");
