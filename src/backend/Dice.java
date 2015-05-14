@@ -8,7 +8,7 @@ public class Dice {
 
 	public static ArrayList<Integer> rollDice(int ammount) throws IllegalArgumentException {
 		
-		if(ammount > 4) {
+		if(ammount > 4 || ammount <= 0) {
 			throw new IllegalArgumentException();
 		}
 		
