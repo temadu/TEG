@@ -11,6 +11,33 @@ public class Country {
 		this.soldiers = 1;
 	}
 
+	public boolean attack(Country enemy){
+		if(this.soldiers == 1)
+			return false;
+		if(enemy.getOwner().equals(this.owner))
+			return false;
+		if(!GameBox.getInstance().getBoard().adjacentCountries(this, enemy))
+			return false;
+		Battle.conflict(this, enemy);
+		return true;
+	}
+	
+	public boolean killSoldiers(int kills){
+		if(kills >= soldiers){
+			soldiers = 1;
+			return true;
+		}	
+		this.soldiers -= kills;
+		return false;
+	}
+	
+	public void changeOwner(Player newOwner){
+		owner.removeCountry(this);
+		owner = newOwner;
+		owner.addCountry(this);
+	}
+	
+	
 	///////////////////////////
 	/////Getters & Setters/////
 	///////////////////////////
@@ -21,6 +48,10 @@ public class Country {
 
 	public int getSoldiers() {
 		return soldiers;
+	}
+	
+	public Player getOwner() {
+		return owner;
 	}
 
 }

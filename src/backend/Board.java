@@ -10,7 +10,7 @@ public class Board {
 	private HashMap<Continent, HashSet<Country>> continents;
 	
 	private List<Country> countries;
-	private Nexus[][] adjacentMatrix;
+	private boolean[][] adjacentMatrix;
 	
 	public Board() {
 		continents = new HashMap<Continent, HashSet<Country>>();
@@ -20,6 +20,10 @@ public class Board {
 	
 	public HashSet<Country> getContinent(Continent continent){
 		return continents.get(continent);
+	}
+	
+	public boolean adjacentCountries(Country attacker, Country defender){
+		return adjacentMatrix[countries.indexOf(attacker)][countries.indexOf(defender)];
 	}
 
 }

@@ -38,6 +38,14 @@ public class Player {
 	public int countriesNumber(){
 		return countries.size();
 	}
+	
+	public void removeCountry(Country country){
+		countries.remove(country);
+	}
+	
+	public void addCountry(Country country){
+		countries.add(country);
+	}
 
 	public String getName() {
 		return name;
