@@ -1,7 +1,6 @@
 package backend;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import objectives.Objective;
@@ -45,6 +44,19 @@ public class Player {
 	
 	public void addCountry(Country country){
 		countries.add(country);
+	}
+	
+	public int continentCountries(Continent continent){
+		int i = 0;
+		for (Country country : countries) {
+			if(continent.contains(country))
+				i++;
+		}
+		return i;
+	}
+	
+	public boolean hasContinent(Continent continent){
+		return (continentCountries(continent) == continent.getCountriesNumber());
 	}
 
 	public String getName() {

@@ -1,42 +1,43 @@
 package objectives;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
-
-import backend.Board;
 import backend.Continent;
-import backend.Country;
-import backend.GameBox;
 
 public abstract class ConquerorObjective extends Objective {
 	
-	protected static final int SHATARIACOUNTRIESNUM = 9;
-	protected static final int ARILLIACOUNTRIESNUM = 12;
-	protected static final int URZACOUNTRIESNUM = 7;
-	protected static final int GILACIACOUNTRIESNUM = 4;
-	protected static final int ARLASCOUNTRIESNUM = 6;
-	protected static final int ALGOSCOUNTRIESNUM = 4;
+	private static Continent shataria;
+	private static Continent arillia;
+	private static Continent urza;
+	private static Continent gilacia;
+	private static Continent arlas;
+	private static Continent algos;
 	
-	private Board board;
-	private Set<Country> playerCountries;
-	
-	public ConquerorObjective() {
-		this.board = GameBox.getInstance().getBoard();
-		this.playerCountries = getOwner().getCountries();
-	}
-	
-	protected int intersectionNumber(Continent continent){
-		Set<Country> continentCountries = board.getContinent(continent);
-		int i = 0;
-		for (Country country : continentCountries) {
-			if(playerCountries.contains(country))
-				i++;
-		}
-		return i;
-	}
-
 	@Override
 	public abstract boolean checkObjective();
+
+	public static Continent getShataria() {
+		return shataria;
+	}
+
+	public static Continent getArillia() {
+		return arillia;
+	}
+
+	public static Continent getUrza() {
+		return urza;
+	}
+
+	public static Continent getGilacia() {
+		return gilacia;
+	}
+
+	public static Continent getArlas() {
+		return arlas;
+	}
+
+	public static Continent getAlgos() {
+		return algos;
+	}
+	
+	
 
 }

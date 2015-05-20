@@ -7,18 +7,18 @@ import java.util.List;
 
 public class Board {
 	
-	private HashMap<Continent, HashSet<Country>> continents;
+	private HashMap<String, Continent> continents;
 	
 	private List<Country> countries;
 	private boolean[][] adjacentMatrix;
 	
 	public Board() {
-		continents = new HashMap<Continent, HashSet<Country>>();
+		continents = new HashMap<String, Continent>();
 		countries = new ArrayList<Country>();
 		//adjacentMatrix
 	}
 	
-	public HashSet<Country> getContinent(Continent continent){
+	public Continent getContinent(String continent){
 		return continents.get(continent);
 	}
 	

@@ -1,6 +1,5 @@
 package objectives;
 
-import backend.Continent;
 
 public class SchatariaObjective extends ConquerorObjective {
 	
@@ -13,9 +12,9 @@ public class SchatariaObjective extends ConquerorObjective {
 	
 	@Override
 	public boolean checkObjective() {
-		return ((intersectionNumber(Continent.SCHATARIA) == super.SHATARIACOUNTRIESNUM) &&
-				(intersectionNumber(Continent.ARILLIA) >= ARILIANUM) &&
-				(intersectionNumber(Continent.URZA) >= URZANUM));
+		return ((getOwner().hasContinent(getShataria())) &&
+				(getOwner().continentCountries(getArillia()) >= ARILIANUM) &&
+				(getOwner().continentCountries(getUrza()) >= URZANUM));
 	}
 
 }
