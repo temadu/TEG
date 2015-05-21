@@ -1,0 +1,12 @@
+package situations;
+
+public enum SituationTag {
+	SNOW,
+	DOWNWIND,
+	OPENFRONTIERS,
+	CLOSEDFRONTIERS,
+	EXTRAREINFORCEMENTS,
+	CRICIS,
+	RELAXATION,
+	NORMAL;
+}
