@@ -32,4 +32,8 @@ public class GameBox implements Serializable {
 		return players;
 	}
 	
+	public boolean isPlayable() {
+		return players.size() >= 2;
+	}
+	
 }

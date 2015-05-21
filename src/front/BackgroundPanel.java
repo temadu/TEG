@@ -179,8 +179,7 @@ public class BackgroundPanel extends JPanel
 	/*
 	 *  Add custom painting
 	 */
-	@Override
-	protected void paintComponent(TEGWindow g)
+	protected void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
 
@@ -220,7 +219,7 @@ public class BackgroundPanel extends JPanel
 	/*
 	 *  Custom painting code for drawing a SCALED image as the background
 	 */
-	private void drawScaled(TEGWindow g)
+	private void drawScaled(Graphics g)
 	{
 		Dimension d = getSize();
 		g.drawImage(image, 0, 0, d.width, d.height, null);
@@ -229,7 +228,7 @@ public class BackgroundPanel extends JPanel
 	/*
 	 *  Custom painting code for drawing TILED images as the background
 	 */
-	private void drawTiled(TEGWindow g)
+	private void drawTiled(Graphics g)
 	{
 		   Dimension d = getSize();
 		   int width = image.getWidth( null );
@@ -249,7 +248,7 @@ public class BackgroundPanel extends JPanel
 	 *  The image is positioned in the panel based on the horizontal and
 	 *  vertical alignments specified.
 	 */
-	private void drawActual(TEGWindow g)
+	private void drawActual(Graphics g)
 	{
 		Dimension d = getSize();
 		Insets insets = getInsets();

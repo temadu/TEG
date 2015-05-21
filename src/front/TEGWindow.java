@@ -68,6 +68,9 @@ public class TEGWindow extends JFrame {
     }
     
     public void createNewGameWindow() {
+    
+    	if(addPlayersFrame != null)
+    		addPlayersFrame.dispose();
     	
     	addPlayersFrame = new AddPlayersFrame();
         addPlayersFrame.setVisible(true);
@@ -130,10 +133,12 @@ public class TEGWindow extends JFrame {
 		
 	}
 	
-	public AddPlayersFrame getAddPlayersFrame() {
+	public void showGameWindows() {
 		
-		return addPlayersFrame;
+		addPlayersFrame.dispose();
+		playersFrame.setVisible(true);
+		mapFrame.setVisible(true);
 		
 	}
-
+	
 }

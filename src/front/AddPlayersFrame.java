@@ -1,5 +1,6 @@
 package front;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -69,6 +70,8 @@ public class AddPlayersFrame extends JInternalFrame {
 				Player p = new Player(playerNameField.getText(),colors[selectColor.getSelectedIndex()]);
 				GameManager.getInstance().getGameBox().addPlayer(p);
 				
+				playerTable[selectColor.getSelectedIndex()].setText(p.getName().toUpperCase());
+				
 				
 				
 			}
@@ -76,6 +79,17 @@ public class AddPlayersFrame extends JInternalFrame {
     	});
     	
     	endButton = new JButton("End");
+    	endButton.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent arg0) {
+				if(GameManager.getInstance().getGameBox().isPlayable()) {
+					TEGWindow.getInstance().showGameWindows();
+				} else {
+					warnings.setText("Not Enough Players!");
+				}
+			}
+    		
+    	});
     	
     	selectColor = new JComboBox<String>(colors);
     	selectColor.addItemListener(new ItemListener() {
@@ -99,6 +113,7 @@ public class AddPlayersFrame extends JInternalFrame {
     	}
     	
     	warnings = new JLabel();
+    	warnings.setForeground(Color.red);
     	color = new JLabel();
     	color.setIcon(colorIcons[selectColor.getSelectedIndex()]);
     	

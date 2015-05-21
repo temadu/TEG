@@ -118,6 +118,8 @@ public class Player {
 		return true;
 	}
 	
-	
+	public String toString() {
+		return name + " - " + color;
+	}
 
 }
