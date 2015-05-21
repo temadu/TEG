@@ -8,12 +8,18 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-public class Window extends JFrame {
+public class TEGWindow extends JFrame {
 
 	private JDesktopPane desktop;
 	
+	private MapFrame mapFrame;
+	private PlayersFrame playersFrame;
+	private AddPlayersFrame addPlayersFrame;
+	
+	private static TEGWindow instance;
+	
 	// Create the application
-	public Window() {
+	private TEGWindow() {
 		
 		super("TEG");
 		
@@ -30,6 +36,15 @@ public class Window extends JFrame {
 		
 	}
 	
+	public static TEGWindow getInstance() {
+		
+		if(instance == null) {
+			instance = new TEGWindow(); 
+		}
+		return instance;
+		
+	}
+	
 	// Launch the application.
 	public static void main(String[] args) {
         //Schedule a job for the event-dispatching thread:
@@ -42,16 +57,22 @@ public class Window extends JFrame {
     }
 
 	//Create a new internal frame.
-    protected void createFrames() {
+    private void createFrames() {
     	
-        MapFrame mapFrame = new MapFrame();
-        //mapFrame.setVisible(true);
+        mapFrame = new MapFrame();
         desktop.add(mapFrame);
         
-        PlayersFrame playersFrame = new PlayersFrame();
-        //playersFrame.setVisible(true);
+        playersFrame = new PlayersFrame();
         desktop.add(playersFrame);
-
+        
+    }
+    
+    public void createNewGameWindow() {
+    	
+    	addPlayersFrame = new AddPlayersFrame();
+        addPlayersFrame.setVisible(true);
+    	desktop.add(addPlayersFrame);
+    	
     }
     
     private static void createAndShowGUI() {
@@ -60,15 +81,14 @@ public class Window extends JFrame {
         JFrame.setDefaultLookAndFeelDecorated(true);
  
         //Create and set up the window.
-        Window frame = new Window();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        TEGWindow.getInstance().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
  
         //Display the window.
-        frame.setVisible(true);
+        TEGWindow.getInstance().setVisible(true);
         
     }
 	
-	protected JMenuBar createMenuBar() {
+	private JMenuBar createMenuBar() {
 		
 		JMenuBar menuBar  = new JMenuBar();
 		JMenu gameMenu, showMenu, actionMenu, helpMenu;
@@ -107,6 +127,12 @@ public class Window extends JFrame {
 		helpMenu.add(new JMenuItem("Rules"));
 		
 		return menuBar;
+		
+	}
+	
+	public AddPlayersFrame getAddPlayersFrame() {
+		
+		return addPlayersFrame;
 		
 	}
 

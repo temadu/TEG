@@ -8,7 +8,7 @@ import objectives.Objective;
 public class Player {
 	
 	private String name;
-	private Color color;
+	private String color;
 	
 	private Objective objective;
 	
@@ -18,7 +18,12 @@ public class Player {
 	private Set<Country> countries;
 	private Set<CountryCard> cards;
 	
-	public Player(String name, Color color, Objective objective) {
+	public Player(String name, String color) {
+		this.name = name;
+		this.color = color;
+	}
+	
+	public Player(String name, String color, Objective objective) {
 		this.name = name;
 		this.color = color;
 		this.objective = objective;
@@ -63,7 +68,7 @@ public class Player {
 		return name;
 	}
 
-	public Color getColor() {
+	public String getColor() {
 		return color;
 	}
 
