@@ -8,13 +8,15 @@ public class GameBox implements Serializable {
 	// Serializable
 	private static final long serialVersionUID = 1L;
 	
+	public static final int MAX_NUM_PLAYERS = 6;
+	
 	private Board board;
-	private List<Player> players;
+	private Set<Player> players;
 	
 	public GameBox() {
 		
 		board = new Board();
-		players = new ArrayList<Player>();
+		players = new HashSet<Player>();
 		
 	}
 	
@@ -26,7 +28,7 @@ public class GameBox implements Serializable {
 		return board;
 	}
 
-	public List<Player> getPlayers() {
+	public Set<Player> getPlayers() {
 		return players;
 	}
 	

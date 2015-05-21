@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import backend.GameBox;
 import backend.Player;
 
 public class AddPlayersFrame extends JInternalFrame {
@@ -24,6 +25,8 @@ public class AddPlayersFrame extends JInternalFrame {
     private JButton addPlayerButton, endButton;
     private JComboBox<String> selectColor;
     private JLabel color, warnings;
+    private JLabel[] playerTable;
+    private JLabel[] playerColorTable;
 
     public AddPlayersFrame() {
     	
@@ -46,7 +49,7 @@ public class AddPlayersFrame extends JInternalFrame {
 
     private void createComponents() {
     	
-    	String[] colors = {"Black", "White", "Red", "Blue", "Green", "Yellow"};
+    	final String[] colors = {"Black", "White", "Red", "Blue", "Green", "Yellow"};
     	final ImageIcon[] colorIcons = new ImageIcon[colors.length];
     	
     	for(int i = 0; i < colors.length ; i++) {
@@ -54,7 +57,7 @@ public class AddPlayersFrame extends JInternalFrame {
     	}
     	
     	panel = new JPanel();
-    	panel.setLayout(new GridLayout(6,1,20,20));
+    	panel.setLayout(new GridLayout(9,2,20,10));
     	
     	playerNameField = new JTextField("Player Name");
     	
@@ -63,8 +66,10 @@ public class AddPlayersFrame extends JInternalFrame {
 
 			public void actionPerformed(ActionEvent arg0) {
 				
-				GameManager.getInstance().getGameBox().addPlayer(new Player(playerNameField.getText(),"Black"));
-				System.out.println(selectColor.getName());
+				Player p = new Player(playerNameField.getText(),colors[selectColor.getSelectedIndex()]);
+				GameManager.getInstance().getGameBox().addPlayer(p);
+				
+				
 				
 			}
     		
@@ -84,6 +89,15 @@ public class AddPlayersFrame extends JInternalFrame {
     		
     	});
     	
+    	playerTable = new JLabel[GameBox.MAX_NUM_PLAYERS];
+    	for(int i = 0; i < playerTable.length ; i++) {
+    		playerTable[i] = new JLabel();
+    	}
+    	playerColorTable = new JLabel[GameBox.MAX_NUM_PLAYERS];
+    	for(int i = 0; i < playerColorTable.length ; i++) {
+    		playerColorTable[i] = new JLabel(colorIcons[i]);
+    	}
+    	
     	warnings = new JLabel();
     	color = new JLabel();
     	color.setIcon(colorIcons[selectColor.getSelectedIndex()]);
@@ -92,39 +106,16 @@ public class AddPlayersFrame extends JInternalFrame {
     	panel.add(color);
     	panel.add(playerNameField);
     	panel.add(addPlayerButton);
-    	panel.add(endButton);
     	panel.add(warnings);
+    	panel.add(endButton);
+    	
+    	for(int i = 0; i < GameBox.MAX_NUM_PLAYERS ; i++) {
+    		panel.add(playerTable[i]);
+    		panel.add(playerColorTable[i]);
+    	}
 
     	add(panel);
     	
     }
-
-	public JTextField getPlayerNameField() {
-		return playerNameField;
-	}
-
-	public JPanel getPanel() {
-		return panel;
-	}
-
-	public JButton getAddPlayerButton() {
-		return addPlayerButton;
-	}
-
-	public JButton getEndButton() {
-		return endButton;
-	}
-
-	public JComboBox getSelectColor() {
-		return selectColor;
-	}
-
-	public JLabel getColor() {
-		return color;
-	}
-
-	public JLabel getWarnings() {
-		return warnings;
-	}
     
 }
