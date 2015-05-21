@@ -1,6 +1,5 @@
 package backend;
 
-import front.GameManager;
 
 public class Country {
 	

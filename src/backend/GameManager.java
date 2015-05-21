@@ -1,6 +1,5 @@
-package front;
+package backend;
 
-import backend.GameBox;
 
 public class GameManager {
 

@@ -2,13 +2,20 @@ package front;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import backend.GameManager;
+
 public class TEGWindow extends JFrame {
+
+	private static final long serialVersionUID = 1L;
 
 	private JDesktopPane desktop;
 	
@@ -95,15 +102,39 @@ public class TEGWindow extends JFrame {
 		
 		JMenuBar menuBar  = new JMenuBar();
 		JMenu gameMenu, showMenu, actionMenu, helpMenu;
+		JMenuItem exit, newGame;
+		
+		exit = new JMenuItem("Exit");
+		exit.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+			
+		});
+		
+		newGame = new JMenuItem("New Game");
+		newGame.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+			
+				// PREGUNTAR!!!!!!!!!!!!!!!!!! ESTOY MEZCLANDO GRAFICO/MANEJO DE DATOS ???????????????????????
+				
+				GameManager.getInstance().newGame();
+				TEGWindow.getInstance().createNewGameWindow();
+				
+			}
+			
+		});
 
 		// Build the game menu.
 		gameMenu = new JMenu("Game");
 		menuBar.add(gameMenu);
-		gameMenu.add(new NewGameMenuItem());
+		gameMenu.add(newGame);
 		gameMenu.add(new JMenuItem("Load Game"));
 		gameMenu.add(new JMenuItem("Save Game"));
 		gameMenu.add(new JMenuItem("End Game"));
-		gameMenu.add(new ExitMenuItem());
+		gameMenu.add(exit);
 		
 		// Build the show menu.
 		showMenu = new JMenu("Show");

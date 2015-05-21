@@ -16,12 +16,16 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import backend.GameBox;
+import backend.GameManager;
 import backend.Player;
 
 public class AddPlayersFrame extends JInternalFrame {
 
-    private static final int xOffset = 90, yOffset = 30;
-    private JTextField playerNameField;
+	private static final long serialVersionUID = 1L;
+
+	private static final int xOffset = 90, yOffset = 30;
+    
+	private JTextField playerNameField;
     private JPanel panel;
     private JButton addPlayerButton, endButton;
     private JComboBox<String> selectColor;
