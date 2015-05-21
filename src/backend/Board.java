@@ -25,5 +25,16 @@ public class Board {
 	public boolean adjacentCountries(Country attacker, Country defender){
 		return adjacentMatrix[countries.indexOf(attacker)][countries.indexOf(defender)];
 	}
+	
+	public Continent continentContainer(Country country){
+		Continent container = null;
+		for (String continentName : continents.keySet()) {
+			if (continents.get(continentName).contains(country)){
+				container = continents.get(continentName);
+				break;
+			}
+		}
+		return container;
+	}
 
 }

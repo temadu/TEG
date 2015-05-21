@@ -37,6 +37,10 @@ public class Country {
 		owner.addCountry(this);
 	}
 	
+	public Continent getContinent(){
+		return GameBox.getInstance().getBoard().continentContainer(this);
+	}
+	
 	
 	///////////////////////////
 	/////Getters & Setters/////

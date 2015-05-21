@@ -9,15 +9,18 @@ public abstract class Battle {
 		ArrayList<Integer> attackerDice;
 		ArrayList<Integer> defenderDice;
 		
-		if(attacker.getSoldiers() > 5)
+		int attackerSoldiers = attacker.getSoldiers();
+		int defenderSoldiers = defender.getSoldiers();
+		
+		if(attackerSoldiers > 5)
 			attackerDice = Dice.rollDice(4);
 		else
-			attackerDice = Dice.rollDice(attacker.getSoldiers()-1);
+			attackerDice = Dice.rollDice(attackerSoldiers-1);
 		
-		if(defender.getSoldiers() > 5)
+		if(defenderSoldiers > 5)
 			defenderDice = Dice.rollDice(4);
 		else
-			defenderDice = Dice.rollDice(attacker.getSoldiers()-1);
+			defenderDice = Dice.rollDice(defenderSoldiers-1);
 		
 		int[] kills = diceComparator(attackerDice, defenderDice);
 		
