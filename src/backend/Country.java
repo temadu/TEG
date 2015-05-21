@@ -1,5 +1,7 @@
 package backend;
 
+import front.GameManager;
+
 public class Country {
 	
 	private String name;
@@ -16,7 +18,7 @@ public class Country {
 			return false;
 		if(enemy.getOwner().equals(this.owner))
 			return false;
-		if(!GameBox.getInstance().getBoard().adjacentCountries(this, enemy))
+		if(!GameManager.getInstance().getGameBox().getBoard().adjacentCountries(this, enemy))
 			return false;
 		Battle.conflict(this, enemy);
 		return true;
@@ -38,7 +40,7 @@ public class Country {
 	}
 	
 	public Continent getContinent(){
-		return GameBox.getInstance().getBoard().continentContainer(this);
+		return GameManager.getInstance().getGameBox().getBoard().continentContainer(this);
 	}
 	
 	

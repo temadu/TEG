@@ -1,9 +1,12 @@
 package front;
 
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Toolkit;
-import javax.swing.*;
+import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 public class Window extends JFrame {
 
@@ -42,11 +45,11 @@ public class Window extends JFrame {
     protected void createFrames() {
     	
         MapFrame mapFrame = new MapFrame();
-        mapFrame.setVisible(true);
+        //mapFrame.setVisible(true);
         desktop.add(mapFrame);
         
         PlayersFrame playersFrame = new PlayersFrame();
-        playersFrame.setVisible(true);
+        //playersFrame.setVisible(true);
         desktop.add(playersFrame);
 
     }
@@ -73,7 +76,7 @@ public class Window extends JFrame {
 		// Build the game menu.
 		gameMenu = new JMenu("Game");
 		menuBar.add(gameMenu);
-		gameMenu.add(new JMenuItem("New Game"));
+		gameMenu.add(new NewGameMenuItem());
 		gameMenu.add(new JMenuItem("Load Game"));
 		gameMenu.add(new JMenuItem("Save Game"));
 		gameMenu.add(new JMenuItem("End Game"));
