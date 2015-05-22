@@ -1,7 +1,12 @@
 package assets;
 
+import situationStrategies.AnyFrontierStrategy;
+import situationStrategies.FrontierStrategy;
+
 
 public class Country {
+	
+	private static FrontierStrategy frontierStrategy = new AnyFrontierStrategy();
 	
 	private String name;
 	private int soldiers;
@@ -18,6 +23,8 @@ public class Country {
 		if(enemy.getOwner().equals(this.owner))
 			return false;
 		if(!GameManager.getInstance().getGameBox().getBoard().adjacentCountries(this, enemy))
+			return false;
+		if(!frontierStrategy.attackSituationChecker(this, enemy))
 			return false;
 		Battle.conflict(this, enemy);
 		return true;
@@ -57,6 +64,10 @@ public class Country {
 	
 	public Player getOwner() {
 		return owner;
+	}
+
+	public static void setFrontierStrategy(FrontierStrategy frontierStrategy) {
+		Country.frontierStrategy = frontierStrategy;
 	}
 
 }
