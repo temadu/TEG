@@ -1,6 +1,6 @@
 package situationStrategies;
 
-public class WindHandicapSituation implements HandicapStrategy {
+public class WindHandicapStrategy implements HandicapStrategy {
 
 	@Override
 	public int getDefendingHandicap() {

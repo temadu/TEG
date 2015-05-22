@@ -2,15 +2,20 @@ package assets;
 
 import java.util.ArrayList;
 
+import situationStrategies.HandicapStrategy;
+import situationStrategies.NoHandicapStrategy;
+
 public abstract class Battle {
+	
+	public static HandicapStrategy handicap = new NoHandicapStrategy();
 	
 	public static void conflict(Country attacker, Country defender){
 		//no more than 4 dice!!!
 		ArrayList<Integer> attackerDice;
 		ArrayList<Integer> defenderDice;
 		
-		int attackerSoldiers = attacker.getSoldiers();
-		int defenderSoldiers = defender.getSoldiers();
+		int attackerSoldiers = attacker.getSoldiers() + handicap.getAttackingHandicap();
+		int defenderSoldiers = defender.getSoldiers() + handicap.getDefendingHandicap();
 		
 		if(attackerSoldiers > 5)
 			attackerDice = Dice.rollDice(4);
@@ -45,4 +50,7 @@ public abstract class Battle {
 		return kills;
 	}
 
+	public static void setHandicap(HandicapStrategy handicap) {
+		Battle.handicap = handicap;
+	}
 }
