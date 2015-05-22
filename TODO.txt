@@ -30,3 +30,5 @@ TODO
 				-check situations
 				-poder llamar a atacar entre paises (chequeos: country owner, limits, blah)
 				-
+-Objectives: Change use to Template Method Design Pattern.
+
