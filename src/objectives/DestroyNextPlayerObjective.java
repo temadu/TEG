@@ -1,7 +1,7 @@
 package objectives;
 
-import backend.GameBox;
-import backend.Player;
+import assets.GameBox;
+import assets.Player;
 
 public class DestroyNextPlayerObjective extends Objective{
 	

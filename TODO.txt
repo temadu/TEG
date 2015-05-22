@@ -20,3 +20,13 @@ TODO
 
 
 - FrontEnd
+
+--------
+
+-Situations
+-Import excel sheet (countries)
+-GameManager:	-Turnos/subturnos
+				-inicializar partida
+				-check situations
+				-poder llamar a atacar entre paises (chequeos: country owner, limits, blah)
+				-

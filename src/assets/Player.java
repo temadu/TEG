@@ -1,4 +1,4 @@
-package backend;
+package assets;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -100,7 +100,7 @@ public class Player {
 		return result;
 	}
 
-	// A nuestros fines, nos es práctico ver dos jugadores iguales si tienen el mismo color.
+	// A nuestros fines, nos es prï¿½ctico ver dos jugadores iguales si tienen el mismo color.
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

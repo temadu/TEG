@@ -1,6 +1,6 @@
 package objectives;
 
-import backend.Continent;
+import assets.Continent;
 
 public abstract class ConquerorObjective extends Objective {
 	

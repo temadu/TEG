@@ -1,6 +1,6 @@
 package objectives;
 
-import backend.Player;
+import assets.Player;
 
 public abstract class Objective {
 	

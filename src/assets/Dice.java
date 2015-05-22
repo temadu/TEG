@@ -1,4 +1,4 @@
-package backend;
+package assets;
 
 import java.util.Comparator;
 import java.util.Random;

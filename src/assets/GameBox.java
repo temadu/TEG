@@ -1,4 +1,4 @@
-package backend;
+package assets;
 
 import java.io.Serializable;
 import java.util.*;

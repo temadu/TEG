@@ -1,4 +1,4 @@
-package backend;
+package assets;
 
 
 public class Country {

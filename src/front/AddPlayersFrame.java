@@ -15,9 +15,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import backend.GameBox;
-import backend.GameManager;
-import backend.Player;
+import assets.GameBox;
+import assets.GameManager;
+import assets.Player;
 
 public class AddPlayersFrame extends JInternalFrame {
 

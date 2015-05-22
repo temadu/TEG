@@ -11,7 +11,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import backend.GameManager;
+import assets.GameManager;
 
 public class TEGWindow extends JFrame {
 

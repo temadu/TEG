@@ -11,7 +11,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import backend.Board;
+import assets.Board;
 
 public class BackgroundPanel extends JPanel {
 
