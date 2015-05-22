@@ -1,29 +1,14 @@
 package front;
 
-import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-import backend.GameBox;
-import backend.Player;
 
 public class MapFrame extends JInternalFrame {
 
-    private static final int xOffset = 30, yOffset = 30;
-    private JPanel panel;
-    private JLabel background;
+	private static final long serialVersionUID = 1L;
+
+	private static final int xOffset = 30, yOffset = 30;
+    
+	private BackgroundPanel panel;
     
     public MapFrame() {
         super("Map", 
@@ -41,18 +26,14 @@ public class MapFrame extends JInternalFrame {
         //Set the window's location.
         setLocation(xOffset, yOffset);
         
-		setBounds(100, 100, 1024, 720);
+		setBounds(100, 100, 1030, 710);
 		
     }
 	
     private void createComponents() {
     	
-    	panel = new JPanel();
+    	panel = new BackgroundPanel();
     	
-    	background = new JLabel(new ImageIcon("assets/map.jpg"));
-    	
-    	panel.add(background);
-
     	add(panel);
     	
     }

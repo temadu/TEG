@@ -7,6 +7,8 @@ import java.util.List;
 
 public class Board {
 	
+	public static final int COUNTRY_NMBR = 42;
+	
 	private HashMap<String, Continent> continents;
 	
 	private List<Country> countries;

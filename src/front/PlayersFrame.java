@@ -4,7 +4,9 @@ import javax.swing.JInternalFrame;
 
 public class PlayersFrame extends JInternalFrame {
 
-    private static final int xOffset = 90, yOffset = 30;
+	private static final long serialVersionUID = 1L;
+
+	private static final int xOffset = 90, yOffset = 30;
 
     public PlayersFrame() {
         super("Players", 
