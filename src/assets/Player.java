@@ -1,11 +1,14 @@
 package assets;
 
+import handlers.Observable;
+import handlers.Observer;
+
 import java.util.HashSet;
 import java.util.Set;
 
 import objectives.Objective;
 
-public class Player {
+public class Player implements Observable {
 	
 	private String name;
 	private String color;
@@ -17,6 +20,8 @@ public class Player {
 	
 	private Set<Country> countries;
 	private Set<CountryCard> cards;
+	
+	private HashSet<Observer> observers;
 	
 	public Player(String name, String color) {
 		this.name = name;
@@ -33,6 +38,7 @@ public class Player {
 		this.leftOverSoldiers = 0;
 		this.countries = new HashSet<Country>();
 		this.cards = new HashSet<CountryCard>();
+		this.observers = new HashSet<Observer>();
 	}
 	
 	public boolean hasLost(){
@@ -120,6 +126,23 @@ public class Player {
 	
 	public String toString() {
 		return name + " - " + color;
+	}
+
+	@Override
+	public void addObserver(Observer observer) {
+		observers.add(observer);
+	}
+
+	@Override
+	public void removeObserver(Observer observer) {
+		observers.remove(observer);	
+	}
+
+	@Override
+	public void notifyObservers() {
+		for (Observer observer : observers) {
+			observer.handleUpdate(this);
+		}	
 	}
 
 }

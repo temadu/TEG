@@ -1,16 +1,22 @@
 package assets;
 
+import java.util.HashSet;
+
+import handlers.Observable;
+import handlers.Observer;
 import situationStrategies.AnyFrontierStrategy;
 import situationStrategies.FrontierStrategy;
 
 
-public class Country {
+public class Country implements Observable{
 	
 	private static FrontierStrategy frontierStrategy = new AnyFrontierStrategy();
 	
 	private String name;
 	private int soldiers;
 	private Player owner;
+	
+	private HashSet<Observer> observers;
 	
 	public Country(String name) {
 		this.name = name;
@@ -68,6 +74,23 @@ public class Country {
 
 	public static void setFrontierStrategy(FrontierStrategy frontierStrategy) {
 		Country.frontierStrategy = frontierStrategy;
+	}
+
+	@Override
+	public void addObserver(Observer observer) {
+		observers.add(observer);
+	}
+
+	@Override
+	public void removeObserver(Observer observer) {
+		observers.remove(observer);	
+	}
+
+	@Override
+	public void notifyObservers() {
+		for (Observer observer : observers) {
+			observer.handleUpdate(this);
+		}	
 	}
 
 }
