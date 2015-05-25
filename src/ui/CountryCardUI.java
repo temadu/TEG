@@ -1,20 +1,21 @@
 package ui;
 
+
 import assets.CardType;
 import assets.Country;
+import assets.CountryCard;
 
 public class CountryCardUI {
 
-	private CountryUI country;
+	private String country;
 	private CardType type;
 	
-	public CountryCardUI(CountryUI country, CardType type) {
-		super();
+	public CountryCardUI(String country, CardType type) {
 		this.country = country;
 		this.type = type;
 	}
-
-	public CountryUI getCountry() {
+	
+	public String getCountry() {
 		return country;
 	}
 

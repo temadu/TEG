@@ -13,7 +13,7 @@ public class CountryHandler implements Observer<Country> {
 	
 	@Override
 	public void handleUpdate(Country data) {
-		//ui.setOwner(data.getOwner());
+		ui.setOwner(data.getOwner().getName());
 		ui.setSoldiers(data.getSoldiers());	
 	}
 

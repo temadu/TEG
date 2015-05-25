@@ -12,12 +12,12 @@ public class PlayerUI {
 	private String name;
 	private String color;
 	
-	private ObjectiveUI objective;
+	private String objective;
 	
 	private int totalSoldiers;
 	private int leftOverSoldiers;
 	
-	private Set<CountryUI> countries;
+	private Set<String> countries;
 	private Set<CountryCardUI> cards;
 	
 	public PlayerUI(String name, String color) {
@@ -25,23 +25,19 @@ public class PlayerUI {
 		this.color = color;
 	}
 	
-	public PlayerUI(String name, String color, ObjectiveUI objective) {
+	public PlayerUI(String name, String color, String objective) {
 		this.name = name;
 		this.color = color;
 		this.objective = objective;
 	
 		this.totalSoldiers = 0;
 		this.leftOverSoldiers = 0;
-		this.countries = new HashSet<CountryUI>();
+		this.countries = new HashSet<String>();
 		this.cards = new HashSet<CountryCardUI>();
 	}
 
-	public ObjectiveUI getObjective() {
+	public String getObjective() {
 		return objective;
-	}
-
-	public void setObjective(ObjectiveUI objective) {
-		this.objective = objective;
 	}
 
 	public int getTotalSoldiers() {
@@ -60,11 +56,11 @@ public class PlayerUI {
 		this.leftOverSoldiers = leftOverSoldiers;
 	}
 
-	public Set<CountryUI> getCountries() {
+	public Set<String> getCountries() {
 		return countries;
 	}
 
-	public void setCountries(Set<CountryUI> countries) {
+	public void setCountries(Set<String> countries) {
 		this.countries = countries;
 	}
 
@@ -82,6 +78,10 @@ public class PlayerUI {
 
 	public String getColor() {
 		return color;
+	}
+
+	public void setObjective(String objective) {
+		this.objective = objective;
 	}
 	
 	

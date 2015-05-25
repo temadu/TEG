@@ -6,7 +6,7 @@ public class CountryUI {
 
 	private String name;
 	private int soldiers;
-	private PlayerUI owner;
+	private String owner;
 	
 	public CountryUI(String name) {
 		this.name = name;
@@ -21,11 +21,11 @@ public class CountryUI {
 		this.soldiers = soldiers;
 	}
 
-	public PlayerUI getOwner() {
+	public String getOwner() {
 		return owner;
 	}
 
-	public void setOwner(PlayerUI owner) {
+	public void setOwner(String owner) {
 		this.owner = owner;
 	}
 
