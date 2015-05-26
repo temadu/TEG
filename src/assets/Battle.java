@@ -1,13 +1,21 @@
 package assets;
 
+import handlers.BattleHandler;
+import handlers.Observable;
+
 import java.util.ArrayList;
 
 import situationStrategies.HandicapStrategy;
 import situationStrategies.NoHandicapStrategy;
 
-public abstract class Battle {
+public abstract class Battle{
 	
 	public static HandicapStrategy handicap = new NoHandicapStrategy();
+	
+//	public static ArrayList<Integer> attackerDice;
+//	public static ArrayList<Integer> defenderDice;
+	
+	public static BattleHandler observer = new BattleHandler();
 	
 	public static void conflict(Country attacker, Country defender){
 		//no more than 4 dice!!!
@@ -32,7 +40,8 @@ public abstract class Battle {
 		attacker.killSoldiers(kills[0]);
 		if(defender.killSoldiers(kills[1]))
 			defender.changeOwner(attacker.getOwner());
-	
+
+		observer.handleUpdate(attackerDice, defenderDice);
 	}
 	
 	private static int[] diceComparator(ArrayList<Integer> attackerDice, ArrayList<Integer> defenderDice){
