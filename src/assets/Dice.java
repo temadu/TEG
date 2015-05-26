@@ -1,15 +1,10 @@
 package assets;
 
-import handlers.Observable;
-import handlers.Observer;
-
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Random;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Random;
 
 public class Dice {
-
 	
 	public static ArrayList<Integer> rollDice(int ammount) throws IllegalArgumentException {
 		

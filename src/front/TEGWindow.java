@@ -22,6 +22,12 @@ public class TEGWindow extends JFrame {
 	private MapFrame mapFrame;
 	private PlayersFrame playersFrame;
 	private AddPlayersFrame addPlayersFrame;
+	private SelectionFrame selectionFrame;
+	
+	private static final int INSET = 50;
+	private static final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
+	public static final int WIDTH = SCREEN_SIZE.width - INSET*2;
+	public static final int HEIGHT = SCREEN_SIZE.height - INSET*2;
 	
 	private static TEGWindow instance;
 	
@@ -30,10 +36,7 @@ public class TEGWindow extends JFrame {
 		
 		super("TEG");
 		
-		//Make the big window be indented 50 pixels from each edge of the screen.
-        int inset = 50;
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds(inset, inset, screenSize.width  - inset*2, screenSize.height - inset*2);
+        setBounds(INSET, INSET, WIDTH, HEIGHT);
  
         //Set up the GUI.
         desktop = new JDesktopPane(); //a specialized layered pane
@@ -71,6 +74,9 @@ public class TEGWindow extends JFrame {
         
         playersFrame = new PlayersFrame();
         desktop.add(playersFrame);
+        
+        selectionFrame = new SelectionFrame();
+        desktop.add(selectionFrame);
         
     }
     
@@ -117,11 +123,9 @@ public class TEGWindow extends JFrame {
 		newGame.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-			
-				// PREGUNTAR!!!!!!!!!!!!!!!!!! ESTOY MEZCLANDO GRAFICO/MANEJO DE DATOS ???????????????????????
 				
 				GameManager.getInstance().newGame();
-				TEGWindow.getInstance().createNewGameWindow();
+				createNewGameWindow();
 				
 			}
 			
@@ -169,6 +173,7 @@ public class TEGWindow extends JFrame {
 		addPlayersFrame.dispose();
 		playersFrame.setVisible(true);
 		mapFrame.setVisible(true);
+		selectionFrame.setVisible(true);
 		
 	}
 	

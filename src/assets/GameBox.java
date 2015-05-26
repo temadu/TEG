@@ -15,7 +15,7 @@ public class GameBox implements Serializable {
 	
 	public GameBox() {
 		
-		board = BoardFactory.boardCreator("assets/tormap/torAdjacentMatrix.xls");
+		//board = BoardFactory.boardCreator("assets/tormap/torAdjacentMatrix.xls");
 		players = new HashSet<Player>();
 		
 	}

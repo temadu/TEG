@@ -6,7 +6,8 @@ public class MapFrame extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final int xOffset = 30, yOffset = 30;
+	private static final int xOffset = 300, yOffset = 15;
+	private static final int WIDTH = 810, HEIGHT = 562;
     
 	private BackgroundPanel panel;
     
@@ -21,12 +22,10 @@ public class MapFrame extends JInternalFrame {
         createComponents();
         
         //...Then set the window size or call pack...
-        setSize(300,300);
+        setSize(WIDTH,HEIGHT);
 
         //Set the window's location.
-        setLocation(xOffset, yOffset);
-        
-		setBounds(100, 100, 1030, 710);
+        setLocation(xOffset,yOffset);
 		
     }
 	
