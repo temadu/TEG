@@ -1,25 +1,23 @@
 package assets;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 
 public class Board {
 	
-	public static final int COUNTRY_NMBR = 42;
-	
+	private int countriesNum;
 	private HashMap<String, Continent> continents;
 	
 	private List<Country> countries;
 	private boolean[][] adjacentMatrix;
 	
-	public Board() {
-		continents = new HashMap<String, Continent>();
-		countries = new ArrayList<Country>();
-		//adjacentMatrix
+	public Board(int countriesNum, HashMap<String, Continent> continents, List<Country> countries, boolean[][] adjacentMatrix) {
+		this.countriesNum = countriesNum;
+		this.continents = continents;
+		this.countries = countries;
+		this.adjacentMatrix = adjacentMatrix;
 	}
-	
+
 	public Continent getContinent(String continent){
 		return continents.get(continent);
 	}
@@ -38,5 +36,4 @@ public class Board {
 		}
 		return container;
 	}
-
 }
