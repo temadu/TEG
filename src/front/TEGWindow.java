@@ -46,7 +46,7 @@ public class TEGWindow extends JFrame {
         desktop = new JDesktopPane(); //a specialized layered pane
         createFrames(); //create windows
         setContentPane(desktop);
-        setJMenuBar(createMenuBar());
+        setJMenuBar(new TegMenu());
 		
 	}
 	
@@ -123,70 +123,6 @@ public class TEGWindow extends JFrame {
         
     }
 	
-	private JMenuBar createMenuBar() {
-		
-		JMenuBar menuBar  = new JMenuBar();
-		JMenu gameMenu, showMenu, actionMenu, helpMenu;
-		JMenuItem exit, newGame;
-		
-		exit = new JMenuItem("Exit");
-		exit.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent arg0) {
-				System.exit(0);
-			}
-			
-		});
-		
-		newGame = new JMenuItem("New Game");
-		newGame.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent arg0) {
-				
-				GameManager.getInstance().newGame();
-				createNewGameWindow();
-				
-			}
-			
-		});
-
-		// Build the game menu.
-		gameMenu = new JMenu("Game");
-		menuBar.add(gameMenu);
-		gameMenu.add(newGame);
-		gameMenu.add(new JMenuItem("Load Game"));
-		gameMenu.add(new JMenuItem("Save Game"));
-		gameMenu.add(new JMenuItem("End Game"));
-		gameMenu.add(exit);
-		
-		// Build the show menu.
-		showMenu = new JMenu("Show");
-		menuBar.add(showMenu);
-		showMenu.add(new JMenuItem("Map"));
-		showMenu.add(new JMenuItem("Players"));
-		showMenu.add(new JMenuItem("Selection"));
-		showMenu.add(new JMenuItem("Dice"));
-		showMenu.add(new JMenuItem("Objective"));
-		showMenu.add(new JMenuItem("My Cards"));
-		
-		// Build the action menu.
-		actionMenu = new JMenu("Action");
-		menuBar.add(actionMenu);
-		actionMenu.add(new JMenuItem("Add troop"));
-		actionMenu.add(new JMenuItem("Attack"));
-		actionMenu.add(new JMenuItem("Move troop"));
-		actionMenu.add(new JMenuItem("Take card"));
-		actionMenu.add(new JMenuItem("End turn"));
-		
-		// Build the help menu.
-		helpMenu = new JMenu("Help");
-		menuBar.add(helpMenu);
-		helpMenu.add(new JMenuItem("Rules"));
-		
-		return menuBar;
-		
-	}
-	
 	public void showGameWindows() {
 		
 		addPlayersFrame.dispose();
@@ -199,6 +135,38 @@ public class TEGWindow extends JFrame {
 		objectiveFrame.setVisible(true);
 		cardsFrame.setVisible(true);
 		
+	}
+
+	public MapFrame getMapFrame() {
+		return mapFrame;
+	}
+
+	public PlayersFrame getPlayersFrame() {
+		return playersFrame;
+	}
+
+	public SelectionFrame getSelectionFrame() {
+		return selectionFrame;
+	}
+
+	public DiceFrame getDiceFrame() {
+		return diceFrame;
+	}
+
+	public InfoFrame getInfoFrame() {
+		return infoFrame;
+	}
+
+	public SituationFrame getSituationFrame() {
+		return situationFrame;
+	}
+
+	public ObjectiveFrame getObjectiveFrame() {
+		return objectiveFrame;
+	}
+
+	public CardsFrame getCardsFrame() {
+		return cardsFrame;
 	}
 	
 }

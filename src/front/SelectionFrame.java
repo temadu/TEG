@@ -1,5 +1,6 @@
 package front;
 
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
 public class SelectionFrame extends JInternalFrame {
@@ -14,6 +15,8 @@ public class SelectionFrame extends JInternalFrame {
               true, //closable
               false, //maximizable
               false);//iconifiable
+        
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         
         //...Create the GUI and put it in the window...
         createComponents();
