@@ -23,11 +23,15 @@ public class TEGWindow extends JFrame {
 	private PlayersFrame playersFrame;
 	private AddPlayersFrame addPlayersFrame;
 	private SelectionFrame selectionFrame;
+	private DiceFrame diceFrame;
+	private InfoFrame infoFrame;
+	private SituationFrame situationFrame;
+	private ObjectiveFrame objectiveFrame;
+	private CardsFrame cardsFrame;
 	
 	private static final int INSET = 50;
-	private static final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
-	public static final int WIDTH = SCREEN_SIZE.width - INSET*2;
-	public static final int HEIGHT = SCREEN_SIZE.height - INSET*2;
+	public static final int WIDTH = 1366;
+	public static final int HEIGHT = 768;
 	
 	private static TEGWindow instance;
 	
@@ -77,6 +81,21 @@ public class TEGWindow extends JFrame {
         
         selectionFrame = new SelectionFrame();
         desktop.add(selectionFrame);
+        
+        diceFrame = new DiceFrame();
+        desktop.add(diceFrame);
+        
+        infoFrame = new InfoFrame();
+        desktop.add(infoFrame);
+        
+        situationFrame = new SituationFrame();
+        desktop.add(situationFrame);
+        
+        objectiveFrame = new ObjectiveFrame();
+        desktop.add(objectiveFrame);
+        
+        cardsFrame = new CardsFrame();
+        desktop.add(cardsFrame);
         
     }
     
@@ -174,6 +193,11 @@ public class TEGWindow extends JFrame {
 		playersFrame.setVisible(true);
 		mapFrame.setVisible(true);
 		selectionFrame.setVisible(true);
+		infoFrame.setVisible(true);
+		diceFrame.setVisible(true);
+		situationFrame.setVisible(true);
+		objectiveFrame.setVisible(true);
+		cardsFrame.setVisible(true);
 		
 	}
 	
