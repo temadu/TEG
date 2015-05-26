@@ -1,17 +1,8 @@
 package front;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
+import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-
-import assets.GameManager;
 
 public class TEGWindow extends JFrame {
 
@@ -47,6 +38,7 @@ public class TEGWindow extends JFrame {
         createFrames(); //create windows
         setContentPane(desktop);
         setJMenuBar(new TegMenu());
+        setIconImage(new ImageIcon("assets/Icons/teg.png").getImage());
 		
 	}
 	

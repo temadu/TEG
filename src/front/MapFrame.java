@@ -1,5 +1,6 @@
 package front;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
@@ -29,6 +30,9 @@ public class MapFrame extends JInternalFrame {
 
         //Set the window's location.
         setLocation(xOffset,yOffset);
+        
+        // Set the icon
+        setFrameIcon(new ImageIcon("assets/Icons/map.png"));
 		
     }
 	

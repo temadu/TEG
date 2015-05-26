@@ -50,6 +50,9 @@ public class AddPlayersFrame extends JInternalFrame {
         //Set the window's location.
         setLocation(xOffset, yOffset);
         
+        // Set the icon
+        setFrameIcon(new ImageIcon("assets/Icons/players.png"));
+        
     }
 
     private void createComponents() {
