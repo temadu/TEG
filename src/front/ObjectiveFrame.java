@@ -1,14 +1,21 @@
 package front;
 
+import java.awt.GridLayout;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class ObjectiveFrame extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
 
 	private static final int xOffset = 5, yOffset = 535;
+	
+    private JPanel panel;
+    private JLabel objective;
     
     public ObjectiveFrame() {
         super("Objective", 
@@ -35,7 +42,14 @@ public class ObjectiveFrame extends JInternalFrame {
 	
     private void createComponents() {
     	
+    	panel = new JPanel();
+    	panel.setLayout(new GridLayout(1,1,0,0));
+    	
+    	objective = new JLabel(new ImageIcon("assets/Fields/ObjectiveField.png"));
 
+    	panel.add(objective);
+    	
+    	add(panel);
     	
     }
     

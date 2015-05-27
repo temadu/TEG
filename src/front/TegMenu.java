@@ -150,7 +150,7 @@ public class TegMenu extends JMenuBar {
 		
 		helpMenu = new JMenu("Help");
 		add(helpMenu);
-		helpMenu.add(new JMenuItem("Rules"));
+		helpMenu.add(new JMenuItem("How to Play?"));
 		
 	}
 

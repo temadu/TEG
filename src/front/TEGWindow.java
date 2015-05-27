@@ -1,14 +1,13 @@
 package front;
 
 import javax.swing.ImageIcon;
-import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 
 public class TEGWindow extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	private JDesktopPane desktop;
+	private BackgroundPanel panel;
 	
 	private MapFrame mapFrame;
 	private PlayersFrame playersFrame;
@@ -34,9 +33,9 @@ public class TEGWindow extends JFrame {
         setBounds(INSET, INSET, WIDTH, HEIGHT);
  
         //Set up the GUI.
-        desktop = new JDesktopPane(); //a specialized layered pane
+        panel = new BackgroundPanel(); //a specialized layered pane
+        add(panel);
         createFrames(); //create windows
-        setContentPane(desktop);
         setJMenuBar(new TegMenu());
         setIconImage(new ImageIcon("assets/Icons/teg.png").getImage());
 		
@@ -66,28 +65,28 @@ public class TEGWindow extends JFrame {
     private void createFrames() {
     	
         mapFrame = new MapFrame();
-        desktop.add(mapFrame);
+        panel.add(mapFrame);
         
         playersFrame = new PlayersFrame();
-        desktop.add(playersFrame);
+        panel.add(playersFrame);
         
         selectionFrame = new SelectionFrame();
-        desktop.add(selectionFrame);
+        panel.add(selectionFrame);
         
         diceFrame = new DiceFrame();
-        desktop.add(diceFrame);
+        panel.add(diceFrame);
         
         infoFrame = new InfoFrame();
-        desktop.add(infoFrame);
+        panel.add(infoFrame);
         
         situationFrame = new SituationFrame();
-        desktop.add(situationFrame);
+        panel.add(situationFrame);
         
         objectiveFrame = new ObjectiveFrame();
-        desktop.add(objectiveFrame);
+        panel.add(objectiveFrame);
         
         cardsFrame = new CardsFrame();
-        desktop.add(cardsFrame);
+        panel.add(cardsFrame);
         
     }
     
@@ -98,7 +97,7 @@ public class TEGWindow extends JFrame {
     	
     	addPlayersFrame = new AddPlayersFrame();
         addPlayersFrame.setVisible(true);
-    	desktop.add(addPlayersFrame);
+    	panel.add(addPlayersFrame);
     	
     }
     

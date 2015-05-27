@@ -1,14 +1,23 @@
 package front;
 
+import java.awt.GridLayout;
+
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class InfoFrame extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
 
 	private static final int xOffset = 1175, yOffset = 455;
+	
+    private JPanel panel;
+    private JLabel name, continent, owner, troops;
+    private JButton addTroop;
     
     public InfoFrame() {
         super("Country Information", 
@@ -35,7 +44,27 @@ public class InfoFrame extends JInternalFrame {
 	
     private void createComponents() {
     	
-
+    	panel = new JPanel();
+    	panel.setLayout(new GridLayout(9,1,20,2));
+    	
+    	addTroop = new JButton("Add Troop",new ImageIcon("assets/Icons/add.png"));
+    	
+    	name = new JLabel(new ImageIcon("assets/Fields/infoField.png"));
+    	continent = new JLabel(new ImageIcon("assets/Fields/infoField.png"));
+    	owner = new JLabel(new ImageIcon("assets/Fields/infoField.png"));
+    	troops = new JLabel(new ImageIcon("assets/Fields/infoField.png"));
+    	
+    	panel.add(new JLabel("Name:"));
+    	panel.add(name);
+    	panel.add(new JLabel("Continent:"));
+    	panel.add(continent);
+    	panel.add(new JLabel("Owner:"));
+    	panel.add(owner);
+    	panel.add(new JLabel("Troops:"));
+    	panel.add(troops);
+    	panel.add(addTroop);
+    	
+    	add(panel);
     	
     }
     

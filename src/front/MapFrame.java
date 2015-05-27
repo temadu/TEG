@@ -11,7 +11,7 @@ public class MapFrame extends JInternalFrame {
 	private static final int xOffset = 335, yOffset = 5;
 	private static final int WIDTH = 810, HEIGHT = 562;
     
-	private BackgroundPanel panel;
+	private MapPanel panel;
     
     public MapFrame() {
         super("Map", 
@@ -38,7 +38,7 @@ public class MapFrame extends JInternalFrame {
 	
     private void createComponents() {
     	
-    	panel = new BackgroundPanel();
+    	panel = new MapPanel();
     	
     	add(panel);
     	

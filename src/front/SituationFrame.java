@@ -1,14 +1,21 @@
 package front;
 
+import java.awt.GridLayout;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class SituationFrame extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
 
 	private static final int xOffset = 1175, yOffset = 230;
+    
+    private JPanel panel;
+	private JLabel situation;
     
     public SituationFrame() {
         super("Situation", 
@@ -35,7 +42,14 @@ public class SituationFrame extends JInternalFrame {
 	
     private void createComponents() {
     	
+    	panel = new JPanel();
+    	panel.setLayout(new GridLayout(1,1,20,10));
+    	
+    	situation = new JLabel();
+    	
+    	panel.add(situation);
 
+    	add(panel);
     	
     }
     
