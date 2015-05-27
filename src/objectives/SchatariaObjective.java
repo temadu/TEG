@@ -11,7 +11,7 @@ public class SchatariaObjective extends ConquerorObjective {
 	}
 	
 	@Override
-	public boolean checkObjective() {
+	public boolean checkSpecificObjective() {
 		return ((getOwner().hasContinent(getShataria())) &&
 				(getOwner().continentCountries(getArillia()) >= ARILIANUM) &&
 				(getOwner().continentCountries(getUrza()) >= URZANUM));

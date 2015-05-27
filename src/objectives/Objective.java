@@ -8,11 +8,11 @@ public abstract class Objective {
 	private Player owner;
 	private String description;
 	
-	public boolean generalObjectiveCheck(){
-		return ((owner.countriesNumber() >= COUNTRIESTOCONQUER) ? true : false);
+	public boolean checkObjective(){
+		return (((owner.countriesNumber() >= COUNTRIESTOCONQUER) || checkSpecificObjective()) ? true : false);
 	}
 	
-	public abstract boolean checkObjective();
+	public abstract boolean checkSpecificObjective();
 
 	public Player getOwner() {
 		return owner;

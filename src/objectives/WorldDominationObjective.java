@@ -10,6 +10,11 @@ public class WorldDominationObjective extends Objective {
 	
 	@Override
 	public boolean checkObjective() {
+		return checkSpecificObjective();
+	}
+	
+	@Override
+	public boolean checkSpecificObjective() {
 		return (super.getOwner().countriesNumber() == COUNTRIESNUMBER);
 	}
 

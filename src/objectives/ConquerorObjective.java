@@ -12,7 +12,7 @@ public abstract class ConquerorObjective extends Objective {
 	private static Continent algos;
 	
 	@Override
-	public abstract boolean checkObjective();
+	public abstract boolean checkSpecificObjective();
 
 	public static Continent getShataria() {
 		return shataria;

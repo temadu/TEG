@@ -8,7 +8,7 @@ public class TripleContinentObjective extends ConquerorObjective {
 	}
 	
 	@Override
-	public boolean checkObjective() {
+	public boolean checkSpecificObjective() {
 		return ((getOwner().hasContinent(getGilacia())) &&
 				(getOwner().hasContinent(getArlas())) &&
 				(getOwner().hasContinent(getAlgos())));

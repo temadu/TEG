@@ -1,6 +1,5 @@
 package objectives;
 
-import assets.GameBox;
 import assets.Player;
 
 public class DestroyNextPlayerObjective extends Objective{
@@ -13,8 +12,8 @@ public class DestroyNextPlayerObjective extends Objective{
 	}
 
 	@Override
-	public boolean checkObjective() {
-		return (generalObjectiveCheck() || enemy.hasLost());
+	public boolean checkSpecificObjective() {
+		return enemy.hasLost();
 	}
 
 }
