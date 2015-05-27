@@ -1,41 +1,44 @@
 package objectives;
 
+import assets.Board;
 import assets.Continent;
+import assets.GameManager;
 
 public abstract class ConquerorObjective extends Objective {
 	
-	private static Continent shataria;
-	private static Continent arillia;
-	private static Continent urza;
-	private static Continent gilacia;
-	private static Continent arlas;
-	private static Continent algos;
+	private static Board board = GameManager.getInstance().getGameBox().getBoard();
+	private static String schataria = "Schataria";
+	private static String arillia = "Arillia";
+	private static String urza = "Urza";
+	private static String gilacia = "Gilacia";
+	private static String arlas = "Arlas";
+	private static String algos = "Algos";
 	
 	@Override
 	public abstract boolean checkSpecificObjective();
 
-	public static Continent getShataria() {
-		return shataria;
+	protected Continent getSchataria() {
+		return board.getContinent(schataria);
 	}
 
-	public static Continent getArillia() {
-		return arillia;
+	protected Continent getArillia() {
+		return board.getContinent(arillia);
 	}
 
-	public static Continent getUrza() {
-		return urza;
+	protected Continent getUrza() {
+		return board.getContinent(urza);
 	}
 
-	public static Continent getGilacia() {
-		return gilacia;
+	protected Continent getGilacia() {
+		return board.getContinent(gilacia);
 	}
 
-	public static Continent getArlas() {
-		return arlas;
+	protected Continent getArlas() {
+		return board.getContinent(arlas);
 	}
 
-	public static Continent getAlgos() {
-		return algos;
+	protected Continent getAlgos() {
+		return board.getContinent(algos);
 	}
 	
 	
