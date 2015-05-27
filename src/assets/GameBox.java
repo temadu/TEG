@@ -1,7 +1,11 @@
 package assets;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+
+import objectives.Objective;
 
 public class GameBox implements Serializable {
 
@@ -12,11 +16,13 @@ public class GameBox implements Serializable {
 	
 	private Board board;
 	private Set<Player> players;
+	private HashMap<Objective, Boolean> objectives;
 	
 	public GameBox() {
 		
 		//board = BoardFactory.boardCreator("assets/tormap/torAdjacentMatrix.xls");
 		players = new HashSet<Player>();
+		//objectives = ObjectiveFactory.objectiveCreator();
 		
 	}
 	
