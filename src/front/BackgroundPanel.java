@@ -16,7 +16,7 @@ public class BackgroundPanel extends JPanel {
 
 		bg = new ImageIcon("assets/Background/bg.png").getImage();
 		setLayout(null);
-
+		
 	}
 	    
 	public void paintComponent(Graphics g) {

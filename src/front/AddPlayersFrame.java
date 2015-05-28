@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -53,7 +55,8 @@ public class AddPlayersFrame extends JInternalFrame {
         // Set the icon
         setFrameIcon(new ImageIcon("assets/Icons/players.png"));
         
-    }
+      
+}
 
     private void createComponents() {
     	
@@ -78,8 +81,6 @@ public class AddPlayersFrame extends JInternalFrame {
 				GameManager.getInstance().getGameBox().addPlayer(p);
 				
 				playerTable[selectColor.getSelectedIndex()].setText(p.getName().toUpperCase());
-				
-				
 				
 			}
     		
