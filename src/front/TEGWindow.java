@@ -100,8 +100,6 @@ public class TEGWindow extends JFrame {
     	addPlayersFrame = new AddPlayersFrame();
         addPlayersFrame.setVisible(true);
         
-    	panel.add(addPlayersFrame);
-    	
     }
     
     private static void createAndShowGUI() {

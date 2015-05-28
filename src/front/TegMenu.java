@@ -44,7 +44,7 @@ public class TegMenu extends JMenuBar {
 				
 				GameManager.getInstance().newGame();
 				TEGWindow.getInstance().createNewGameWindow();
-				
+				TEGWindow.getInstance().setVisible(true);
 			}
 			
 		});
