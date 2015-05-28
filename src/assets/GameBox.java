@@ -1,5 +1,8 @@
 package assets;
 
+import handlers.Observable;
+import handlers.Observer;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -7,7 +10,7 @@ import java.util.Set;
 
 import objectives.Objective;
 
-public class GameBox implements Serializable {
+public class GameBox implements Serializable{
 
 	// Serializable
 	private static final long serialVersionUID = 1L;
@@ -41,5 +44,7 @@ public class GameBox implements Serializable {
 	public boolean isPlayable() {
 		return players.size() >= 2;
 	}
+
+	
 	
 }

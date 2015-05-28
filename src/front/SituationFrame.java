@@ -12,7 +12,7 @@ public class SituationFrame extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final int xOffset = 1175, yOffset = 230;
+	private static final int xOffset = 1110, yOffset = 230;
     
     private JPanel panel;
 	private JLabel situation;

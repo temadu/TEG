@@ -8,7 +8,7 @@ public class MapFrame extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final int xOffset = 335, yOffset = 5;
+	private static final int xOffset = 305, yOffset = 5;
 	private static final int WIDTH = 810, HEIGHT = 562;
     
 	private MapPanel panel;

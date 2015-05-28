@@ -1,10 +1,14 @@
 package assets;
 
+import java.util.Set;
+
 
 public class GameManager {
 
 	private static GameManager instance;
 	private GameBox gameBox;
+	
+	private Set<Player> players;
 	
 	// Singleton
 	private GameManager() {

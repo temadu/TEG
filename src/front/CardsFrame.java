@@ -8,7 +8,7 @@ public class CardsFrame extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final int xOffset = 335, yOffset = 577;
+	private static final int xOffset = 305, yOffset = 577;
     
     public CardsFrame() {
         super("Cards", 

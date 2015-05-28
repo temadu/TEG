@@ -13,7 +13,7 @@ public class InfoFrame extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final int xOffset = 1175, yOffset = 455;
+	private static final int xOffset = 1110, yOffset = 455;
 	
     private JPanel panel;
     private JLabel name, continent, owner, troops;
