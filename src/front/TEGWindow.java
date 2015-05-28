@@ -22,7 +22,7 @@ public class TEGWindow extends JFrame {
 	private CardsFrame cardsFrame;
 	
 	private static final int INSET = 50;
-	public static final int WIDTH = 1366;
+	public static final int WIDTH = 1292;
 	public static final int HEIGHT = 768;
 	
 	private static TEGWindow instance;
