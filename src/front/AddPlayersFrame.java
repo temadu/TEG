@@ -79,8 +79,6 @@ public class AddPlayersFrame extends JInternalFrame {
 				
 				playerTable[selectColor.getSelectedIndex()].setText(p.getName().toUpperCase());
 				
-				
-				
 			}
     		
     	});

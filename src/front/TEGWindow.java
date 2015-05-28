@@ -1,5 +1,7 @@
 package front;
 
+import java.beans.PropertyVetoException;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -97,6 +99,7 @@ public class TEGWindow extends JFrame {
     	
     	addPlayersFrame = new AddPlayersFrame();
         addPlayersFrame.setVisible(true);
+        
     	panel.add(addPlayersFrame);
     	
     }
@@ -158,6 +161,10 @@ public class TEGWindow extends JFrame {
 
 	public CardsFrame getCardsFrame() {
 		return cardsFrame;
+	}
+
+	public AddPlayersFrame getAddPlayersFrame() {
+		return addPlayersFrame;
 	}
 	
 }

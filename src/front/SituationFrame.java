@@ -45,7 +45,7 @@ public class SituationFrame extends JInternalFrame {
     	panel = new JPanel();
     	panel.setLayout(new GridLayout(1,1,20,10));
     	
-    	situation = new JLabel();
+    	situation = new JLabel(new ImageIcon("assets/Situation/snow.png"));
     	
     	panel.add(situation);
 

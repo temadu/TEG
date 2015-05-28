@@ -18,8 +18,9 @@ TODO
 
 - GameManager
 
-
 - FrontEnd
+
+	* Ocultar objetivos
 
 --------
 
