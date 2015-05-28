@@ -8,7 +8,7 @@ public class CardsFrame extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final int xOffset = 305, yOffset = 577;
+	private static final int xOffset = 305, yOffset = 562;
     
     public CardsFrame() {
         super("Cards", 
@@ -23,7 +23,7 @@ public class CardsFrame extends JInternalFrame {
         createComponents();
         
         //...Then set the window size or call pack...
-        setSize(810,130);
+        setSize(810,145);
 
         //Set the window's location.
         setLocation(xOffset, yOffset);
