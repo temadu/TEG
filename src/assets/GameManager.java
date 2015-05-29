@@ -1,5 +1,6 @@
 package assets;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 
@@ -8,7 +9,7 @@ public class GameManager {
 	private static GameManager instance;
 	private GameBox gameBox;
 	
-	private Set<Player> players;
+	private ArrayList<Player> players;
 	
 	// Singleton
 	private GameManager() {
@@ -26,6 +27,15 @@ public class GameManager {
 	
 	public void newGame() {
 		gameBox = new GameBox();
+		players = new ArrayList<Player>();
+	}
+	
+	public void addPlayer(Player p) {
+		players.add(p);
+	}
+	
+	public boolean isPlayable() {
+		return players.size() >= 2;
 	}
 	
 	public GameBox getGameBox() {

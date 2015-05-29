@@ -80,7 +80,7 @@ public class AddPlayersFrame extends JInternalFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				Player p = new Player(playerNameField.getText(),colors[selectColor.getSelectedIndex()]);
-				GameManager.getInstance().getGameBox().addPlayer(p);
+				GameManager.getInstance().addPlayer(p);
 				
 				playerTable[selectColor.getSelectedIndex()].setText(p.getName().toUpperCase());
 				
@@ -92,7 +92,7 @@ public class AddPlayersFrame extends JInternalFrame {
     	endButton.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent arg0) {
-				if(GameManager.getInstance().getGameBox().isPlayable()) {
+				if(GameManager.getInstance().isPlayable()) {
 					TEGWindow.getInstance().showGameWindows();
 				} else {
 					warnings.setText("Not Enough Players!");
