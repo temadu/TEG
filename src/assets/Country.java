@@ -36,6 +36,18 @@ public class Country implements Observable{
 		return true;
 	}
 	
+	public boolean moveSoldiers(Country ally){
+		if(this.soldiers == 1)
+			return false;
+		if(!ally.getOwner().equals(this.owner))
+			return false;
+		if(!GameManager.getInstance().getGameBox().getBoard().adjacentCountries(this, ally))
+			return false;
+		ally.incrementSoldiers();
+		this.soldiers--;
+		return true;
+	}
+	
 	public boolean killSoldiers(int kills){
 		if(kills >= soldiers){
 			soldiers = 1;
@@ -55,7 +67,9 @@ public class Country implements Observable{
 		return GameManager.getInstance().getGameBox().getBoard().continentContainer(this);
 	}
 	
-	
+	public void incrementSoldiers(){
+		soldiers++;
+	}
 	///////////////////////////
 	/////Getters & Setters/////
 	///////////////////////////
