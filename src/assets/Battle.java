@@ -17,7 +17,7 @@ public abstract class Battle{
 	
 	public static BattleHandler observer = new BattleHandler();
 	
-	public static void conflict(Country attacker, Country defender){
+	public static boolean conflict(Country attacker, Country defender){
 		//no more than 4 dice!!!
 		ArrayList<Integer> attackerDice;
 		ArrayList<Integer> defenderDice;
@@ -42,6 +42,9 @@ public abstract class Battle{
 			defender.changeOwner(attacker.getOwner());
 
 		observer.handleUpdate(attackerDice, defenderDice);
+		
+		return attacker.getOwner().equals(defender.getOwner());
+			
 	}
 	
 	private static int[] diceComparator(ArrayList<Integer> attackerDice, ArrayList<Integer> defenderDice){

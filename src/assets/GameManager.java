@@ -79,6 +79,19 @@ public class GameManager {
 		
 	}
 	
+	public void objectivesCheck(){
+		for (Player player : players) {
+			if(player.getObjective().checkObjective())
+				endGame(player);
+		}
+	}
+	
+	//TODO FINISH THE GAME
+	private void endGame(Player player){
+		System.out.println("CONGRATULATIONS PLAYER " + player.getName() + ".");
+		System.out.println("YOU HAVE WON THIS GAME!!!");
+	}
+	
 	
 	public void changeTurn(){
 		turn++;
