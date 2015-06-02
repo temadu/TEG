@@ -57,6 +57,11 @@ public class Player implements Observable {
 		countries.add(country);
 	}
 	
+	//TODO Add troops if player has the country.
+	public void addCountryCard(CountryCard card){
+		cards.add(card);
+	}
+	
 	public int continentCountries(Continent continent){
 		int i = 0;
 		for (Country country : countries) {

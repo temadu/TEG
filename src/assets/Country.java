@@ -32,8 +32,10 @@ public class Country implements Observable{
 			return false;
 		if(!frontierStrategy.attackSituationChecker(this, enemy))
 			return false;
-		if(Battle.conflict(this, enemy))
+		if(Battle.conflict(this, enemy)){
 			GameManager.getInstance().objectivesCheck();
+			GameManager.getInstance().conqueredACountry();
+		}
 		return true;
 	}
 	

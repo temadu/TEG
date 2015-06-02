@@ -112,11 +112,11 @@ public class AddPlayersFrame extends JInternalFrame {
     		
     	});
     	
-    	playerTable = new JLabel[GameBox.MAX_NUM_PLAYERS];
+    	playerTable = new JLabel[GameManager.MAX_NUM_PLAYERS];
     	for(int i = 0; i < playerTable.length ; i++) {
     		playerTable[i] = new JLabel();
     	}
-    	playerColorTable = new JLabel[GameBox.MAX_NUM_PLAYERS];
+    	playerColorTable = new JLabel[GameManager.MAX_NUM_PLAYERS];
     	for(int i = 0; i < playerColorTable.length ; i++) {
     		playerColorTable[i] = new JLabel(colorIcons[i]);
     	}
@@ -133,7 +133,7 @@ public class AddPlayersFrame extends JInternalFrame {
     	panel.add(warnings);
     	panel.add(endButton);
     	
-    	for(int i = 0; i < GameBox.MAX_NUM_PLAYERS ; i++) {
+    	for(int i = 0; i < GameManager.MAX_NUM_PLAYERS ; i++) {
     		panel.add(playerTable[i]);
     		panel.add(playerColorTable[i]);
     	}

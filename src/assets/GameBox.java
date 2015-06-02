@@ -19,8 +19,6 @@ public class GameBox implements Serializable{
 	// Serializable
 	private static final long serialVersionUID = 1L;
 	
-	public static final int MAX_NUM_PLAYERS = 6;
-	
 	private Board board;
 	private ArrayList<Objective> objectives;
 	private ArrayList<Situation> situations;

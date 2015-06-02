@@ -2,16 +2,22 @@ package assets;
 
 import java.util.ArrayList;
 
+import situations.Situation;
+
 
 public class GameManager {
+	
+	public static final int MAX_NUM_PLAYERS = 6;
 
 	private static GameManager instance;
 	private GameBox gameBox;
+	private Situation situation;
 	
 	private ArrayList<Player> players;
 	private int turn;
 	private SubTurn subturn;
 	private int troopsToAdd;
+	private boolean countryConquered;
 	
 	private Country informationCountry;
 	private Country attacker;
@@ -74,9 +80,10 @@ public class GameManager {
 			subturn = SubTurn.MOVETROOPS;
 		attacker.moveSoldiers(defender);
 	}
-	
+
 	public void takeCard(){
-		
+		if(countryConquered)
+			players.get(turn).addCountryCard(gameBox.getRandomCard());
 	}
 	
 	public void objectivesCheck(){
@@ -96,18 +103,38 @@ public class GameManager {
 	public void changeTurn(){
 		turn++;
 		subturn = SubTurn.ADDTROOPS;
-		if(turn == players.size())
+		countryConquered = false;
+		if(turn == players.size()){
 			turn = 0;
+			changeSituation();
+		}
 		if(players.get(turn).hasLost())
 			changeTurn();
 	}
 	
+	private void changeSituation(){
+		if(situation != null)
+			situation.situationEnd();
+		situation = gameBox.getRandomSituation();
+		situation.situationStart();
+	}
+	
 	public void addPlayer(String name, String color) {
-		players.add(new Player(name, color));
+		Player newplayer = new Player(name, color);
+		for (Player oldplayer : players) {
+			if(oldplayer.equals(newplayer))
+				players.remove(oldplayer);
+		}
+		if(players.size() < MAX_NUM_PLAYERS)
+			players.add(newplayer);
 	}
 	
 	public boolean isPlayable() {
 		return players.size() >= 2;
+	}
+	
+	public void conqueredACountry(){
+		countryConquered = true;
 	}
 	
 	public GameBox getGameBox() {
