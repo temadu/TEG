@@ -1,6 +1,6 @@
 package assets;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 import objectives.DestroyNextPlayerObjective;
 import objectives.Objective;
@@ -10,13 +10,13 @@ import objectives.TripleContinentObjective;
 
 public class ObjectiveFactory {
 	
-	public static HashMap<Objective, Boolean> objectiveCreator(){
-		HashMap<Objective, Boolean> objectives = new HashMap<Objective, Boolean>();
-		objectives.put(new TripleContinentObjective(), false);
-		objectives.put(new SchatariaObjective(), false);
-		objectives.put(new DestroyNextPlayerObjective(), false);
-		objectives.put(new DestroyNextPlayerObjective(), false);
-		objectives.put(new DestroyNextPlayerObjective(), false);
+	public static ArrayList<Objective> objectiveCreator(){
+		ArrayList<Objective> objectives = new ArrayList<Objective>();
+		objectives.add(new TripleContinentObjective());
+		objectives.add(new SchatariaObjective());
+		objectives.add(new DestroyNextPlayerObjective());
+		objectives.add(new DestroyNextPlayerObjective());
+		objectives.add(new DestroyNextPlayerObjective());
 		return objectives;
 	}
 }
