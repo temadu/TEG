@@ -79,10 +79,9 @@ public class AddPlayersFrame extends JInternalFrame {
 
 			public void actionPerformed(ActionEvent arg0) {
 				
-				Player p = new Player(playerNameField.getText(),colors[selectColor.getSelectedIndex()]);
-				GameManager.getInstance().addPlayer(p);
+				GameManager.getInstance().addPlayer(playerNameField.getText(), colors[selectColor.getSelectedIndex()]);
 				
-				playerTable[selectColor.getSelectedIndex()].setText(p.getName().toUpperCase());
+				playerTable[selectColor.getSelectedIndex()].setText(playerNameField.getText().toUpperCase());
 				
 			}
     		

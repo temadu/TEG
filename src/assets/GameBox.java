@@ -24,13 +24,14 @@ public class GameBox implements Serializable{
 	private Board board;
 	private ArrayList<Objective> objectives;
 	private ArrayList<Situation> situations;
+	private ArrayList<CountryCard> countryCards;
 	
 	public GameBox() {
 		
 		//board = BoardFactory.boardCreator("assets/tormap/torAdjacentMatrix.xls");
 		//objectives = ObjectiveFactory.objectiveCreator();
 		//situations = SituationFactory.situationCreator();
-		
+		//countryCards = CountryCardFactory.countryCardsCreator();
 	}
 	
 	
@@ -42,13 +43,18 @@ public class GameBox implements Serializable{
 	public Objective getRandomObjective(){
 		Objective objective = objectives.get(0);
 		objectives.remove(0);
-		objectives.add(objective);
 		return objective;
 	}
 	
 	public Situation getRandomSituation(){
 		Collections.shuffle(situations);
 		return situations.get(0);
+	}
+	
+	public CountryCard getRandomCard(){
+		CountryCard card = countryCards.get(0);
+		countryCards.remove(0);
+		return card;
 	}
 	
 }
