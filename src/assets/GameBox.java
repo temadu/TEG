@@ -29,7 +29,7 @@ public class GameBox implements Serializable{
 		//board = BoardFactory.boardCreator("assets/tormap/torAdjacentMatrix.xls");
 		//objectives = ObjectiveFactory.objectiveCreator();
 		//situations = SituationFactory.situationCreator();
-		//countryCards = CountryCardFactory.countryCardsCreator();
+		//countryCards = CountryCardFactory.countryCardsCreator(board.getCountries());
 	}
 	
 	
