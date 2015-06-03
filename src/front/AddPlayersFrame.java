@@ -54,9 +54,6 @@ public class AddPlayersFrame extends JInternalFrame {
         
         // Set the icon
         setFrameIcon(new ImageIcon("assets/Icons/players.png"));
-        
-        System.out.println("Test");
-        
       
 }
 

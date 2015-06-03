@@ -1,11 +1,15 @@
 package assets;
 
+import handlers.Observable;
+import handlers.Observer;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import situations.Situation;
 
 
-public class GameManager {
+public class GameManager implements Observable {
 	
 	public static final int MAX_NUM_PLAYERS = 6;
 
@@ -22,6 +26,8 @@ public class GameManager {
 	private Country informationCountry;
 	private Country attacker;
 	private Country defender;
+	
+	private HashSet<Observer> observers;
 	
 	// Singleton
 	private GameManager() {
@@ -140,6 +146,18 @@ public class GameManager {
 	public GameBox getGameBox() {
 		return gameBox;
 	}
+	
+	public int getTurn() {
+		return turn;
+	}
+
+	public SubTurn getSubturn() {
+		return subturn;
+	}
+
+	public int getTroopsToAdd() {
+		return troopsToAdd;
+	}
 
 	public void setAttacker(Country attacker) {
 		this.attacker = attacker;
@@ -151,6 +169,23 @@ public class GameManager {
 
 	public void setInformationCountry(Country informationCountry) {
 		this.informationCountry = informationCountry;
+	}
+
+	@Override
+	public void addObserver(Observer observer) {
+		observers.add(observer);
+	}
+
+	@Override
+	public void removeObserver(Observer observer) {
+		observers.remove(observer);	
+	}
+
+	@Override
+	public void notifyObservers() {
+		for (Observer observer : observers) {
+			observer.handleUpdate(this);
+		}	
 	}
 	
 }

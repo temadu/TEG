@@ -35,6 +35,7 @@ public class Country implements Observable{
 		if(Battle.conflict(this, enemy)){
 			GameManager.getInstance().objectivesCheck();
 			GameManager.getInstance().conqueredACountry();
+			notifyObservers();
 		}
 		return true;
 	}
@@ -48,15 +49,18 @@ public class Country implements Observable{
 			return false;
 		ally.incrementSoldiers();
 		this.soldiers--;
+		notifyObservers();
 		return true;
 	}
 	
 	public boolean killSoldiers(int kills){
 		if(kills >= soldiers){
 			soldiers = 1;
+			notifyObservers();
 			return true;
 		}	
 		this.soldiers -= kills;
+		notifyObservers();
 		return false;
 	}
 	
@@ -64,6 +68,7 @@ public class Country implements Observable{
 		owner.removeCountry(this);
 		owner = newOwner;
 		owner.addCountry(this);
+		notifyObservers();
 	}
 	
 	public Continent getContinent(){
