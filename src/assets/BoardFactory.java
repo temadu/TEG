@@ -44,7 +44,7 @@ public class BoardFactory {
 		ArrayList<Country> countries = new ArrayList<Country>();
 		Cell workingCell;
 		for (int i = 0; i < countriesNum; i++) {
-			workingCell = mapDataSheet.getCell( 4+i , 0);
+			workingCell = mapDataSheet.getCell( 0 , 4+i);
 			String countryName = workingCell.getContents();
 			countries.add(new Country(countryName));
 		}
@@ -56,7 +56,7 @@ public class BoardFactory {
 		Cell workingCell;
 		for (int i = 0; i < countriesNum; i++) {
 			for (int j = 0; j < countriesNum; j++) {
-				workingCell = mapDataSheet.getCell( 4+i , 1+j);
+				workingCell = mapDataSheet.getCell( 1+i , 4+j);
 				if(workingCell.getContents().equals("1"))
 					adjacentMatrix[i][j] = true;
 				else
@@ -67,7 +67,7 @@ public class BoardFactory {
 	}
 	
 	private static int getCountriesNum(){
-		Cell countriesNumberCell = mapDataSheet.getCell(0, 1);
+		Cell countriesNumberCell = mapDataSheet.getCell(1, 0);
 		return Integer.parseInt(countriesNumberCell.getContents());
 	}
 	
@@ -77,18 +77,18 @@ public class BoardFactory {
 		continentsNum =  Integer.parseInt(mapDataSheet.getCell(1, 1).getContents());
 		for (int i = 0; i < continentsNum; i++) {
 			
-			workingCell = mapDataSheet.getCell(3 + countriesNum + 3 + i, 0);
+			workingCell = mapDataSheet.getCell(0, 3 + countriesNum + 3 + i);
 			String continentName = workingCell.getContents();
 			
-			workingCell = mapDataSheet.getCell(3 + countriesNum + 3 + i, 1);
+			workingCell = mapDataSheet.getCell(1, 3 + countriesNum + 3 + i);
 			int continentCountriesNum = Integer.parseInt(workingCell.getContents());
 			
-			workingCell = mapDataSheet.getCell(3 + countriesNum + 3 + i, 2);
+			workingCell = mapDataSheet.getCell(2, 3 + countriesNum + 3 + i);
 			int soldiersForConqueror = Integer.parseInt(workingCell.getContents());
 			
 			HashSet<Country> countries = new HashSet<Country>();
 			for (int j = 0; j < continentCountriesNum; j++) {
-				workingCell = mapDataSheet.getCell(3 + countriesNum + 3 + i, 3+j);
+				workingCell = mapDataSheet.getCell(3 + j, 3 + countriesNum + 3 + i);
 				String countryName = workingCell.getContents();
 				countries.add(findCountry(countryName));
 			}
