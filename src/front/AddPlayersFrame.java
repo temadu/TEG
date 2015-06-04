@@ -15,9 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import assets.GameBox;
 import assets.GameManager;
-import assets.Player;
 
 public class AddPlayersFrame extends JInternalFrame {
 
@@ -52,9 +50,6 @@ public class AddPlayersFrame extends JInternalFrame {
         
         // Set the icon
         setFrameIcon(new ImageIcon("assets/Icons/players.png"));
-        
-        System.out.println("Test");
-        
       
 }
 
@@ -77,10 +72,9 @@ public class AddPlayersFrame extends JInternalFrame {
 
 			public void actionPerformed(ActionEvent arg0) {
 				
-				Player p = new Player(playerNameField.getText(),colors[selectColor.getSelectedIndex()]);
-				GameManager.getInstance().addPlayer(p);
+				GameManager.getInstance().addPlayer(playerNameField.getText(), colors[selectColor.getSelectedIndex()]);
 				
-				playerTable[selectColor.getSelectedIndex()].setText(p.getName().toUpperCase());
+				playerTable[selectColor.getSelectedIndex()].setText(playerNameField.getText().toUpperCase());
 				
 			}
     		
@@ -111,11 +105,11 @@ public class AddPlayersFrame extends JInternalFrame {
     		
     	});
     	
-    	playerTable = new JLabel[GameBox.MAX_NUM_PLAYERS];
+    	playerTable = new JLabel[GameManager.MAX_NUM_PLAYERS];
     	for(int i = 0; i < playerTable.length ; i++) {
     		playerTable[i] = new JLabel();
     	}
-    	playerColorTable = new JLabel[GameBox.MAX_NUM_PLAYERS];
+    	playerColorTable = new JLabel[GameManager.MAX_NUM_PLAYERS];
     	for(int i = 0; i < playerColorTable.length ; i++) {
     		playerColorTable[i] = new JLabel(colorIcons[i]);
     	}
@@ -132,7 +126,7 @@ public class AddPlayersFrame extends JInternalFrame {
     	panel.add(warnings);
     	panel.add(endButton);
     	
-    	for(int i = 0; i < GameBox.MAX_NUM_PLAYERS ; i++) {
+    	for(int i = 0; i < GameManager.MAX_NUM_PLAYERS ; i++) {
     		panel.add(playerTable[i]);
     		panel.add(playerColorTable[i]);
     	}

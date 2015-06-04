@@ -32,16 +32,35 @@ public class Country implements Observable{
 			return false;
 		if(!frontierStrategy.attackSituationChecker(this, enemy))
 			return false;
-		Battle.conflict(this, enemy);
+		if(Battle.conflict(this, enemy)){
+			GameManager.getInstance().objectivesCheck();
+			GameManager.getInstance().conqueredACountry();
+			notifyObservers();
+		}
+		return true;
+	}
+	
+	public boolean moveSoldiers(Country ally){
+		if(this.soldiers == 1)
+			return false;
+		if(!ally.getOwner().equals(this.owner))
+			return false;
+		if(!GameManager.getInstance().getGameBox().getBoard().adjacentCountries(this, ally))
+			return false;
+		ally.incrementSoldiers();
+		this.soldiers--;
+		notifyObservers();
 		return true;
 	}
 	
 	public boolean killSoldiers(int kills){
 		if(kills >= soldiers){
 			soldiers = 1;
+			notifyObservers();
 			return true;
 		}	
 		this.soldiers -= kills;
+		notifyObservers();
 		return false;
 	}
 	
@@ -49,13 +68,16 @@ public class Country implements Observable{
 		owner.removeCountry(this);
 		owner = newOwner;
 		owner.addCountry(this);
+		notifyObservers();
 	}
 	
 	public Continent getContinent(){
 		return GameManager.getInstance().getGameBox().getBoard().continentContainer(this);
 	}
 	
-	
+	public void incrementSoldiers(){
+		soldiers++;
+	}
 	///////////////////////////
 	/////Getters & Setters/////
 	///////////////////////////
@@ -91,6 +113,31 @@ public class Country implements Observable{
 		for (Observer observer : observers) {
 			observer.handleUpdate(this);
 		}	
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Country other = (Country) obj;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
 	}
 
 }

@@ -51,10 +51,18 @@ public class Player implements Observable {
 	
 	public void removeCountry(Country country){
 		countries.remove(country);
+		notifyObservers();
 	}
 	
 	public void addCountry(Country country){
 		countries.add(country);
+		notifyObservers();
+	}
+	
+	//TODO Add troops if player has the country.
+	public void addCountryCard(CountryCard card){
+		cards.add(card);
+		notifyObservers();
 	}
 	
 	public int continentCountries(Continent continent){
