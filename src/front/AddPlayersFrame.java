@@ -107,7 +107,8 @@ public class AddPlayersFrame extends JInternalFrame {
     	
     	playerTable = new JLabel[GameManager.MAX_NUM_PLAYERS];
     	for(int i = 0; i < playerTable.length ; i++) {
-    		playerTable[i] = new JLabel();
+    		playerTable[i] = new JLabel("",new ImageIcon("assets/Fields/addPlayerField.png"),0);
+    		playerTable[i].setIconTextGap(-132);
     	}
     	playerColorTable = new JLabel[GameManager.MAX_NUM_PLAYERS];
     	for(int i = 0; i < playerColorTable.length ; i++) {

@@ -56,17 +56,21 @@ public class PlayersFrame extends JInternalFrame {
     	namePlayers = new JLabel[numPlayers];
     	
     	panel = new JPanel();
-    	panel.setLayout(new GridLayout(numPlayers+4,2,5,5));
+    	panel.setLayout(new GridLayout(10,2,5,5));
     	
-    	exchanges = new JLabel("");
-    	countries = new JLabel("");
-    	troopsToAdd = new JLabel("");
+    	exchanges = new JLabel(new ImageIcon("assets/Fields/playerField.png"));
+    	exchanges.setIconTextGap(-138);
+    	countries = new JLabel(new ImageIcon("assets/Fields/playerField.png"));
+    	countries.setIconTextGap(-138);
+    	troopsToAdd = new JLabel(new ImageIcon("assets/Fields/playerField.png"));
+    	troopsToAdd.setIconTextGap(-138);
     	takeCard = new JButton("Take Card");
     	endTurn = new JButton("End Turn");
     	
     	for(int i = 0 ; i < numPlayers ; i++) {
     		colorPlayers[i] = new JLabel(new ImageIcon("assets/Colors/" + GameUI.getInstance().getPlayers().get(i).getColor() + ".png"));
-    		namePlayers[i] = new JLabel(GameUI.getInstance().getPlayers().get(i).getName());
+    		namePlayers[i] = new JLabel(GameUI.getInstance().getPlayers().get(i).getName().toUpperCase(),new ImageIcon("assets/Fields/playerField.png"),0);
+    		namePlayers[i].setIconTextGap(-138);
     	}
     	   	
     	for(int i = 0; i < numPlayers ; i++) {
