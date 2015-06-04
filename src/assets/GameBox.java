@@ -26,13 +26,14 @@ public class GameBox implements Serializable{
 	
 	public GameBox() {
 		
-		//board = BoardFactory.boardCreator("assets/tormap/torAdjacentMatrix.xls");
-		//objectives = ObjectiveFactory.objectiveCreator();
+		board = BoardFactory.boardCreator("assets/tormap/torAdjacentMatrix.xls");
 		//situations = SituationFactory.situationCreator();
 		//countryCards = CountryCardFactory.countryCardsCreator(board.getCountries());
 	}
 	
-	
+	public void initializeObjectives(){
+		objectives = ObjectiveFactory.objectiveCreator();
+	}
 
 	public Board getBoard() {
 		return board;

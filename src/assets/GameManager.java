@@ -45,6 +45,7 @@ public class GameManager implements Observable {
 	
 	public void newGame() {
 		gameBox = new GameBox();
+		gameBox.initializeObjectives();
 		players = new ArrayList<Player>();
 		turn = 0;
 		subturn = SubTurn.ADDTROOPS;
