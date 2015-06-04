@@ -23,7 +23,7 @@ public class Player implements Observable {
 	
 	private HashSet<Observer> observers;
 	
-	public Player(String name, String color) {
+	public Player(String name, String color, Objective objective) {
 		this.name = name;
 		this.color = color;
 		this.totalSoldiers = 0;
@@ -31,6 +31,7 @@ public class Player implements Observable {
 		this.countries = new HashSet<Country>();
 		this.cards = new HashSet<CountryCard>();
 		this.observers = new HashSet<Observer>();
+		this.objective = objective;
 	}
 	
 	

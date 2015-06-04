@@ -20,6 +20,7 @@ public class PlayerHandler implements Observer<Player> {
 
 	@Override
 	public void handleUpdate(Player data) {
+		ui.setName(data.getName());
 		ui.setLeftOverSoldiers(data.getLeftOverSoldiers());
 		ui.setTotalSoldiers(data.getTotalSoldiers());
 		ui.setObjective(data.getObjective().getDescription());

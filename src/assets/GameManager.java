@@ -3,9 +3,12 @@ package assets;
 import handlers.Observable;
 import handlers.Observer;
 import handlers.PlayerHandler;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import objectives.Objective;
+import objectives.SchatariaObjective;
 import situations.Situation;
 
 
@@ -131,7 +134,14 @@ public class GameManager implements Observable {
 	}
 	
 	public void addPlayer(String name, String color) {
-		Player newplayer = new Player(name, color);
+		Player newplayer = new Player(name, color, new Objective() {
+			
+			@Override
+			public boolean checkSpecificObjective() {
+				// TODO Auto-generated method stub
+				return false;
+			}
+		});
 		for (Player oldplayer : players) {
 			if(oldplayer.equals(newplayer)){
 				oldplayer.setName(name);
