@@ -64,7 +64,5 @@ public class GameUI {
 	
 }
 
-
-//array de jugadores 
-//situation
+//
 //turno

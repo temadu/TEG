@@ -26,21 +26,13 @@ public class Player implements Observable {
 	public Player(String name, String color) {
 		this.name = name;
 		this.color = color;
-		this.observers = new HashSet<Observer>();
-	}
-	
-	public Player(String name, String color, Objective objective) {
-		this.name = name;
-		this.color = color;
-		this.objective = objective;
-		this.objective.setOwner(this);
-	
 		this.totalSoldiers = 0;
 		this.leftOverSoldiers = 0;
 		this.countries = new HashSet<Country>();
 		this.cards = new HashSet<CountryCard>();
 		this.observers = new HashSet<Observer>();
 	}
+	
 	
 	public boolean hasLost(){
 		return ((totalSoldiers == 0) ? true : false);
@@ -133,6 +125,11 @@ public class Player implements Observable {
 		return true;
 	}
 	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
 	public String toString() {
 		return name + " - " + color;
 	}

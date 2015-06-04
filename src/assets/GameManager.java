@@ -132,8 +132,10 @@ public class GameManager implements Observable {
 	public void addPlayer(String name, String color) {
 		Player newplayer = new Player(name, color);
 		for (Player oldplayer : players) {
-			if(oldplayer.equals(newplayer))
-				players.remove(oldplayer);
+			if(oldplayer.equals(newplayer)){
+				oldplayer.setName(name);
+				return;
+			}
 		}
 		if(players.size() < MAX_NUM_PLAYERS){
 			players.add(newplayer);
