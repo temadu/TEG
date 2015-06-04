@@ -1,6 +1,8 @@
 package front;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -51,6 +53,17 @@ public class SelectionFrame extends JInternalFrame {
     	to = new JLabel(new ImageIcon("assets/Fields/FromToField.png"));
     	
     	attack = new JButton("Attack", new ImageIcon("assets/Icons/attack.png"));
+    	attack.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				System.out.println("TEO GAY");
+				
+			}
+    		
+    	});
+    	
     	moveTroop = new JButton("Move", new ImageIcon("assets/Icons/move.png"));
     	
     	panel.add(new JLabel("From:"));

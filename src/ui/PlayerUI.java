@@ -3,10 +3,6 @@ package ui;
 import java.util.HashSet;
 import java.util.Set;
 
-import objectives.Objective;
-import assets.Country;
-import assets.CountryCard;
-
 public class PlayerUI {
 
 	private String name;
