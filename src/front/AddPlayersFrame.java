@@ -80,12 +80,12 @@ public class AddPlayersFrame extends JInternalFrame {
     		
     	});
     	
-    	endButton = new JButton("End");
+    	endButton = new JButton("Start!");
     	endButton.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent arg0) {
 				if(GameManager.getInstance().isPlayable()) {
-					TEGWindow.getInstance().showGameWindows();
+					TEGWindow.getInstance().initiateGameWindows();
 				} else {
 					warnings.setText("Not Enough Players!");
 				}

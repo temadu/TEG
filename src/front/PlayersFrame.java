@@ -9,6 +9,8 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ui.GameUI;
+
 public class PlayersFrame extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -47,13 +49,14 @@ public class PlayersFrame extends JInternalFrame {
     
     private void createComponents() {
     	
-    	final String[] colors = {"Black", "White", "Red", "Blue", "Green", "Yellow"};
+    	int numPlayers = GameUI.getInstance().getPlayers().size();
+    	System.out.println(numPlayers);
     	
-    	colorPlayers = new JLabel[6];
-    	namePlayers = new JLabel[6];
+    	colorPlayers = new JLabel[numPlayers];
+    	namePlayers = new JLabel[numPlayers];
     	
     	panel = new JPanel();
-    	panel.setLayout(new GridLayout(10,2,5,5));
+    	panel.setLayout(new GridLayout(numPlayers+4,2,5,5));
     	
     	exchanges = new JLabel("");
     	countries = new JLabel("");
@@ -61,15 +64,12 @@ public class PlayersFrame extends JInternalFrame {
     	takeCard = new JButton("Take Card");
     	endTurn = new JButton("End Turn");
     	
-    	for(int i = 0 ; i < colors.length ; i++) {
-    		colorPlayers[i] = new JLabel(new ImageIcon("assets/Colors/" + colors[i] + ".png"));
+    	for(int i = 0 ; i < numPlayers ; i++) {
+    		colorPlayers[i] = new JLabel(new ImageIcon("assets/Colors/" + GameUI.getInstance().getPlayers().get(i).getColor() + ".png"));
+    		namePlayers[i] = new JLabel(GameUI.getInstance().getPlayers().get(i).getName());
     	}
-    	
-    	for(int i = 0; i < colors.length ; i++) {
-    		namePlayers[i] = new JLabel("Juan");
-    	}
-    	
-    	for(int i = 0; i < colors.length ; i++) {
+    	   	
+    	for(int i = 0; i < numPlayers ; i++) {
     		panel.add(colorPlayers[i]);
     		panel.add(namePlayers[i]);
     	}

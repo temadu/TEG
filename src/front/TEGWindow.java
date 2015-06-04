@@ -35,7 +35,7 @@ public class TEGWindow extends JFrame {
         //Set up the GUI.
         panel = new BackgroundPanel(); //a specialized layered pane
         add(panel);
-        createFrames(); //create windows
+        //createFrames(); //create windows
         setJMenuBar(new TegMenu());
         setIconImage(new ImageIcon("assets/Icons/teg.png").getImage());
 		
@@ -125,6 +125,11 @@ public class TEGWindow extends JFrame {
 		objectiveFrame.setVisible(true);
 		cardsFrame.setVisible(true);
 		
+	}
+	
+	public void initiateGameWindows() {
+		createFrames();
+		showGameWindows();
 	}
 
 	public MapFrame getMapFrame() {
