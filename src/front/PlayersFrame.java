@@ -48,7 +48,6 @@ public class PlayersFrame extends JInternalFrame {
     private void createComponents() {
     	
     	final String[] colors = {"Black", "White", "Red", "Blue", "Green", "Yellow"};
-    	final ImageIcon[] colorIcons = new ImageIcon[colors.length];
     	
     	colorPlayers = new JLabel[6];
     	namePlayers = new JLabel[6];

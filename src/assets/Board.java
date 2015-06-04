@@ -36,4 +36,8 @@ public class Board {
 		}
 		return container;
 	}
+
+	public List<Country> getCountries() {
+		return countries;
+	}
 }

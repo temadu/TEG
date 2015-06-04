@@ -3,7 +3,6 @@ package assets;
 import handlers.Observable;
 import handlers.Observer;
 import handlers.PlayerHandler;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -32,7 +31,7 @@ public class GameManager implements Observable {
 	
 	// Singleton
 	private GameManager() {
-		turn = 0;
+		
 	}
 	
 	public static GameManager getInstance() {
@@ -47,6 +46,9 @@ public class GameManager implements Observable {
 	public void newGame() {
 		gameBox = new GameBox();
 		players = new ArrayList<Player>();
+		turn = 0;
+		subturn = SubTurn.ADDTROOPS;
+		countryConquered = false;
 	}
 	
 	public void addTroop(){
@@ -110,6 +112,7 @@ public class GameManager implements Observable {
 	public void changeTurn(){
 		turn++;
 		subturn = SubTurn.ADDTROOPS;
+		troopsToAdd = players.get(turn).getLeftOverSoldiers();
 		countryConquered = false;
 		if(turn == players.size()){
 			turn = 0;

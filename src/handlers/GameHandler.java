@@ -7,7 +7,6 @@ public class GameHandler implements Observer<GameManager> {
 
 	GameUI ui;
 	
-	
 	public GameHandler() {
 		ui = GameUI.getInstance();
 	}
