@@ -11,7 +11,7 @@ public class GameUI {
 	
 	private String situation;
 	
-	private ArrayList<PlayerUI> players;
+	private ArrayList<PlayerUI> players = new ArrayList<PlayerUI>();
 	private int turn;
 	private SubTurn subturn;
 	private int troopsToAdd;

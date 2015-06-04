@@ -26,6 +26,7 @@ public class Player implements Observable {
 	public Player(String name, String color) {
 		this.name = name;
 		this.color = color;
+		this.observers = new HashSet<Observer>();
 	}
 	
 	public Player(String name, String color, Objective objective) {
