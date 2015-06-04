@@ -10,4 +10,9 @@ public class NormalSituation implements Situation {
 	public void situationEnd() {
 	}
 
+	@Override
+	public String getDescription() {
+		return "Normal";
+	}
+
 }

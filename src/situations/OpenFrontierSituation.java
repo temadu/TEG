@@ -4,8 +4,17 @@ import situationStrategies.OpenFrontiersStrategy;
 
 public class OpenFrontierSituation extends AttackCheckSituation {
 
+	private String description;
+	
 	public OpenFrontierSituation() {
 		super(new OpenFrontiersStrategy());
+		this.description = "Open Frontiers";
 	}
+
+	public String getDescription() {
+		return description;
+	}
+	
+	
 
 }

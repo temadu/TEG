@@ -2,6 +2,7 @@ package assets;
 
 import handlers.Observable;
 import handlers.Observer;
+import handlers.PlayerHandler;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -131,8 +132,10 @@ public class GameManager implements Observable {
 			if(oldplayer.equals(newplayer))
 				players.remove(oldplayer);
 		}
-		if(players.size() < MAX_NUM_PLAYERS)
+		if(players.size() < MAX_NUM_PLAYERS){
 			players.add(newplayer);
+			newplayer.addObserver(new PlayerHandler(newplayer));
+		}
 	}
 	
 	public boolean isPlayable() {
@@ -157,6 +160,10 @@ public class GameManager implements Observable {
 
 	public int getTroopsToAdd() {
 		return troopsToAdd;
+	}
+
+	public Situation getSituation() {
+		return situation;
 	}
 
 	public void setAttacker(Country attacker) {

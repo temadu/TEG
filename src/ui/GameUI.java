@@ -1,19 +1,24 @@
 package ui;
 
 import java.util.ArrayList;
+
+import assets.Country;
 import assets.SubTurn;
 
 public class GameUI {
 
 	private static GameUI instance;
 	
-	//private Situation situation;
+	private String situation;
 	
 	private ArrayList<PlayerUI> players;
 	private int turn;
 	private SubTurn subturn;
 	private int troopsToAdd;
 	
+	private CountryUI informationCountry;
+	private String attacker;
+	private String defender;
 	
 	// Singleton
 	private GameUI() {
@@ -48,6 +53,15 @@ public class GameUI {
 	public ArrayList<PlayerUI> getPlayers() {
 		return players;
 	}
+
+	public String getSituation() {
+		return situation;
+	}
+
+	public void setSituation(String situation) {
+		this.situation = situation;
+	}
+	
 	
 }
 

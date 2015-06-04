@@ -18,6 +18,7 @@ public class GameHandler implements Observer<GameManager> {
 		ui.setSubturn(data.getSubturn());
 		ui.setTroopsToAdd(data.getTroopsToAdd());
 		ui.setTurn(data.getTurn());
+		ui.setSituation(data.getSituation().getDescription());
 	}
 
 }
