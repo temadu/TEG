@@ -54,6 +54,21 @@ public class GameManager implements Observable {
 		countryConquered = false;
 	}
 	
+	public void initializeCountries(){
+		Player player = players.get(0);
+		for (Country country : gameBox.getBoard().getCountries()) {
+			country.changeOwner(player);
+			player = getNextPlayer(player);	
+		}
+	}
+	
+	public Player getNextPlayer(Player player){
+		int playerIndex = players.indexOf(player);
+		if(playerIndex == (players.size()-1))
+			return players.get(0);
+		else
+			return players.get(playerIndex+1);
+	}
 	public void addTroop(){
 		if(subturn == SubTurn.ADDTROOPS && troopsToAdd > 0 && informationCountry != null){
 			informationCountry.incrementSoldiers();
