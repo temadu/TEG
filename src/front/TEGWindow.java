@@ -1,7 +1,5 @@
 package front;
 
-import java.beans.PropertyVetoException;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
