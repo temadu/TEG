@@ -2,7 +2,6 @@ package ui;
 
 import java.util.ArrayList;
 
-import assets.Country;
 import assets.SubTurn;
 
 public class GameUI {
