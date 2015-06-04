@@ -8,6 +8,8 @@ public class PlayerUI {
 	private String name;
 	private String color;
 	
+	private Boolean isDead;
+	
 	private String objective;
 	
 	private int totalSoldiers;
@@ -86,6 +88,20 @@ public class PlayerUI {
 	public void setObjective(String objective) {
 		this.objective = objective;
 	}
+
+	public Boolean getIsDead() {
+		return isDead;
+	}
+
+	public void setIsDead(Boolean isDead) {
+		this.isDead = isDead;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+	
+	
 	
 	
 }

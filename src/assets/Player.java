@@ -13,6 +13,8 @@ public class Player implements Observable {
 	private String name;
 	private String color;
 	
+	private Boolean isDead;
+	
 	private Objective objective;
 	
 	private int totalSoldiers;
@@ -28,9 +30,11 @@ public class Player implements Observable {
 		this.color = color;
 		this.totalSoldiers = 0;
 		this.leftOverSoldiers = 0;
+		this.isDead = false;
 		this.countries = new HashSet<Country>();
 		this.cards = new HashSet<CountryCard>();
 		this.observers = new HashSet<Observer>();
+		objective.setOwner(this);
 		this.objective = objective;
 	}
 	
@@ -99,6 +103,21 @@ public class Player implements Observable {
 	public Set<CountryCard> getCards() {
 		return cards;
 	}
+	
+	public void setName(String name) {
+		this.name = name;
+		notifyObservers();
+	}
+
+	public Boolean getIsDead() {
+		return isDead;
+	}
+
+
+	public void setIsDead(Boolean isDead) {
+		this.isDead = isDead;
+	}
+
 
 	@Override
 	public int hashCode() {
@@ -125,12 +144,6 @@ public class Player implements Observable {
 			return false;
 		return true;
 	}
-	
-	public void setName(String name) {
-		this.name = name;
-		notifyObservers();
-	}
-
 
 	public String toString() {
 		return name + " - " + color;

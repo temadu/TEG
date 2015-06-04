@@ -48,7 +48,6 @@ public class GameManager implements Observable {
 	
 	public void newGame() {
 		gameBox = new GameBox();
-		gameBox.initializeObjectives();
 		players = new ArrayList<Player>();
 		turn = 0;
 		subturn = SubTurn.ADDTROOPS;
@@ -135,10 +134,7 @@ public class GameManager implements Observable {
 	
 	public void addPlayer(String name, String color) {
 		Player newplayer = new Player(name, color, new Objective() {
-			
-			@Override
 			public boolean checkSpecificObjective() {
-				// TODO Auto-generated method stub
 				return false;
 			}
 		});

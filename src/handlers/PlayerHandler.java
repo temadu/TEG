@@ -26,6 +26,7 @@ public class PlayerHandler implements Observer<Player> {
 		ui.setObjective(data.getObjective().getDescription());
 		ui.setCountries(countriesToUI(data.getCountries()));
 		ui.setCards(cardsToUI(data.getCards()));
+		ui.setIsDead(data.getIsDead());	
 	}
 
 	public Set<String> countriesToUI(Set<Country> countries){
