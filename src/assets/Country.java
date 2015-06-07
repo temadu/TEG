@@ -65,7 +65,8 @@ public class Country implements Observable{
 	}
 	
 	public void changeOwner(Player newOwner){
-		owner.removeCountry(this);
+		if(owner != null)
+			owner.removeCountry(this);
 		owner = newOwner;
 		owner.addCountry(this);
 		notifyObservers();

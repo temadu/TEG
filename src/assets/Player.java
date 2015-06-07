@@ -19,6 +19,7 @@ public class Player implements Observable {
 	
 	private int totalSoldiers;
 	private int leftOverSoldiers;
+	private int cardExchangeNumber;
 	
 	private Set<Country> countries;
 	private Set<CountryCard> cards;
@@ -36,6 +37,7 @@ public class Player implements Observable {
 		this.observers = new HashSet<Observer>();
 		objective.setOwner(this);
 		this.objective = objective;
+		this.cardExchangeNumber = 0;
 	}
 	
 	
@@ -60,7 +62,36 @@ public class Player implements Observable {
 	//TODO Add troops if player has the country.
 	public void addCountryCard(CountryCard card){
 		cards.add(card);
+		if(countries.contains(card.getCountry()))
+			card.getCountry().incrementSoldiers();
 		notifyObservers();
+	}
+	
+	public boolean returnCountryCards(String cardName1, String cardName2, String cardName3){
+		CountryCard card1 = null;
+		CountryCard card2 = null;
+		CountryCard card3 = null;
+		
+		for (CountryCard countryCard : cards) {
+			if(countryCard.getCountry().getName().equals(cardName1))
+				card1 = countryCard;
+			if(countryCard.getCountry().getName().equals(cardName2))
+				card2 = countryCard;
+			if(countryCard.getCountry().getName().equals(cardName3))
+				card3 = countryCard;
+		}
+		
+		if(card1 == null || card2 == null || card3 == null)
+			return false;
+		else if(CardType.cardExchangeCheck(card1.getType(), card2.getType(), card3.getType()))
+			return false;
+		else
+		GameManager.getInstance().getGameBox().returnCountryCards(card1, card2, card3);
+		cards.remove(card1);
+		cards.remove(card2);
+		cards.remove(card3);
+		cardExchangeNumber++;
+		return true;
 	}
 	
 	public int continentCountries(Continent continent){
@@ -164,6 +195,11 @@ public class Player implements Observable {
 		for (Observer observer : observers) {
 			observer.handleUpdate(this);
 		}	
+	}
+
+
+	public int getCardExchangeNumber() {
+		return cardExchangeNumber;
 	}
 
 }

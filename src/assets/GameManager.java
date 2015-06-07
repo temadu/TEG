@@ -5,6 +5,7 @@ import handlers.Observer;
 import handlers.PlayerHandler;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 
 import objectives.Objective;
@@ -56,7 +57,9 @@ public class GameManager implements Observable {
 	
 	public void initializeCountries(){
 		Player player = players.get(0);
-		for (Country country : gameBox.getBoard().getCountries()) {
+		ArrayList<Country> countries = new ArrayList<>(gameBox.getBoard().getCountries());
+		Collections.shuffle(countries);
+		for (Country country : countries) {
 			country.changeOwner(player);
 			player = getNextPlayer(player);	
 		}
@@ -69,6 +72,7 @@ public class GameManager implements Observable {
 		else
 			return players.get(playerIndex+1);
 	}
+	
 	public void addTroop(){
 		if(subturn == SubTurn.ADDTROOPS && troopsToAdd > 0 && informationCountry != null){
 			informationCountry.incrementSoldiers();
@@ -111,6 +115,13 @@ public class GameManager implements Observable {
 	public void takeCard(){
 		if(countryConquered)
 			players.get(turn).addCountryCard(gameBox.getRandomCard());
+	}
+	
+	public void exchangeCards(String cardName1, String cardName2, String cardName3){
+		if(subturn != SubTurn.ADDTROOPS)
+			return;
+		if(players.get(turn).returnCountryCards(cardName1, cardName2, cardName3))
+			troopsToAdd += (players.get(turn).getCardExchangeNumber() * 5);
 	}
 	
 	public void objectivesCheck(){

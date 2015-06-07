@@ -56,4 +56,10 @@ public class GameBox implements Serializable{
 		return card;
 	}
 	
+	public void returnCountryCards(CountryCard card1, CountryCard card2, CountryCard card3){
+		countryCards.add(card1);
+		countryCards.add(card2);
+		countryCards.add(card3);
+	}
+	
 }
