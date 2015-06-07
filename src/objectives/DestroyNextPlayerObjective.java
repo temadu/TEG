@@ -1,19 +1,16 @@
 package objectives;
 
-import assets.Player;
+import assets.GameManager;
 
 public class DestroyNextPlayerObjective extends Objective{
 	
-	private Player enemy;
-	
 	public DestroyNextPlayerObjective() {
-		//this.enemy = GameManager.getInstance().getNextPlayer();
-		super.setDescription("Destruir al ejercito de color " + enemy.getColor().toString());
+		super.setDescription("Destruir al ejercito del siguiente jugador.");
 	}
 
 	@Override
 	public boolean checkSpecificObjective() {
-		return enemy.hasLost();
+		return GameManager.getInstance().getNextPlayer(getOwner()).hasLost();
 	}
 
 }
