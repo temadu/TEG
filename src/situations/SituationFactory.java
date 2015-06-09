@@ -11,6 +11,9 @@ public class SituationFactory {
 		situations.add(new OpenFrontierSituation());
 		situations.add(new ClosedFrontierSituation());
 		situations.add(new NormalSituation());
+		situations.add(new CrisisSituation());
+		situations.add(new ExtraReinforcementsSituation());
+		situations.add(new TimeOutSituation());
 		return situations;
 	}
 

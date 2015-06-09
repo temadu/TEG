@@ -11,6 +11,7 @@ import java.util.Random;
 
 import objectives.Objective;
 import objectives.SchatariaObjective;
+import situationStrategies.AttackStrategy;
 import situationStrategies.TakeCardStrategy;
 import situations.Situation;
 
@@ -23,6 +24,7 @@ public class GameManager implements Observable {
 	private GameBox gameBox;
 	private Situation situation;
 	private TakeCardStrategy cardStrategy;
+	private AttackStrategy attackStrategy;
 	
 	private ArrayList<Player> players;
 	private int turn;
@@ -100,6 +102,10 @@ public class GameManager implements Observable {
 		}
 		if(attacker == null && defender == null){
 			System.out.println("Cannot attack. Need to select an attacker and a defender.");
+			return;
+		}
+		if(!attackStrategy.AttackCheck()){
+			System.out.println("Cannot attack because of the situation in place.");
 			return;
 		}
 		if(subturn == SubTurn.ADDTROOPS && troopsToAdd == 0)
@@ -254,6 +260,10 @@ public class GameManager implements Observable {
 
 	public void setCardStrategy(TakeCardStrategy cardStrategy) {
 		this.cardStrategy = cardStrategy;
+	}
+
+	public void setAttackStrategy(AttackStrategy attackStrategy) {
+		this.attackStrategy = attackStrategy;
 	}
 	
 }
