@@ -2,7 +2,7 @@ package situations;
 
 import situationStrategies.OpenFrontiersStrategy;
 
-public class OpenFrontierSituation extends AttackCheckSituation {
+public class OpenFrontierSituation extends FrontierCheckSituation {
 
 	private String description;
 	

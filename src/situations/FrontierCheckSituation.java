@@ -4,12 +4,12 @@ import situationStrategies.AnyFrontierStrategy;
 import situationStrategies.FrontierStrategy;
 import assets.Country;
 
-public abstract class AttackCheckSituation implements Situation {
+public abstract class FrontierCheckSituation implements Situation {
 
 	private static FrontierStrategy normalStrategy = new AnyFrontierStrategy();
 	private FrontierStrategy attackStrategy;
 	
-	public AttackCheckSituation(FrontierStrategy attackStrategy) {
+	public FrontierCheckSituation(FrontierStrategy attackStrategy) {
 		this.attackStrategy = attackStrategy;
 	}
 	
