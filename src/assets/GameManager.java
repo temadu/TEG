@@ -7,9 +7,11 @@ import handlers.PlayerHandler;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Random;
 
 import objectives.Objective;
 import objectives.SchatariaObjective;
+import situationStrategies.TakeCardStrategy;
 import situations.Situation;
 
 
@@ -20,6 +22,7 @@ public class GameManager implements Observable {
 	private static GameManager instance;
 	private GameBox gameBox;
 	private Situation situation;
+	private TakeCardStrategy cardStrategy;
 	
 	private ArrayList<Player> players;
 	private int turn;
@@ -73,6 +76,12 @@ public class GameManager implements Observable {
 			return players.get(playerIndex+1);
 	}
 	
+	public Player getRandomPlayer(){
+		Random r = new Random();
+		int randomNumber = r.nextInt(players.size());
+		return players.get(randomNumber);
+	}
+	
 	public void addTroop(){
 		if(subturn == SubTurn.ADDTROOPS && troopsToAdd > 0 && informationCountry != null){
 			informationCountry.incrementSoldiers();
@@ -113,15 +122,17 @@ public class GameManager implements Observable {
 	}
 
 	public void takeCard(){
-		if(countryConquered)
-			players.get(turn).addCountryCard(gameBox.getRandomCard());
+		if(countryConquered && cardStrategy.cardTakeCheck()){
+			getTurnPlayer().addCountryCard(gameBox.getRandomCard());
+			changeTurn();
+		}
 	}
 	
 	public void exchangeCards(String cardName1, String cardName2, String cardName3){
 		if(subturn != SubTurn.ADDTROOPS)
 			return;
-		if(players.get(turn).returnCountryCards(cardName1, cardName2, cardName3))
-			troopsToAdd += (players.get(turn).getCardExchangeNumber() * 5);
+		if(getTurnPlayer().returnCountryCards(cardName1, cardName2, cardName3))
+			troopsToAdd += (getTurnPlayer().getCardExchangeNumber() * 5);
 	}
 	
 	public void objectivesCheck(){
@@ -141,13 +152,13 @@ public class GameManager implements Observable {
 	public void changeTurn(){
 		turn++;
 		subturn = SubTurn.ADDTROOPS;
-		troopsToAdd = players.get(turn).getLeftOverSoldiers();
+		troopsToAdd = getTurnPlayer().getLeftOverSoldiers();
 		countryConquered = false;
 		if(turn == players.size()){
 			turn = 0;
 			changeSituation();
 		}
-		if(players.get(turn).hasLost())
+		if(getTurnPlayer().hasLost())
 			changeTurn();
 	}
 	
@@ -174,6 +185,10 @@ public class GameManager implements Observable {
 			players.add(newplayer);
 			newplayer.addObserver(new PlayerHandler(newplayer));
 		}
+	}
+	
+	public Player getTurnPlayer(){
+		return players.get(turn);
 	}
 	
 	public boolean isPlayable() {
@@ -231,6 +246,14 @@ public class GameManager implements Observable {
 		for (Observer observer : observers) {
 			observer.handleUpdate(this);
 		}	
+	}
+
+	public TakeCardStrategy getCardStrategy() {
+		return cardStrategy;
+	}
+
+	public void setCardStrategy(TakeCardStrategy cardStrategy) {
+		this.cardStrategy = cardStrategy;
 	}
 	
 }
