@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ui.GameUI;
+
 public class MapPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -86,7 +88,7 @@ public class MapPanel extends JPanel {
 			countryToButtons[i].setLocation(coordinates[i].x+ELEMENT_SIZE+X_GAP, coordinates[i].y+ELEMENT_SIZE+Y_GAP);
 			countryToButtons[i].setSize(ELEMENT_SIZE, ELEMENT_SIZE);
 			  
-			countryFlags[i] = new JLabel(flagIcons[2]);
+			countryFlags[i] = new JLabel();
 			countryFlags[i].setLocation(coordinates[i].x, coordinates[i].y);
 			countryFlags[i].setSize(ELEMENT_SIZE, ELEMENT_SIZE);
 			
@@ -102,6 +104,11 @@ public class MapPanel extends JPanel {
 			add(countryFlags[i]);
 			add(countryTroops[i]);
 			  
+		}
+		
+		for(int i = 0; i < GameUI.getInstance().getPlayers().size() ;i++) {
+			for(int j = 0; j < GameUI.getInstance().getPlayers().get(i).getCountries().size(); j++)
+				System.out.println(GameUI.getInstance().getPlayers().get(i).getCountries());
 		}
 		  
 	}

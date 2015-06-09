@@ -86,6 +86,7 @@ public class AddPlayersFrame extends JInternalFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if(GameManager.getInstance().isPlayable()) {
 					TEGWindow.getInstance().initiateGameWindows();
+					GameManager.getInstance().initializeCountries();
 				} else {
 					warnings.setText("Not Enough Players!");
 				}
