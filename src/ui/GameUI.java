@@ -24,6 +24,7 @@ public class GameUI {
 	// Singleton
 	private GameUI() {
 		turn = 0;
+		countries = new ArrayList<CountryUI>();
 	}
 	
 	public static GameUI getInstance() {

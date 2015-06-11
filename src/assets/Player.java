@@ -42,7 +42,7 @@ public class Player implements Observable {
 	
 	
 	public boolean hasLost(){
-		return ((totalSoldiers == 0) ? true : false);
+		return isDead;
 	}
 	
 	public int countriesNumber(){
