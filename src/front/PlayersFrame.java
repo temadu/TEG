@@ -1,6 +1,8 @@
 package front;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -9,6 +11,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import assets.GameManager;
 import ui.GameUI;
 
 public class PlayersFrame extends JInternalFrame {
@@ -64,8 +67,24 @@ public class PlayersFrame extends JInternalFrame {
     	countries.setIconTextGap(-128);
     	troopsToAdd = new JLabel(new ImageIcon("assets/Fields/playerField.png"));
     	troopsToAdd.setIconTextGap(-128);
+    	
     	takeCard = new JButton("Take Card");
+    	takeCard.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GameManager.getInstance().takeCard();
+			}
+		});
+    	
     	endTurn = new JButton("End Turn");
+    	endTurn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GameManager.getInstance().changeTurn();
+			}
+		});
     	
     	for(int i = 0 ; i < numPlayers ; i++) {
     		colorPlayers[i] = new JLabel(new ImageIcon("assets/Colors/" + GameUI.getInstance().getPlayers().get(i).getColor() + ".png"));

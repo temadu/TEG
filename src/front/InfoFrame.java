@@ -1,6 +1,8 @@
 package front;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -8,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import assets.GameManager;
 
 public class InfoFrame extends JInternalFrame {
 
@@ -48,6 +52,13 @@ public class InfoFrame extends JInternalFrame {
     	panel.setLayout(new GridLayout(9,1,20,2));
     	
     	addTroop = new JButton("Add Troop",new ImageIcon("assets/Icons/add.png"));
+    	addTroop.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GameManager.getInstance().addTroop();
+			}
+		});
     	
     	name = new JLabel(new ImageIcon("assets/Fields/infoField.png"));
     	continent = new JLabel(new ImageIcon("assets/Fields/infoField.png"));

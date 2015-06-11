@@ -11,6 +11,8 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import assets.GameManager;
+
 public class SelectionFrame extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -57,9 +59,8 @@ public class SelectionFrame extends JInternalFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
-				System.out.println("TEO GAY");
-				
+	
+				GameManager.getInstance().attack();
 			}
     		
     	});
