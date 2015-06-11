@@ -21,9 +21,6 @@ public class PlayerUI {
 	public PlayerUI(String name, String color) {
 		this.name = name;
 		this.color = color;
-		if(!GameUI.getInstance().getPlayers().contains(this)){
-			GameUI.getInstance().getPlayers().add(this);
-		}
 	}
 	
 	public PlayerUI(String name, String color, String objective) {

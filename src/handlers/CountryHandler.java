@@ -1,6 +1,7 @@
 package handlers;
 
 import ui.CountryUI;
+import ui.GameUI;
 import assets.Country;
 
 public class CountryHandler implements Observer<Country> {
@@ -9,6 +10,7 @@ public class CountryHandler implements Observer<Country> {
 	
 	public CountryHandler(Country data) {
 		ui = new CountryUI(data.getName());
+		GameUI.getInstance().addCountry(ui);
 	}
 	
 	@Override

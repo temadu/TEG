@@ -15,6 +15,8 @@ public class GameUI {
 	private SubTurn subturn;
 	private int troopsToAdd;
 	
+	private ArrayList<CountryUI> countries;
+	
 	private CountryUI informationCountry;
 	private String attacker;
 	private String defender;
@@ -59,6 +61,46 @@ public class GameUI {
 
 	public void setSituation(String situation) {
 		this.situation = situation;
+	}
+
+	public String getAttacker() {
+		return attacker;
+	}
+
+	public void setAttacker(String attacker) {
+		this.attacker = attacker;
+	}
+
+	public String getDefender() {
+		return defender;
+	}
+
+	public void setDefender(String defender) {
+		this.defender = defender;
+	}
+
+	public int getTurn() {
+		return turn;
+	}
+
+	public SubTurn getSubturn() {
+		return subturn;
+	}
+
+	public int getTroopsToAdd() {
+		return troopsToAdd;
+	}
+
+	public CountryUI getInformationCountry() {
+		return informationCountry;
+	}
+
+	public void setInformationCountry(CountryUI informationCountry) {
+		this.informationCountry = informationCountry;
+	}
+	
+	public void addCountry(CountryUI country){
+		countries.add(country);
 	}
 	
 	

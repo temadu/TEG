@@ -7,6 +7,7 @@ import assets.Country;
 import assets.CountryCard;
 import assets.Player;
 import ui.CountryCardUI;
+import ui.GameUI;
 import ui.PlayerUI;
 
 public class PlayerHandler implements Observer<Player> {
@@ -16,6 +17,9 @@ public class PlayerHandler implements Observer<Player> {
 	
 	public PlayerHandler(Player data) {
 		ui = new PlayerUI(data.getName(), data.getColor());
+		if(!GameUI.getInstance().getPlayers().contains(this)){
+			GameUI.getInstance().getPlayers().add(ui);
+		}
 	}
 
 	@Override
@@ -24,12 +28,12 @@ public class PlayerHandler implements Observer<Player> {
 		ui.setLeftOverSoldiers(data.getLeftOverSoldiers());
 		ui.setTotalSoldiers(data.getTotalSoldiers());
 		ui.setObjective(data.getObjective().getDescription());
-		ui.setCountries(countriesToUI(data.getCountries()));
+		ui.setCountries(countriesToString(data.getCountries()));
 		ui.setCards(cardsToUI(data.getCards()));
 		ui.setIsDead(data.getIsDead());	
 	}
 
-	public Set<String> countriesToUI(Set<Country> countries){
+	public Set<String> countriesToString(Set<Country> countries){
 		Set<String> aux = new HashSet<String>();
 		for (Country country : countries) {
 			aux.add(country.getName());
