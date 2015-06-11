@@ -2,6 +2,7 @@ package assets;
 
 import java.util.HashSet;
 
+import handlers.CountryHandler;
 import handlers.Observable;
 import handlers.Observer;
 import situationStrategies.AnyFrontierStrategy;
@@ -21,6 +22,9 @@ public class Country implements Observable{
 	public Country(String name) {
 		this.name = name;
 		this.soldiers = 1;
+		observers = new HashSet<Observer>();
+		this.addObserver(new CountryHandler(this));
+		System.out.println("Creado pais " + name + ".");
 	}
 
 	public boolean attack(Country enemy){

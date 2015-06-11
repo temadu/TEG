@@ -35,9 +35,9 @@ public class Player implements Observable {
 		this.countries = new HashSet<Country>();
 		this.cards = new HashSet<CountryCard>();
 		this.observers = new HashSet<Observer>();
-		objective.setOwner(this);
-		this.objective = objective;
+		this.setObjective(objective);
 		this.cardExchangeNumber = 0;
+		System.out.println("Creado jugador " + name + " " + color + ".");
 	}
 	
 	
@@ -200,6 +200,12 @@ public class Player implements Observable {
 
 	public int getCardExchangeNumber() {
 		return cardExchangeNumber;
+	}
+
+
+	public void setObjective(Objective objective) {
+		this.objective = objective;
+		objective.setOwner(this);
 	}
 
 }

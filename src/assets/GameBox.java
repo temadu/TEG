@@ -13,6 +13,7 @@ import java.util.Set;
 
 import objectives.Objective;
 import situations.Situation;
+import situations.SituationFactory;
 
 public class GameBox implements Serializable{
 
@@ -25,10 +26,11 @@ public class GameBox implements Serializable{
 	private ArrayList<CountryCard> countryCards;
 	
 	public GameBox() {
-		
+		System.out.println("Iniciando GAMEBOX");
 		board = BoardFactory.boardCreator("assets/tormap/torAdjacentMatrix.xls");
-		//situations = SituationFactory.situationCreator();
-		//countryCards = CountryCardFactory.countryCardsCreator(board.getCountries());
+		situations = SituationFactory.situationCreator();
+		countryCards = CountryCardFactory.countryCardCreator(board.getCountries());
+		System.out.println("Terminando GAMEBOX");
 	}
 	
 	public void initializeObjectives(){

@@ -14,6 +14,7 @@ public class Continent {
 		this.countries = countries;
 		this.countriesNumber = countriesNumber;
 		this.soldiersForConqueror = soldiersForConqueror;
+		System.out.println("Creado continente " + name + ".");
 	}
 	
 	public boolean contains(Country country){

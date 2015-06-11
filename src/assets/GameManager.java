@@ -53,22 +53,37 @@ public class GameManager implements Observable {
 	}
 	
 	public void newGame() {
-		gameBox = new GameBox();
 		players = new ArrayList<Player>();
 		turn = 0;
 		subturn = SubTurn.ADDTROOPS;
 		countryConquered = false;
 	}
 	
-	public void initializeCountries(){
+	public void startGame(){
+		gameBox = new GameBox();
+		dealCountries();
+		gameBox.initializeObjectives();
+		dealObjectives();
+	}
+	
+	public void dealCountries(){
 		Player player = players.get(0);
 		ArrayList<Country> countries = new ArrayList<>(gameBox.getBoard().getCountries());
 		Collections.shuffle(countries);
 		for (Country country : countries) {
 			country.changeOwner(player);
+			System.out.println("Se le asigna el pais " + country.getName() + "al jugador " + player.getName());
 			player = getNextPlayer(player);	
 		}
 	}
+	
+	public void dealObjectives(){
+		for (Player player : players) {
+			player.setObjective(gameBox.getRandomObjective());
+		}
+	}
+	
+	
 	
 	public Player getNextPlayer(Player player){
 		int playerIndex = players.indexOf(player);

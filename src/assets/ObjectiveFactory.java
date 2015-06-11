@@ -14,9 +14,9 @@ public class ObjectiveFactory {
 		ArrayList<Objective> objectives = new ArrayList<Objective>();
 		objectives.add(new TripleContinentObjective());
 		objectives.add(new SchatariaObjective());
-		//objectives.add(new DestroyNextPlayerObjective());
-		//objectives.add(new DestroyNextPlayerObjective());
-		//objectives.add(new DestroyNextPlayerObjective());
+		objectives.add(new DestroyNextPlayerObjective());
+		objectives.add(new DestroyNextPlayerObjective());
+		objectives.add(new DestroyNextPlayerObjective());
 		return objectives;
 	}
 }
