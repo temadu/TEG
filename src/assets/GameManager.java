@@ -22,7 +22,8 @@ public class GameManager implements Observable {
 
 	private static GameManager instance;
 	private GameBox gameBox;
-	private Situation situation;
+	private InitialGameStatus gameStatus;
+	private Situation turnSituation;
 	private TakeCardStrategy cardStrategy;
 	private AttackStrategy attackStrategy;
 	
@@ -40,7 +41,7 @@ public class GameManager implements Observable {
 	
 	// Singleton
 	private GameManager() {
-		
+		gameStatus = InitialGameStatus.BEFORE_GAME;
 	}
 	
 	public static GameManager getInstance() {
@@ -54,9 +55,6 @@ public class GameManager implements Observable {
 	
 	public void newGame() {
 		players = new ArrayList<Player>();
-		turn = 0;
-		subturn = SubTurn.ADDTROOPS;
-		countryConquered = false;
 	}
 	
 	public void startGame(){
@@ -64,6 +62,11 @@ public class GameManager implements Observable {
 		dealCountries();
 		gameBox.initializeObjectives();
 		dealObjectives();
+		gameStatus = InitialGameStatus.FIRST_TURN;
+		troopsToAdd = 8;
+		turn = 0;
+		subturn = SubTurn.ADDTROOPS;
+		countryConquered = false;
 	}
 	
 	public void dealCountries(){
@@ -107,6 +110,10 @@ public class GameManager implements Observable {
 	}
 	
 	public void attack(){
+		if(gameStatus != InitialGameStatus.NORMAL_GAME){
+			System.out.println("Cannot attack.");
+			return;
+		}
 		if(subturn == SubTurn.ADDTROOPS && troopsToAdd > 0){
 			System.out.println("Cannot attack. Still got troops to add.");
 			return;
@@ -129,6 +136,10 @@ public class GameManager implements Observable {
 	}
 	
 	public void moveSoldiers(){
+		if(gameStatus != InitialGameStatus.NORMAL_GAME){
+			System.out.println("Cannot move soldiers.");
+			return;
+		}
 		if(subturn == SubTurn.ADDTROOPS && troopsToAdd > 0){
 			System.out.println("Cannot move troops. Still got troops to add.");
 			return;
@@ -158,8 +169,9 @@ public class GameManager implements Observable {
 	
 	public void objectivesCheck(){
 		for (Player player : players) {
-			if(player.getObjective().checkObjective())
-				endGame(player);
+			if(!player.hasLost())
+				if(player.getObjective().checkObjective())
+					endGame(player);
 		}
 	}
 	
@@ -173,6 +185,10 @@ public class GameManager implements Observable {
 	public void changeTurn(){
 		turn++;
 		subturn = SubTurn.ADDTROOPS;
+		if(gameStatus != InitialGameStatus.NORMAL_GAME){
+			changeInitializingTurn();
+			return;
+		}
 		troopsToAdd = getTurnPlayer().getLeftOverSoldiers();
 		countryConquered = false;
 		if(turn == players.size()){
@@ -183,11 +199,29 @@ public class GameManager implements Observable {
 			changeTurn();
 	}
 	
+	private void changeInitializingTurn(){
+		if(turn == players.size()){
+			turn = 0;
+			
+			if(gameStatus == InitialGameStatus.FIRST_TURN)
+				gameStatus = InitialGameStatus.SECOND_TURN;
+			
+			if(gameStatus == InitialGameStatus.SECOND_TURN)
+				gameStatus = InitialGameStatus.NORMAL_GAME;
+		}
+		if(gameStatus == InitialGameStatus.FIRST_TURN)
+			troopsToAdd = 8;
+		if(gameStatus == InitialGameStatus.SECOND_TURN)
+			troopsToAdd = 4;
+		if(gameStatus == InitialGameStatus.NORMAL_GAME)
+			troopsToAdd = getTurnPlayer().getLeftOverSoldiers();
+	}
+	
 	private void changeSituation(){
-		if(situation != null)
-			situation.situationEnd();
-		situation = gameBox.getRandomSituation();
-		situation.situationStart();
+		if(turnSituation != null)
+			turnSituation.situationEnd();
+		turnSituation = gameBox.getRandomSituation();
+		turnSituation.situationStart();
 	}
 	
 	public void addPlayer(String name, String color) {
@@ -237,7 +271,7 @@ public class GameManager implements Observable {
 	}
 
 	public Situation getSituation() {
-		return situation;
+		return turnSituation;
 	}
 
 	public void setAttacker(Country attacker) {
