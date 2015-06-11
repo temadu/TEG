@@ -36,6 +36,15 @@ public class Board {
 		}
 		return container;
 	}
+	
+	public Country parseStringToCountry(String countryName){
+		for (Country country : countries) {
+			if(countryName.equals(country.getName()));
+				return country;
+		}
+		return null;
+		
+	}
 
 	public List<Country> getCountries() {
 		return countries;

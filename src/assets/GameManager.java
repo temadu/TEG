@@ -274,16 +274,16 @@ public class GameManager implements Observable {
 		return turnSituation;
 	}
 
-	public void setAttacker(Country attacker) {
-		this.attacker = attacker;
+	public void setAttacker(String attackerName) {
+		this.attacker = gameBox.getBoard().parseStringToCountry(attackerName);
 	}
 
-	public void setDefender(Country defender) {
-		this.defender = defender;
+	public void setDefender(String defenderName) {
+		this.defender = gameBox.getBoard().parseStringToCountry(defenderName);
 	}
 
-	public void setInformationCountry(Country informationCountry) {
-		this.informationCountry = informationCountry;
+	public void setInformationCountry(String informationCountryName) {
+		this.informationCountry = gameBox.getBoard().parseStringToCountry(informationCountryName);
 	}
 
 	@Override
