@@ -85,12 +85,16 @@ public class BoardFactory {
 			
 			workingCell = mapDataSheet.getCell(2, 3 + countriesNum + 3 + i);
 			int soldiersForConqueror = Integer.parseInt(workingCell.getContents());
-			
+			System.out.println("Continente: " + continentName + ". PaisesNum: " + continentCountriesNum + ". Soldados: " + soldiersForConqueror + ".");
+
 			HashSet<Country> countries = new HashSet<Country>();
 			for (int j = 0; j < continentCountriesNum; j++) {
 				workingCell = mapDataSheet.getCell(3 + j, 3 + countriesNum + 3 + i);
 				String countryName = workingCell.getContents();
 				countries.add(findCountry(countryName));
+				System.out.println("numero de paises: " + countries.size());
+				System.out.println("");
+
 			}
 			continents.put(continentName, new Continent(continentName, countries, continentCountriesNum, soldiersForConqueror));
 		}
@@ -98,10 +102,12 @@ public class BoardFactory {
 	}
 	
 	//TODO: EXCEPTION???
-	private static Country findCountry(String CountryName){
+	private static Country findCountry(String countryName){
 		for (Country each : countries) {
-			each.getName().equals(CountryName);
-			return each;
+			if(each.getName().equals(countryName)){
+				System.out.println("adding " + each.getName());
+				return each;
+			}
 		}
 		return null;
 	}

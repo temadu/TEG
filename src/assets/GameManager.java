@@ -60,6 +60,7 @@ public class GameManager implements Observable {
 	public void startGame(){
 		gameBox = new GameBox();
 		dealCountries();
+		System.out.println("Terminado dealCountries");
 		gameBox.initializeObjectives();
 		dealObjectives();
 		gameStatus = InitialGameStatus.FIRST_TURN;
@@ -67,6 +68,7 @@ public class GameManager implements Observable {
 		turn = 0;
 		subturn = SubTurn.ADDTROOPS;
 		countryConquered = false;
+		System.out.println("Terminado START GAME");
 	}
 	
 	public void dealCountries(){
