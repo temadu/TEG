@@ -3,6 +3,7 @@ package handlers;
 import ui.CountryUI;
 import ui.GameUI;
 import assets.Country;
+import assets.GameManager;
 
 public class CountryHandler implements Observer<Country> {
 
@@ -17,6 +18,7 @@ public class CountryHandler implements Observer<Country> {
 	public void handleUpdate(Country data) {
 		ui.setOwner(data.getOwner().getName());
 		ui.setSoldiers(data.getSoldiers());	
+		ui.setContinent(data.getContinent().getName());
 	}
 
 }

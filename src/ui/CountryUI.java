@@ -5,6 +5,8 @@ public class CountryUI {
 	private String name;
 	private int soldiers;
 	private String owner;
+	private String continent;
+	
 	
 	public CountryUI(String name) {
 		this.name = name;
@@ -29,6 +31,18 @@ public class CountryUI {
 
 	public String getName() {
 		return name;
+	}
+
+	public String getContinent() {
+		return continent;
+	}
+
+	public void setContinent(String continent) {
+		this.continent = continent;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	
