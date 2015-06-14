@@ -106,8 +106,8 @@ public class InfoFrame extends JInternalFrame {
     	this.continent.setText(continent);
     }
     
-    public void setTroopNumber(String troopNumber) {
-    	this.troops.setText(troopNumber);
+    public void setTroopNumber(Integer troopNumber) {
+    	this.troops.setText(troopNumber.toString());
     }
     
 }

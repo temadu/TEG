@@ -103,7 +103,20 @@ public class GameUI {
 	public void addCountry(CountryUI country){
 		countries.add(country);
 	}
+
+	public ArrayList<CountryUI> getCountries() {
+		return countries;
+	}
 	
+	public CountryUI getCountryUI(String countryName) {
+		
+		for(int i = 0; i < countries.size() ;i++) {
+			if(countries.get(i).getName().equals(countryName))
+				return countries.get(i);
+		}
+		return null;
+		
+	}
 	
 }
 

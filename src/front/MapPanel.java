@@ -27,6 +27,36 @@ public class MapPanel extends JPanel {
 	private HashMap<String,Point> countryCoordinates = new HashMap<String,Point>();
 	private HashMap<String,CountryHUD> countryHUDs = new HashMap<String,CountryHUD>();
 	
+	private final static int NO_CONTINENT = -1;
+	private final static int YELLOW_CONTINENT = 0;
+	private final static int BROWN_CONTINENT = 1;
+	private final static int GREEN_CONTINENT = 2;
+	private final static int VIOLET_CONTINENT = 3;
+	private final static int BLUE_CONTINENT = 4;
+	private final static int RED_CONTINENT = 5;
+	
+	private final Point[] yellowContinentCoordinates = { 	new Point(104,41), new Point(191,75), new Point(134,126),
+															new Point(203,159),new Point(135,191),new Point(139,264),
+															new Point(223,250),new Point(71,334), new Point(166,315)  };
+	
+	private final Point[] brownContinentCoordinates =  { 	new Point(224,321),new Point(318,320),new Point(278,369),
+															new Point(342,376),new Point(253,423),new Point(369,431)  };
+	
+	private final Point[] greenContinentCoordinates =  { 	new Point(399,290),new Point(506,395),new Point(471,285),
+															new Point(513,268),new Point(559,277),new Point(612,251),
+															new Point(624,312),new Point(720,258),new Point(529,204), 
+															new Point(452,176),new Point(499,161),new Point(388,146)  };
+	
+	private final Point[] violetContinentCoordinates = {	new Point(535,466),new Point(603,443),new Point(664,432),
+															new Point(673,379)									 	  };
+	
+	private final Point[] blueContinentCoordinates =   {	new Point(556,152),new Point(600,185),new Point(671,112),
+															new Point(606,106),new Point(554,96),new Point(603,34),
+															new Point(505,58)										  };
+	
+	private final Point[] redContinentCoordinates =    {	new Point(388,62),new Point(320,80),new Point(284,49),
+															new Point(246,86)										  };
+	
 	private Image bg;
 
 	public MapPanel() {
@@ -69,9 +99,9 @@ public class MapPanel extends JPanel {
 				public void actionPerformed(ActionEvent arg0) {
 					
 					TEGWindow.getInstance().getInfoFrame().setName(s);
-					TEGWindow.getInstance().getInfoFrame().setContinent("");
-					TEGWindow.getInstance().getInfoFrame().setOwner("");
-					TEGWindow.getInstance().getInfoFrame().setTroopNumber("");
+					TEGWindow.getInstance().getInfoFrame().setContinent(GameUI.getInstance().getCountryUI(s).getContinent());
+					TEGWindow.getInstance().getInfoFrame().setOwner(GameUI.getInstance().getCountryUI(s).getOwner());
+					TEGWindow.getInstance().getInfoFrame().setTroopNumber(GameUI.getInstance().getCountryUI(s).getSoldiers());
 					
 				}
 				
@@ -84,7 +114,7 @@ public class MapPanel extends JPanel {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					
-					
+					TEGWindow.getInstance().getSelectionFrame().setFrom(s);
 					
 				}
 				
@@ -97,7 +127,7 @@ public class MapPanel extends JPanel {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					
-					
+					TEGWindow.getInstance().getSelectionFrame().setTo(s);
 					
 				}
 				
@@ -147,61 +177,50 @@ public class MapPanel extends JPanel {
 	
 	public void createCoordinates() {
 		
-		// DE DONDE SACO LOS NOMBRES ????????
+		String continent = "";
+		int continentIndex = NO_CONTINENT;
+		int[] toLessen = { 	0,								  yellowContinentCoordinates.length, 	
+							brownContinentCoordinates.length, greenContinentCoordinates.length,	
+							violetContinentCoordinates.length, blueContinentCoordinates.length	};
+		int fix = 0;
 		
-		// Schataria Countinent
-		countryCoordinates.put("Shalathra",new Point(104,41));
-		countryCoordinates.put("Azealon",new Point(134,126));
-		countryCoordinates.put("Northern Schataria",new Point(191,75));
-		countryCoordinates.put("North Valoran",new Point(135,191));
-		countryCoordinates.put("Travaria",new Point(203,159));	
-		countryCoordinates.put("The Kingdom of Sun",new Point(71,334));
-		countryCoordinates.put("South Valoran",new Point(139,264));	
-		countryCoordinates.put("Terrafen",new Point(166,315)); 
-		countryCoordinates.put("Wraithilles",new Point(223,250));
-		
-		// Arlas Countinent
-		countryCoordinates.put("Northern Arlas",new Point(224,321));	
-		countryCoordinates.put("Hagros",new Point(318,320)); 
-		countryCoordinates.put("Arlas Barrens",new Point(278,369));
-		countryCoordinates.put("Zeish",new Point(253,423));	
-		countryCoordinates.put("Agashar",new Point(342,376)); 
-		countryCoordinates.put("Southern Arlas",new Point(369,431));
-		
-		// Gilacia Countinent
-		countryCoordinates.put("Gilacian Isles",new Point(246,86));	
-		countryCoordinates.put("Ivory Tundra",new Point(284,49));	
-		countryCoordinates.put("Glice",new Point(320,80));
-		countryCoordinates.put("Fridigia",new Point(388,62));
-		
-		// Urza Countinent
-		countryCoordinates.put("Uria",new Point(505,58));	
-		countryCoordinates.put("Lunador",new Point(603,34));
-		countryCoordinates.put("Veylor",new Point(554,96));	
-		countryCoordinates.put("Central Urza",new Point(606,106)); 
-		countryCoordinates.put("Eastern Urza",new Point(671,112));
-		countryCoordinates.put("Solador",new Point(556,152));	
-		countryCoordinates.put("Glendara",new Point(600,185));
-		
-		// Algos Continent
-		countryCoordinates.put("Velis",new Point(535,466));
-		countryCoordinates.put("Western Algos",new Point(603,443)); 
-		countryCoordinates.put("Eastern Algos",new Point(664,432)); 
-		countryCoordinates.put("Boria",new Point(673,379));
-		
-		// Arillia Continent
-		countryCoordinates.put("Drakeland",new Point(388,146)); 
-		countryCoordinates.put("Ssizara",new Point(452,176)); 
-		countryCoordinates.put("Azissa",new Point(499,161));
-		countryCoordinates.put("Shajera",new Point(529,204)); 
-		countryCoordinates.put("Western Arillia",new Point(399,290)); 
-		countryCoordinates.put("Inghal",new Point(471,285));
-		countryCoordinates.put("Myridia",new Point(513,268)); 
-		countryCoordinates.put("Dreadmarch",new Point(559,277)); 
-		countryCoordinates.put("Southern Arillia",new Point(506,395));
-		countryCoordinates.put("Aroya",new Point(624,312)); 
-		countryCoordinates.put("Druhm",new Point(612,251)); 
-		countryCoordinates.put("Azure Kingdom",new Point(720,258));
+		for(int i = 0; i < GameUI.getInstance().getCountries().size(); i++) {
+			
+			if(GameUI.getInstance().getCountries().get(i).getContinent() != continent) {
+				
+				continent = GameUI.getInstance().getCountries().get(i).getContinent();
+				continentIndex++;
+				
+				fix = 0;
+				for(int j = 0; j <= continentIndex ; j++)
+					fix += toLessen[j];
+			
+			}
+			
+			switch(continentIndex) {
+			
+				case YELLOW_CONTINENT : 	
+					countryCoordinates.put(GameUI.getInstance().getCountries().get(i).getName(),yellowContinentCoordinates[i-fix]);
+					break;
+				case BROWN_CONTINENT : 	
+					countryCoordinates.put(GameUI.getInstance().getCountries().get(i).getName(),brownContinentCoordinates[i-fix]);
+					break;
+				case GREEN_CONTINENT : 	
+					countryCoordinates.put(GameUI.getInstance().getCountries().get(i).getName(),greenContinentCoordinates[i-fix]);
+					break;
+				case VIOLET_CONTINENT : 	
+					countryCoordinates.put(GameUI.getInstance().getCountries().get(i).getName(),violetContinentCoordinates[i-fix]);
+					break;
+				case BLUE_CONTINENT : 	
+					countryCoordinates.put(GameUI.getInstance().getCountries().get(i).getName(),blueContinentCoordinates[i-fix]);
+					break;
+				case RED_CONTINENT : 	
+					countryCoordinates.put(GameUI.getInstance().getCountries().get(i).getName(),redContinentCoordinates[i-fix]);
+					break;
+					
+			}
+			
+		}
 		
 	}
 
