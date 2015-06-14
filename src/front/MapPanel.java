@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -49,7 +51,7 @@ public class MapPanel extends JPanel {
 		ImageIcon infoImg = new ImageIcon("assets/Buttons/info.png");
 		ImageIcon troopImg = new ImageIcon("assets/Flags/troops.png");
 		
-		for(String s : countryCoordinates.keySet()) {
+		for(final String s : countryCoordinates.keySet()) {
 			
 			Point coordinate = countryCoordinates.get(s);
 			JButton infoButton = new JButton(infoImg);
@@ -61,12 +63,45 @@ public class MapPanel extends JPanel {
 			
 			infoButton.setLocation(coordinate.x+X_CENTER, coordinate.y+(ELEMENT_SIZE+Y_GAP)*2);
 			infoButton.setSize(ELEMENT_SIZE, ELEMENT_SIZE);
+			infoButton.addActionListener( new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					
+					TEGWindow.getInstance().getInfoFrame().setName(s);
+					TEGWindow.getInstance().getInfoFrame().setContinent("");
+					TEGWindow.getInstance().getInfoFrame().setOwner("");
+					TEGWindow.getInstance().getInfoFrame().setTroopNumber("");
+					
+				}
+				
+			});
 			
 			fromButton.setLocation(coordinate.x, coordinate.y+ELEMENT_SIZE+Y_GAP);
 			fromButton.setSize(ELEMENT_SIZE, ELEMENT_SIZE);
+			fromButton.addActionListener( new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					
+					
+					
+				}
+				
+			});
 			
 			toButton.setLocation(coordinate.x+ELEMENT_SIZE+X_GAP, coordinate.y+ELEMENT_SIZE+Y_GAP);
 			toButton.setSize(ELEMENT_SIZE, ELEMENT_SIZE);
+			toButton.addActionListener( new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					
+					
+					
+				}
+				
+			});
 			  
 			flagLabel.setLocation(coordinate.x, coordinate.y);
 			flagLabel.setSize(ELEMENT_SIZE, ELEMENT_SIZE);

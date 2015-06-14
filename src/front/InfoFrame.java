@@ -1,5 +1,6 @@
 package front;
 
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +19,9 @@ public class InfoFrame extends JInternalFrame {
 	private static final long serialVersionUID = 1L;
 
 	private static final int xOffset = 1110, yOffset = 455;
+	
+	private static final int TEXT_GAP = -140;
+	private static final int TEXT_SIZE = 13;
 	
     private JPanel panel;
     private JLabel name, continent, owner, troops;
@@ -61,9 +65,20 @@ public class InfoFrame extends JInternalFrame {
 		});
     	
     	name = new JLabel(new ImageIcon("assets/Fields/infoField.png"));
+    	name.setIconTextGap(TEXT_GAP);
+		name.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, TEXT_SIZE));
+		
     	continent = new JLabel(new ImageIcon("assets/Fields/infoField.png"));
+    	continent.setIconTextGap(TEXT_GAP);
+    	continent.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, TEXT_SIZE));
+    	
     	owner = new JLabel(new ImageIcon("assets/Fields/infoField.png"));
+    	owner.setIconTextGap(TEXT_GAP);
+    	owner.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, TEXT_SIZE));
+    	
     	troops = new JLabel(new ImageIcon("assets/Fields/infoField.png"));
+    	troops.setIconTextGap(TEXT_GAP);
+    	troops.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, TEXT_SIZE));
     	
     	panel.add(new JLabel("Name:"));
     	panel.add(name);
@@ -77,6 +92,22 @@ public class InfoFrame extends JInternalFrame {
     	
     	add(panel);
     	
+    }
+    
+    public void setName(String name) {
+    	this.name.setText(name);
+    }
+    
+    public void setOwner(String owner) {
+    	this.owner.setText(owner);
+    }
+    
+    public void setContinent(String continent) {
+    	this.continent.setText(continent);
+    }
+    
+    public void setTroopNumber(String troopNumber) {
+    	this.troops.setText(troopNumber);
     }
     
 }
