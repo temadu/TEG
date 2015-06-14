@@ -1,4 +1,4 @@
-package assets;
+package front;
 
 public enum Color {
 	BLACK,

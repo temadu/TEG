@@ -1,7 +1,5 @@
 package ui;
 
-import assets.Player;
-
 public class CountryUI {
 
 	private String name;
