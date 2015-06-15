@@ -3,6 +3,7 @@ package assets;
 import handlers.Observable;
 import handlers.Observer;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,7 +19,6 @@ public class Player implements Observable {
 	private Objective objective;
 	
 	private int totalSoldiers;
-	private int leftOverSoldiers;
 	private int cardExchangeNumber;
 	
 	private Set<Country> countries;
@@ -30,7 +30,6 @@ public class Player implements Observable {
 		this.name = name;
 		this.color = color;
 		this.totalSoldiers = 0;
-		this.leftOverSoldiers = 0;
 		this.isDead = false;
 		this.countries = new HashSet<Country>();
 		this.cards = new HashSet<CountryCard>();
@@ -106,6 +105,19 @@ public class Player implements Observable {
 	public boolean hasContinent(Continent continent){
 		return (continentCountries(continent) == continent.getCountriesNumber());
 	}
+	
+	public int getLeftOverSoldiers() {
+		
+		int troops = Math.floorDiv(countriesNumber(), 2);
+		Board board = GameManager.getInstance().getGameBox().getBoard();
+		HashMap<String, Continent> continents = board.getContinents();
+		
+		for (String continentName : continents.keySet()) {
+			if(hasContinent(continents.get(continentName)))
+				troops += continents.get(continentName).getSoldiersForConqueror();
+		}
+		return troops;
+	}
 
 	public String getName() {
 		return name;
@@ -121,10 +133,6 @@ public class Player implements Observable {
 
 	public int getTotalSoldiers() {
 		return totalSoldiers;
-	}
-
-	public int getLeftOverSoldiers() {
-		return leftOverSoldiers;
 	}
 
 	public Set<Country> getCountries() {

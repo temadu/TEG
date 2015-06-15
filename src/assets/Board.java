@@ -49,4 +49,8 @@ public class Board {
 	public List<Country> getCountries() {
 		return countries;
 	}
+
+	public HashMap<String, Continent> getContinents() {
+		return continents;
+	}
 }

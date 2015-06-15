@@ -151,6 +151,10 @@ public class GameManager implements Observable {
 			System.out.println("Cannot attack. Need to select an attacker and a defender.");
 			return;
 		}
+		if(!attacker.getOwner().equals(getTurnPlayer()))
+			return;
+		if(attacker.getOwner().equals(defender.getOwner()))
+			return;
 		if(!attackStrategy.AttackCheck()){
 			System.out.println("Cannot attack because of the situation in place.");
 			return;
@@ -175,6 +179,8 @@ public class GameManager implements Observable {
 			return;
 		}
 		if(!attacker.getOwner().equals(defender.getOwner()))
+			return;
+		if(!attacker.getOwner().equals(getTurnPlayer()))
 			return;
 		if(subturn != SubTurn.MOVETROOPS)
 			subturn = SubTurn.MOVETROOPS;
