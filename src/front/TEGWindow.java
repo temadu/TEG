@@ -131,7 +131,6 @@ public class TEGWindow extends JFrame {
 		infoFrame.setVisible(true);
 		diceFrame.setVisible(true);
 		situationFrame.setVisible(true);
-		objectiveFrame.setVisible(true);
 		cardsFrame.setVisible(true);
 		
 	}

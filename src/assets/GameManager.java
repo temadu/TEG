@@ -10,17 +10,13 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Random;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
-
 import objectives.Objective;
-import objectives.SchatariaObjective;
 import situationStrategies.AttackStrategy;
 import situationStrategies.NormalAttackStrategy;
 import situationStrategies.NormalTakeCardStrategy;
 import situationStrategies.TakeCardStrategy;
 import situations.NormalSituation;
 import situations.Situation;
-
 
 public class GameManager implements Observable {
 	
@@ -134,61 +130,63 @@ public class GameManager implements Observable {
 		notifyObservers();
 	}
 	
-	public void attack(){
-		if(gameStatus != InitialGameStatus.NORMAL_GAME){
-			System.out.println("Cannot attack.");
-			return;
-		}
-		if(subturn == SubTurn.ADDTROOPS && troopsToAdd > 0){
-			System.out.println("Cannot attack. Still got troops to add.");
-			return;
-		}
-		if(subturn == SubTurn.MOVETROOPS){
-			System.out.println("Cannot Attack. Already moved troops.");
-			return;
-		}
-		if(attacker == null && defender == null){
-			System.out.println("Cannot attack. Need to select an attacker and a defender.");
-			return;
-		}
+	public void attack() throws TEGException {
+		
+		if(gameStatus != InitialGameStatus.NORMAL_GAME)
+			throw new TEGException("Cannot attack.");
+		
+		if(subturn == SubTurn.ADDTROOPS && troopsToAdd > 0)
+			throw new TEGException("Cannot attack. Still got troops to add.");
+
+		if(subturn == SubTurn.MOVETROOPS)
+			throw new TEGException("Cannot Attack. Already moved troops.");
+		
+		if(attacker == null && defender == null)
+			throw new TEGException("Cannot attack. Need to select an attacker and a defender.");
+		
 		if(!attacker.getOwner().equals(getTurnPlayer()))
-			return;
+			throw new TEGException("");
+		
 		if(attacker.getOwner().equals(defender.getOwner()))
-			return;
-		if(!attackStrategy.AttackCheck()){
-			System.out.println("Cannot attack because of the situation in place.");
-			return;
-		}
+			throw new TEGException("");
+		
+		if(!attackStrategy.AttackCheck())
+			throw new TEGException("Cannot attack because of the situation in place.");
+		
 		if(subturn == SubTurn.ADDTROOPS && troopsToAdd == 0)
 			subturn = SubTurn.ATTACK;
+		
 		attacker.attack(defender);
 		notifyObservers();
+	
 	}
 	
-	public void moveSoldiers(){
-		if(gameStatus != InitialGameStatus.NORMAL_GAME){
-			System.out.println("Cannot move soldiers.");
-			return;
-		}
-		if(subturn == SubTurn.ADDTROOPS && troopsToAdd > 0){
-			System.out.println("Cannot move troops. Still got troops to add.");
-			return;
-		}
-		if(attacker == null && defender == null){
-			System.out.println("Cannot attack. Need to select a sender and a receiver.");
-			return;
-		}
+	public void moveSoldiers() throws TEGException {
+		
+		if(gameStatus != InitialGameStatus.NORMAL_GAME)
+			throw new TEGException("Cannot move soldiers.");
+
+		if(subturn == SubTurn.ADDTROOPS && troopsToAdd > 0)
+			throw new TEGException("Cannot move troops. Still got troops to add.");
+
+		if(attacker == null && defender == null)
+			throw new TEGException("Cannot attack. Need to select a sender and a receiver.");
+
 		if(!attacker.getOwner().equals(defender.getOwner()))
-			return;
+			throw new TEGException("");
+		
 		if(!attacker.getOwner().equals(getTurnPlayer()))
-			return;
+			throw new TEGException("");
+		
 		if(subturn != SubTurn.MOVETROOPS)
 			subturn = SubTurn.MOVETROOPS;
+		
 		attacker.moveSoldiers(defender);
 		notifyObservers();
+	
 	}
 
-	public void takeCard(){
+	public void takeCard() throws TEGException{
 		if(countryConquered && cardStrategy.cardTakeCheck()){
 			getTurnPlayer().addCountryCard(gameBox.getRandomCard());
 			changeTurn();
@@ -217,9 +215,9 @@ public class GameManager implements Observable {
 	}
 	
 	
-	public void changeTurn(){
+	public void changeTurn() throws TEGException {
 		if(troopsToAdd != 0)
-			return;
+			throw new TEGException("Still have troops to add !");
 		do{
 			turn++;
 			subturn = SubTurn.ADDTROOPS;
