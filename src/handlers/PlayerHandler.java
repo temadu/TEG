@@ -3,12 +3,13 @@ package handlers;
 import java.util.HashSet;
 import java.util.Set;
 
+import ui.CountryCardUI;
+import ui.CountryUI;
+import ui.GameUI;
+import ui.PlayerUI;
 import assets.Country;
 import assets.CountryCard;
 import assets.Player;
-import ui.CountryCardUI;
-import ui.GameUI;
-import ui.PlayerUI;
 
 public class PlayerHandler implements Observer<Player> {
 
@@ -28,18 +29,19 @@ public class PlayerHandler implements Observer<Player> {
 		ui.setLeftOverSoldiers(data.getLeftOverSoldiers());
 		ui.setTotalSoldiers(data.getTotalSoldiers());
 		ui.setObjective(data.getObjective().getDescription());
-		ui.setCountries(countriesToString(data.getCountries()));
+		ui.setCountries(countriesToCountryUI(data.getCountries()));
 		ui.setCards(cardsToUI(data.getCards()));
 		ui.setIsDead(data.getIsDead());	
 	}
 
-	public Set<String> countriesToString(Set<Country> countries){
-		Set<String> aux = new HashSet<String>();
+	public Set<CountryUI> countriesToCountryUI(Set<Country> countries){
+		Set<CountryUI> aux = new HashSet<CountryUI>();
 		for (Country country : countries) {
-			aux.add(country.getName());
+			aux.add(GameUI.getInstance().getCountryUI(country.getName()));
 		}
 		return aux;
 	}
+	
 	
 	public Set<CountryCardUI> cardsToUI(Set<CountryCard> countryCards){
 		Set<CountryCardUI> aux = new HashSet<CountryCardUI>();

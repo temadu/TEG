@@ -17,7 +17,7 @@ public class TimeOutSituation extends NoAttackSituation {
 
 	@Override
 	public String getDescription() {
-		return description + sufferer.getName();
+		return description + sufferer.getColor();
 	}
 
 }

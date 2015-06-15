@@ -15,7 +15,7 @@ public class PlayerUI {
 	private int totalSoldiers;
 	private int leftOverSoldiers;
 	
-	private Set<String> countries;
+	private Set<CountryUI> countries;
 	private Set<CountryCardUI> cards;
 	
 	public PlayerUI(String name, String color) {
@@ -30,7 +30,7 @@ public class PlayerUI {
 	
 		this.totalSoldiers = 0;
 		this.leftOverSoldiers = 0;
-		this.countries = new HashSet<String>();
+		this.countries = new HashSet<CountryUI>();
 		this.cards = new HashSet<CountryCardUI>();
 	}
 
@@ -54,11 +54,11 @@ public class PlayerUI {
 		this.leftOverSoldiers = leftOverSoldiers;
 	}
 
-	public Set<String> getCountries() {
+	public Set<CountryUI> getCountries() {
 		return countries;
 	}
 
-	public void setCountries(Set<String> countries) {
+	public void setCountries(Set<CountryUI> countries) {
 		this.countries = countries;
 	}
 

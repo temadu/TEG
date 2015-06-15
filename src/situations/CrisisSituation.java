@@ -14,7 +14,7 @@ public class CrisisSituation implements Situation {
 	
 	public CrisisSituation() {
 		normalStrategy = new NormalTakeCardStrategy();
-		description = "Crisis";
+		description = "Crisis ";
 	}
 	
 	@Override
@@ -30,7 +30,7 @@ public class CrisisSituation implements Situation {
 
 	@Override
 	public String getDescription() {
-		return description;
+		return description + sufferer.getColor();
 	}
 
 }
