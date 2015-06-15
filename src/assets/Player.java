@@ -214,6 +214,7 @@ public class Player implements Observable {
 	public void setObjective(Objective objective) {
 		this.objective = objective;
 		objective.setOwner(this);
+		notifyObservers();
 	}
 
 }

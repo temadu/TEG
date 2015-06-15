@@ -235,6 +235,7 @@ public class GameManager implements Observable {
 			if(turn == players.size()){
 				turn = 0;
 				changeSituation();
+				System.out.println(turnSituation.getDescription());
 			}
 			
 			troopsToAdd = getTurnPlayer().getLeftOverSoldiers();
