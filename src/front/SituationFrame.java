@@ -8,6 +8,8 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ui.GameUI;
+
 public class SituationFrame extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -45,11 +47,25 @@ public class SituationFrame extends JInternalFrame {
     	panel = new JPanel();
     	panel.setLayout(new GridLayout(1,1,20,10));
     	
-    	situation = new JLabel(new ImageIcon("assets/Situation/snow.png"));
+    	situation = new JLabel();
     	
     	panel.add(situation);
+    	
+    	changeSituation(GameUI.getInstance().getSituation());
 
     	add(panel);
+    	
+    }
+    
+    public void changeSituation(String situation) {
+    	
+    	if(situation == null)
+    		this.situation.setIcon(null);
+    	else {
+    		String str = situation.toLowerCase().replaceAll("\\s+","_");
+    		this.situation.setIcon(new ImageIcon("assets/Situation/" + str + ".png"));
+    		
+    	}
     	
     }
     
