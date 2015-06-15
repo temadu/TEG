@@ -133,6 +133,10 @@ public class GameUI {
 		return null;
 		
 	}
+
+	public DiceUI getDice() {
+		return dice;
+	}
 	
 }
 

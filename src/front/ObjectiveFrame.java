@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 import ui.GameUI;
 
-public class ObjectiveFrame extends JInternalFrame {
+public class ObjectiveFrame extends JInternalFrame implements GraphicUpdate {
 
 	private static final long serialVersionUID = 1L;
 
@@ -65,9 +65,7 @@ public class ObjectiveFrame extends JInternalFrame {
     	objective.setFont(new Font(TEXT_FONT,Font.ITALIC,TEXT_SIZE));
     	objective.setVerticalTextPosition(JLabel.TOP);
 
-    	// Print objective (between <html></html> to separate the text in lines)
-    	if(objectiveText != null)
-    		objective.setText("<html>" + GameUI.getInstance().getPlayers().get(GameUI.getInstance().getTurn()).getObjective() + "</html>");
+    	graphicUpdate();
     	
     	panel.add(objective);
     	
@@ -79,5 +77,15 @@ public class ObjectiveFrame extends JInternalFrame {
     public void setObjective(String objective) {
     	this.objective.setText("<html>" + objective + "</html>");
     }
+
+	@Override
+	public void graphicUpdate() {
+		
+		setObjective(GameUI.getInstance().getPlayers().get(GameUI.getInstance().getTurn()).getObjective());
+		this.setVisible(false);
+		
+	}
+    
+    
     
 }

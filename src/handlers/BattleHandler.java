@@ -2,8 +2,8 @@ package handlers;
 
 import java.util.ArrayList;
 
-import assets.Battle;
 import ui.DiceUI;
+import ui.GameUI;
 
 public class BattleHandler{
 

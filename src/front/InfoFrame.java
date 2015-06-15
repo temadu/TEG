@@ -10,7 +10,9 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class InfoFrame extends JInternalFrame {
+import ui.GameUI;
+
+public class InfoFrame extends JInternalFrame implements GraphicUpdate {
 
 	private static final long serialVersionUID = 1L;
 
@@ -71,7 +73,7 @@ public class InfoFrame extends JInternalFrame {
     	
     	owner = new JLabel(new ImageIcon("assets/Fields/infoField.png"));
     	owner.setIconTextGap(TEXT_GAP);
-    	owner.setFont(new Font(Font.SANS_SERIF, Font.BOLD, TEXT_SIZE+1));
+    	owner.setFont(new Font(Font.SANS_SERIF, Font.BOLD, TEXT_SIZE));
     	
     	troops = new JLabel(new ImageIcon("assets/Fields/infoField.png"));
     	troops.setIconTextGap(TEXT_GAP);
@@ -114,5 +116,15 @@ public class InfoFrame extends JInternalFrame {
 	public JLabel getCountryNameLabel() {
 		return name;
 	}
+
+	@Override
+	public void graphicUpdate() {
+		
+		setOwner(GameUI.getInstance().getOwnerUI(this.name.getText()).getName());
+		setTroopNumber(GameUI.getInstance().getCountryUI(this.name.getText()).getSoldiers());
+		
+	}
+	
+	
     
 }
