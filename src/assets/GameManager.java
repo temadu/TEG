@@ -1,5 +1,6 @@
 package assets;
 
+import handlers.GameHandler;
 import handlers.Observable;
 import handlers.Observer;
 import handlers.PlayerHandler;
@@ -9,10 +10,13 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Random;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 import objectives.Objective;
 import objectives.SchatariaObjective;
 import situationStrategies.AttackStrategy;
 import situationStrategies.TakeCardStrategy;
+import situations.NormalSituation;
 import situations.Situation;
 
 
@@ -42,6 +46,7 @@ public class GameManager implements Observable {
 	// Singleton
 	private GameManager() {
 		gameStatus = InitialGameStatus.BEFORE_GAME;
+		observers = new HashSet<Observer>();
 	}
 	
 	public static GameManager getInstance() {
@@ -68,6 +73,9 @@ public class GameManager implements Observable {
 		turn = 0;
 		subturn = SubTurn.ADDTROOPS;
 		countryConquered = false;
+		turnSituation = new NormalSituation();
+		observers.add(new GameHandler());
+		notifyObservers();
 		System.out.println("troops to add: " + troopsToAdd);
 		System.out.println("Terminado START GAME");
 	}
@@ -116,6 +124,7 @@ public class GameManager implements Observable {
 			return;
 		informationCountry.incrementSoldiers();
 		troopsToAdd--;
+		notifyObservers();
 	}
 	
 	public void attack(){
@@ -142,6 +151,7 @@ public class GameManager implements Observable {
 		if(subturn == SubTurn.ADDTROOPS && troopsToAdd == 0)
 			subturn = SubTurn.ATTACK;
 		attacker.attack(defender);
+		notifyObservers();
 	}
 	
 	public void moveSoldiers(){
@@ -160,6 +170,7 @@ public class GameManager implements Observable {
 		if(subturn != SubTurn.MOVETROOPS)
 			subturn = SubTurn.MOVETROOPS;
 		attacker.moveSoldiers(defender);
+		notifyObservers();
 	}
 
 	public void takeCard(){
@@ -294,16 +305,19 @@ public class GameManager implements Observable {
 	public void setAttacker(String attackerName) {
 		this.attacker = gameBox.getBoard().parseStringToCountry(attackerName);
 		System.out.println("Se setea en attacker al pais: " + attacker.getName());
+		notifyObservers();
 	}
 
 	public void setDefender(String defenderName) {
 		this.defender = gameBox.getBoard().parseStringToCountry(defenderName);
 		System.out.println("Se setea en defener al pais: " + defender.getName());
+		notifyObservers();
 	}
 
 	public void setInformationCountry(String informationCountryName) {
 		this.informationCountry = gameBox.getBoard().parseStringToCountry(informationCountryName);
 		System.out.println("Se setea en informationCountry al pais: " + informationCountry.getName());
+		notifyObservers();
 	}
 
 	@Override
@@ -333,6 +347,22 @@ public class GameManager implements Observable {
 
 	public void setAttackStrategy(AttackStrategy attackStrategy) {
 		this.attackStrategy = attackStrategy;
+	}
+
+	public InitialGameStatus getGameStatus() {
+		return gameStatus;
+	}
+
+	public Country getInformationCountry() {
+		return informationCountry;
+	}
+
+	public Country getAttacker() {
+		return attacker;
+	}
+
+	public Country getDefender() {
+		return defender;
 	}
 	
 }
