@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+// Each country in the map has it's own interface.
 public class CountryHUD {
 	
 	private JButton infoButton, fromButton, toButton;

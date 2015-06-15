@@ -15,6 +15,13 @@ public class SituationFrame extends JInternalFrame {
 	private static final long serialVersionUID = 1L;
 
 	private static final int xOffset = 1110, yOffset = 230;
+	
+	private static final int WINDOW_HEIGHT = 200;
+	private static final int WINDOW_WIDTH = 175;
+	
+	private static final int LAYOUT_ROWS = 1;
+	private static final int LAYOUT_COLS = 1;
+	private static final int LAYOUT_GAPS = 0;
     
     private JPanel panel;
 	private JLabel situation;
@@ -32,7 +39,7 @@ public class SituationFrame extends JInternalFrame {
         createComponents();
         
         //...Then set the window size or call pack...
-        setSize(175,200);
+        setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
 
         //Set the window's location.
         setLocation(xOffset, yOffset);
@@ -45,7 +52,7 @@ public class SituationFrame extends JInternalFrame {
     private void createComponents() {
     	
     	panel = new JPanel();
-    	panel.setLayout(new GridLayout(1,1,20,10));
+    	panel.setLayout(new GridLayout(LAYOUT_ROWS,LAYOUT_COLS,LAYOUT_GAPS,LAYOUT_GAPS));
     	
     	situation = new JLabel();
     	
@@ -57,11 +64,13 @@ public class SituationFrame extends JInternalFrame {
     	
     }
     
+    // Print situation card
     public void changeSituation(String situation) {
     	
     	if(situation == null)
     		this.situation.setIcon(null);
     	else {
+    		// Fix the string in order to get the image
     		String str = situation.toLowerCase().replaceAll("\\s+","_");
     		this.situation.setIcon(new ImageIcon("assets/Situation/" + str + ".png"));
     		

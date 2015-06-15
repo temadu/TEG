@@ -23,6 +23,13 @@ public class SelectionFrame extends JInternalFrame {
 	private static final int TEXT_GAP = -126;
 	private static final int TEXT_SIZE = 12;
 	
+	private static final int WINDOW_HEIGHT = 180;
+	private static final int WINDOW_WIDTH = 300;
+	
+	private static final int LAYOUT_ROWS = 3;
+	private static final int LAYOUT_COLS = 2;
+	private static final int LAYOUT_GAPS = 5;
+	
 	private JPanel panel;
     private JLabel from, to;
     private JButton attack,moveTroop;
@@ -40,7 +47,7 @@ public class SelectionFrame extends JInternalFrame {
         createComponents();
         
         //...Then set the window size or call pack...
-        setSize(300,180);
+        setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
 
         //Set the window's location.
         setLocation(xOffset, yOffset);
@@ -53,7 +60,7 @@ public class SelectionFrame extends JInternalFrame {
     private void createComponents() {
     	
     	panel = new JPanel();
-    	panel.setLayout(new GridLayout(3,2,5,5));
+    	panel.setLayout(new GridLayout(LAYOUT_ROWS,LAYOUT_COLS,LAYOUT_GAPS,LAYOUT_GAPS));
     	
     	from = new JLabel(new ImageIcon("assets/Fields/FromToField.png"));
     	from.setIconTextGap(TEXT_GAP);
@@ -67,7 +74,7 @@ public class SelectionFrame extends JInternalFrame {
     	attack.addActionListener(new ActionListener(){
 
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent a) {
 	
 				GameManager.getInstance().attack();
 			}
@@ -75,6 +82,16 @@ public class SelectionFrame extends JInternalFrame {
     	});
     	
     	moveTroop = new JButton("Move", new ImageIcon("assets/Icons/move.png"));
+    	moveTroop.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent a) {
+	
+
+				
+			}
+    		
+    	});
     	
     	panel.add(new JLabel("From:"));
     	panel.add(from);
@@ -87,10 +104,12 @@ public class SelectionFrame extends JInternalFrame {
     	
     }
     
+    // Print attacking country name
     public void setFrom(String from) {
     	this.from.setText(from);
     }
     
+    // Print defending country name
     public void setTo(String to) {
     	this.to.setText(to);
     }

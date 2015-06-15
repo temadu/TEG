@@ -59,6 +59,7 @@ public class TegMenu extends JMenuBar {
 		
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void createShowMenu() {
 		
 		JMenuItem 	showMap, showPlayers, showSelection, showDice,
@@ -122,6 +123,7 @@ public class TegMenu extends JMenuBar {
 		});
 
 		showMenu = new JMenu("Show");
+		showMenu.disable();
 		add(showMenu);
 		showMenu.add(showMap);
 		showMenu.add(showPlayers);
@@ -134,9 +136,11 @@ public class TegMenu extends JMenuBar {
 		
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void createActionMenu() {
 		
 		actionMenu = new JMenu("Action");
+		actionMenu.disable();
 		add(actionMenu);
 		actionMenu.add(new JMenuItem("Add troop"));
 		actionMenu.add(new JMenuItem("Attack"));
@@ -152,6 +156,22 @@ public class TegMenu extends JMenuBar {
 		add(helpMenu);
 		helpMenu.add(new JMenuItem("How to Play?"));
 		
+	}
+
+	public JMenu getGameMenu() {
+		return gameMenu;
+	}
+
+	public JMenu getShowMenu() {
+		return showMenu;
+	}
+
+	public JMenu getActionMenu() {
+		return actionMenu;
+	}
+
+	public JMenu getHelpMenu() {
+		return helpMenu;
 	}
 
 }

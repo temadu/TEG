@@ -60,15 +60,19 @@ public class MapPanel extends JPanel {
 	private Image bg;
 
 	public MapPanel() {
-
+		
+		// Set the background
 		bg = new ImageIcon("assets/Map/map.jpg").getImage();
+		
+		//...Then set the window size or call pack...
 		Dimension size = new Dimension(bg.getWidth(null), bg.getHeight(null));
 		setPreferredSize(size);
 		setMinimumSize(size);
 		setMaximumSize(size);
 		setSize(size);
 		setLayout(null);
-		  
+		
+		//...Create the GUI and put it in the window...
 		createCoordinates();
 		createComponents();
 

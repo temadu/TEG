@@ -9,6 +9,7 @@ public class TEGWindow extends JFrame {
 
 	private BackgroundPanel panel;
 	
+	// Frames
 	private MapFrame mapFrame;
 	private PlayersFrame playersFrame;
 	private AddPlayersFrame addPlayersFrame;
@@ -19,10 +20,13 @@ public class TEGWindow extends JFrame {
 	private ObjectiveFrame objectiveFrame;
 	private CardsFrame cardsFrame;
 	
+	private TegMenu menu;
+	
 	private static final int INSET = 50;
 	public static final int WIDTH = 1292;
 	public static final int HEIGHT = 768;
 	
+	// Singleton
 	private static TEGWindow instance;
 	
 	// Create the application
@@ -32,11 +36,14 @@ public class TEGWindow extends JFrame {
 		
         setBounds(INSET, INSET, WIDTH, HEIGHT);
  
-        //Set up the GUI.
-        panel = new BackgroundPanel(); //a specialized layered pane
+        // Set up the GUI.
+        panel = new BackgroundPanel();
         add(panel);
-        //createFrames(); //create windows
-        setJMenuBar(new TegMenu());
+        
+        menu = new TegMenu();
+        setJMenuBar(menu);
+        
+        // Set the icon
         setIconImage(new ImageIcon("assets/Icons/teg.png").getImage());
 		
 	}
@@ -52,8 +59,8 @@ public class TEGWindow extends JFrame {
 	
 	// Launch the application.
 	public static void main(String[] args) {
-        //Schedule a job for the event-dispatching thread:
-        //creating and showing this application's GUI.
+        // Schedule a job for the event-dispatching thread:
+        // creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 createAndShowGUI();
@@ -61,7 +68,7 @@ public class TEGWindow extends JFrame {
         });
     }
 
-	//Create a new internal frame.
+	// Create internal frames.
     private void createFrames() {
     	
         mapFrame = new MapFrame();
@@ -90,14 +97,16 @@ public class TEGWindow extends JFrame {
         
     }
     
+    // Game starts ..
     public void createNewGameWindow() {
     
     	if(addPlayersFrame != null)
     		addPlayersFrame.dispose();
     	
     	addPlayersFrame = new AddPlayersFrame();
-        addPlayersFrame.setVisible(true);
         panel.add(addPlayersFrame);
+        addPlayersFrame.setVisible(true);
+        
     }
     
     private static void createAndShowGUI() {
@@ -127,9 +136,14 @@ public class TEGWindow extends JFrame {
 		
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void initiateGameWindows() {
+		
 		createFrames();
 		showGameWindows();
+		menu.getShowMenu().enable();
+		menu.getActionMenu().enable();
+	
 	}
 
 	public MapFrame getMapFrame() {

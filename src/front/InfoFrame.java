@@ -23,6 +23,13 @@ public class InfoFrame extends JInternalFrame {
 	private static final int TEXT_GAP = -140;
 	private static final int TEXT_SIZE = 13;
 	
+	private static final int WINDOW_HEIGHT = 252;
+	private static final int WINDOW_WIDTH = 175;
+	
+	private static final int LAYOUT_ROWS = 9;
+	private static final int LAYOUT_COLS = 1;
+	private static final int LAYOUT_GAPS = 0;
+	
     private JPanel panel;
     private JLabel name, continent, owner, troops;
     private JButton addTroop;
@@ -40,7 +47,7 @@ public class InfoFrame extends JInternalFrame {
         createComponents();
         
         //...Then set the window size or call pack...
-        setSize(175,252);
+        setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
 
         //Set the window's location.
         setLocation(xOffset, yOffset);
@@ -53,15 +60,18 @@ public class InfoFrame extends JInternalFrame {
     private void createComponents() {
     	
     	panel = new JPanel();
-    	panel.setLayout(new GridLayout(9,1,20,2));
+    	panel.setLayout(new GridLayout(LAYOUT_ROWS,LAYOUT_COLS,LAYOUT_GAPS,LAYOUT_GAPS));
     	
-    	addTroop = new JButton("Add Troop",new ImageIcon("assets/Icons/add.png"));
+    	addTroop = new JButton("Add Troop");
     	addTroop.addActionListener(new ActionListener() {
 			
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent a) {
+				
 				GameManager.getInstance().addTroop();
+				
 			}
+			
 		});
     	
     	name = new JLabel(new ImageIcon("assets/Fields/infoField.png"));
@@ -94,18 +104,22 @@ public class InfoFrame extends JInternalFrame {
     	
     }
     
+    // Print country name
     public void setName(String name) {
     	this.name.setText(name);
     }
     
+    // Print country ownter
     public void setOwner(String owner) {
     	this.owner.setText(owner);
     }
     
+    // Print country continent
     public void setContinent(String continent) {
     	this.continent.setText(continent);
     }
     
+    // Print country number of troops
     public void setTroopNumber(Integer troopNumber) {
     	this.troops.setText(troopNumber.toString());
     }

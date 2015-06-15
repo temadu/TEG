@@ -22,6 +22,14 @@ public class AddPlayersFrame extends JInternalFrame {
 	private static final long serialVersionUID = 1L;
 
 	private static final int xOffset = 90, yOffset = 30;
+	
+	private static final int WINDOW_HEIGHT = 300;
+	private static final int WINDOW_WIDTH = 300;
+	
+	private static final int LAYOUT_ROWS = 9;
+	private static final int LAYOUT_COLS = 2;
+	private static final int LAYOUT_GAP_X = 20;
+	private static final int LAYOUT_GAP_Y = 10;
     
 	private JTextField playerNameField;
     private JPanel panel;
@@ -43,7 +51,7 @@ public class AddPlayersFrame extends JInternalFrame {
         createComponents();
 
         //...Then set the window size or call pack...
-        setSize(300,300);
+        setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
         
         //Set the window's location.
         setLocation(xOffset, yOffset);
@@ -63,7 +71,7 @@ public class AddPlayersFrame extends JInternalFrame {
     	}
     	
     	panel = new JPanel();
-    	panel.setLayout(new GridLayout(9,2,20,10));
+    	panel.setLayout(new GridLayout(LAYOUT_ROWS,LAYOUT_COLS,LAYOUT_GAP_X,LAYOUT_GAP_Y));
     	
     	playerNameField = new JTextField("Player Name");
     	
