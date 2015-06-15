@@ -37,8 +37,8 @@ public abstract class Battle{
 		
 		int[] kills = diceComparator(attackerDice, defenderDice);
 		
-		attacker.killSoldiers(kills[0]);
-		if(defender.killSoldiers(kills[1])){
+		attacker.killSoldiers(kills[1]);
+		if(defender.killSoldiers(kills[0])){
 			defender.changeOwner(attacker.getOwner());
 			attacker.killSoldiers(1);
 		}
