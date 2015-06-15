@@ -21,6 +21,8 @@ public class GameUI {
 	private String attacker;
 	private String defender;
 	
+    private DiceUI dice;
+    
 	// Singleton
 	private GameUI() {
 		turn = 0;
@@ -79,7 +81,11 @@ public class GameUI {
 	public void setDefender(String defender) {
 		this.defender = defender;
 	}
-
+    
+    public void setDice(DiceUI dice){
+        this.dice = dice;
+    }
+    
 	public int getTurn() {
 		return turn;
 	}

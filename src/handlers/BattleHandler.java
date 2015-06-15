@@ -11,6 +11,7 @@ public class BattleHandler{
 	
 	public BattleHandler() {
 		ui = new DiceUI();
+        GameUI.getInstance().setDice(ui);
 	}
 	
 	public void handleUpdate(ArrayList<Integer> attackerDice, ArrayList<Integer> defenderDice){
@@ -19,4 +20,3 @@ public class BattleHandler{
 	}
 
 }
-
