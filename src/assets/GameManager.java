@@ -68,6 +68,7 @@ public class GameManager implements Observable {
 		turn = 0;
 		subturn = SubTurn.ADDTROOPS;
 		countryConquered = false;
+		System.out.println("troops to add: " + troopsToAdd);
 		System.out.println("Terminado START GAME");
 	}
 	
@@ -105,10 +106,16 @@ public class GameManager implements Observable {
 	}
 	
 	public void addTroop(){
-		if(subturn == SubTurn.ADDTROOPS && troopsToAdd > 0 && informationCountry != null){
-			informationCountry.incrementSoldiers();
-			troopsToAdd--;
-		}
+		if(subturn != SubTurn.ADDTROOPS)
+			return;
+		if(troopsToAdd == 0)
+			return;
+		if(informationCountry == null)
+			return;
+		if(!informationCountry.getOwner().equals(getTurnPlayer()))
+			return;
+		informationCountry.incrementSoldiers();
+		troopsToAdd--;
 	}
 	
 	public void attack(){
@@ -187,18 +194,26 @@ public class GameManager implements Observable {
 	public void changeTurn(){
 		turn++;
 		subturn = SubTurn.ADDTROOPS;
+		
 		if(gameStatus != InitialGameStatus.NORMAL_GAME){
 			changeInitializingTurn();
+			System.out.println("Cambio turno inicializador");
 			return;
 		}
+		
 		troopsToAdd = getTurnPlayer().getLeftOverSoldiers();
 		countryConquered = false;
+		
 		if(turn == players.size()){
 			turn = 0;
 			changeSituation();
 		}
-		if(getTurnPlayer().hasLost())
+		if(getTurnPlayer().hasLost()){
+			System.out.println("Me meto en la recursividad");
 			changeTurn();
+			System.out.println("Sali de la recursividad");
+		}
+		System.out.println("Cambio turno normal");
 	}
 	
 	private void changeInitializingTurn(){
@@ -278,14 +293,17 @@ public class GameManager implements Observable {
 
 	public void setAttacker(String attackerName) {
 		this.attacker = gameBox.getBoard().parseStringToCountry(attackerName);
+		System.out.println("Se setea en attacker al pais: " + attacker.getName());
 	}
 
 	public void setDefender(String defenderName) {
 		this.defender = gameBox.getBoard().parseStringToCountry(defenderName);
+		System.out.println("Se setea en defener al pais: " + defender.getName());
 	}
 
 	public void setInformationCountry(String informationCountryName) {
 		this.informationCountry = gameBox.getBoard().parseStringToCountry(informationCountryName);
+		System.out.println("Se setea en informationCountry al pais: " + informationCountry.getName());
 	}
 
 	@Override

@@ -103,6 +103,9 @@ public class MapPanel extends JPanel implements GraphicUpdate {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					
+					GameManager.getInstance().setInformationCountry(s);
+					
+					// Graphic Update
 					TEGWindow.getInstance().getInfoFrame().setName(s);
 					TEGWindow.getInstance().getInfoFrame().setContinent(GameUI.getInstance().getCountryUI(s).getContinent());
 					TEGWindow.getInstance().getInfoFrame().setOwner(GameUI.getInstance().getCountryUI(s).getOwner());

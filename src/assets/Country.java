@@ -1,5 +1,6 @@
 package assets;
 
+import java.security.acl.NotOwnerException;
 import java.util.HashSet;
 
 import handlers.CountryHandler;
@@ -82,6 +83,8 @@ public class Country implements Observable{
 	
 	public void incrementSoldiers(){
 		soldiers++;
+		notifyObservers();
+		System.out.println("Se le agrega un soldado al pais: " + this.name);
 	}
 	///////////////////////////
 	/////Getters & Setters/////
