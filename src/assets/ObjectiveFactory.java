@@ -17,6 +17,7 @@ public class ObjectiveFactory {
 		objectives.add(new DestroyNextPlayerObjective());
 		objectives.add(new DestroyNextPlayerObjective());
 		objectives.add(new DestroyNextPlayerObjective());
+		objectives.add(new DestroyNextPlayerObjective());
 		return objectives;
 	}
 }

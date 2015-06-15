@@ -15,6 +15,8 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
 import objectives.Objective;
 import objectives.SchatariaObjective;
 import situationStrategies.AttackStrategy;
+import situationStrategies.NormalAttackStrategy;
+import situationStrategies.NormalTakeCardStrategy;
 import situationStrategies.TakeCardStrategy;
 import situations.NormalSituation;
 import situations.Situation;
@@ -65,17 +67,22 @@ public class GameManager implements Observable {
 	public void startGame(){
 		gameBox = new GameBox();
 		dealCountries();
-		System.out.println("Terminado dealCountries");
 		gameBox.initializeObjectives();
 		dealObjectives();
+		
 		gameStatus = InitialGameStatus.FIRST_TURN;
 		troopsToAdd = 8;
 		turn = 0;
 		subturn = SubTurn.ADDTROOPS;
 		countryConquered = false;
+		
 		turnSituation = new NormalSituation();
+		attackStrategy = new NormalAttackStrategy();
+		cardStrategy = new NormalTakeCardStrategy();
+		
 		observers.add(new GameHandler());
 		notifyObservers();
+		
 		System.out.println("troops to add: " + troopsToAdd);
 		System.out.println("Terminado START GAME");
 	}
@@ -203,28 +210,30 @@ public class GameManager implements Observable {
 	
 	
 	public void changeTurn(){
-		turn++;
-		subturn = SubTurn.ADDTROOPS;
-		
-		if(gameStatus != InitialGameStatus.NORMAL_GAME){
-			changeInitializingTurn();
-			System.out.println("Cambio turno inicializador");
+		if(troopsToAdd != 0)
 			return;
-		}
-		
-		troopsToAdd = getTurnPlayer().getLeftOverSoldiers();
-		countryConquered = false;
-		
-		if(turn == players.size()){
-			turn = 0;
-			changeSituation();
-		}
-		if(getTurnPlayer().hasLost()){
-			System.out.println("Me meto en la recursividad");
-			changeTurn();
-			System.out.println("Sali de la recursividad");
-		}
-		System.out.println("Cambio turno normal");
+		do{
+			turn++;
+			subturn = SubTurn.ADDTROOPS;
+			
+			if(gameStatus != InitialGameStatus.NORMAL_GAME){
+				changeInitializingTurn();
+				notifyObservers();
+				System.out.println(gameStatus);
+				System.out.println("Turno de: " + getTurnPlayer().getName());
+				return;
+			}
+			
+			troopsToAdd = getTurnPlayer().getLeftOverSoldiers();
+			countryConquered = false;
+			
+			if(turn == players.size()){
+				turn = 0;
+				changeSituation();
+			}
+		}while(getTurnPlayer().hasLost());
+		notifyObservers();
+		System.out.println("Turno de: " + getTurnPlayer().getName());
 	}
 	
 	private void changeInitializingTurn(){
@@ -233,8 +242,7 @@ public class GameManager implements Observable {
 			
 			if(gameStatus == InitialGameStatus.FIRST_TURN)
 				gameStatus = InitialGameStatus.SECOND_TURN;
-			
-			if(gameStatus == InitialGameStatus.SECOND_TURN)
+			else if(gameStatus == InitialGameStatus.SECOND_TURN)
 				gameStatus = InitialGameStatus.NORMAL_GAME;
 		}
 		if(gameStatus == InitialGameStatus.FIRST_TURN)
