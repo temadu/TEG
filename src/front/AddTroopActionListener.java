@@ -20,6 +20,7 @@ public class AddTroopActionListener implements ActionListener {
 			// Graphic update
 			TEGWindow.getInstance().getMapFrame().getPanel().changeTroopsNumber(countryName, GameUI.getInstance().getCountryUI(countryName).getSoldiers());
 			TEGWindow.getInstance().getInfoFrame().setTroopNumber(GameUI.getInstance().getCountryUI(countryName).getSoldiers());
+			TEGWindow.getInstance().getPlayersFrame().setTroopsToAdd(GameUI.getInstance().getTroopsToAdd());
 			
 		}
 
