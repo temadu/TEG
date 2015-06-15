@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import ui.GameUI;
 import assets.GameManager;
 
-public class PlayersFrame extends JInternalFrame {
+public class PlayersFrame extends JInternalFrame implements GraphicUpdate {
 
 	private static final long serialVersionUID = 1L;
 
@@ -85,6 +85,7 @@ public class PlayersFrame extends JInternalFrame {
 			public void actionPerformed(ActionEvent a) {
 				
 				GameManager.getInstance().takeCard();
+				TEGWindow.getInstance().getCardsFrame().graphicUpdate();
 			
 			}
 			
@@ -97,21 +98,18 @@ public class PlayersFrame extends JInternalFrame {
 			public void actionPerformed(ActionEvent a) {
 				
 				GameManager.getInstance().changeTurn();
+				
+				// Graphic update.
+				TEGWindow.getInstance().getPlayersFrame().graphicUpdate();
+				TEGWindow.getInstance().getSituationFrame().graphicUpdate();
 			
 			}
 			
 		});
     	
-    	// Indicate whose turn is it
     	for(int i = 0 ; i < numPlayers ; i++) {
     		
-    		if(GameUI.getInstance().getTurn() == i) {
-    			namePlayers[i] = new JLabel(GameUI.getInstance().getPlayers().get(i).getName().toUpperCase(),new ImageIcon("assets/Fields/turnField.png"),0);
-    			namePlayers[i].setForeground(Color.RED);
-    		} else {
-    			namePlayers[i] = new JLabel(GameUI.getInstance().getPlayers().get(i).getName().toUpperCase(),new ImageIcon("assets/Fields/playerField.png"),0);
-    		}
-    		
+    		namePlayers[i] = new JLabel(GameUI.getInstance().getPlayers().get(i).getName().toUpperCase());
     		colorPlayers[i] = new JLabel(new ImageIcon("assets/Colors/" + GameUI.getInstance().getPlayers().get(i).getColor() + ".png"));
     		namePlayers[i].setIconTextGap(TEXT_GAP);
     	
@@ -121,6 +119,8 @@ public class PlayersFrame extends JInternalFrame {
     		panel.add(colorPlayers[i]);
     		panel.add(namePlayers[i]);
     	}
+    	
+    	graphicUpdate();
     	
     	panel.add(new JLabel("Exchanges made:"));
     	panel.add(exchanges);
@@ -134,7 +134,6 @@ public class PlayersFrame extends JInternalFrame {
     	add(panel);
     	
     }
-    
     
     public void changeTurn(int turn) {
     	
@@ -167,5 +166,15 @@ public class PlayersFrame extends JInternalFrame {
     public void setNumberOfExchanges(Integer number) {
     	exchanges.setText(number.toString());
     }
+
+	@Override
+	public void graphicUpdate() {
+		
+    	changeTurn(GameUI.getInstance().getTurn());
+    	setTroopsToAdd(GameUI.getInstance().getTroopsToAdd());
+    	setNumberOfCountries(GameUI.getInstance().getPlayers().get(GameUI.getInstance().getTurn()).getCountries().size());
+    	//setNumberOfExchanges();
+		
+	}
 	
 }

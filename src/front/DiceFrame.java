@@ -9,7 +9,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class DiceFrame extends JInternalFrame {
+public class DiceFrame extends JInternalFrame implements GraphicUpdate {
 
 	private static final long serialVersionUID = 1L;
 
@@ -121,5 +121,12 @@ public class DiceFrame extends JInternalFrame {
     	}
     	
     }
+
+	@Override
+	public void graphicUpdate() {
+		
+		
+		
+	}
     
 }

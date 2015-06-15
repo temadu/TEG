@@ -12,9 +12,10 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ui.GameUI;
 import assets.GameManager;
 
-public class SelectionFrame extends JInternalFrame {
+public class SelectionFrame extends JInternalFrame implements GraphicUpdate {
 
 	private static final long serialVersionUID = 1L;
 
@@ -77,6 +78,10 @@ public class SelectionFrame extends JInternalFrame {
 			public void actionPerformed(ActionEvent a) {
 	
 				GameManager.getInstance().attack();
+				TEGWindow.getInstance().getDiceFrame().graphicUpdate();
+				TEGWindow.getInstance().getMapFrame().getPanel().graphicUpdate();
+				TEGWindow.getInstance().getPlayersFrame().graphicUpdate();
+				
 			}
     		
     	});
@@ -87,7 +92,8 @@ public class SelectionFrame extends JInternalFrame {
 			@Override
 			public void actionPerformed(ActionEvent a) {
 	
-
+				GameManager.getInstance().moveSoldiers();
+				TEGWindow.getInstance().getMapFrame().getPanel().graphicUpdate();
 				
 			}
     		
@@ -113,5 +119,13 @@ public class SelectionFrame extends JInternalFrame {
     public void setTo(String to) {
     	this.to.setText(to);
     }
+
+	@Override
+	public void graphicUpdate() {
+		
+		setFrom(GameUI.getInstance().getAttacker());
+		setTo(GameUI.getInstance().getDefender());
+		
+	}
     
 }

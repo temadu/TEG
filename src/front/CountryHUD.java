@@ -26,6 +26,10 @@ public class CountryHUD {
 	}
 	
 	public void setTroopsNumber(Integer number) {
+		if(number >= 10)
+			troops.setIconTextGap(-12);
+		else
+			troops.setIconTextGap(-10);
 		troops.setText(number.toString());
 	}
 

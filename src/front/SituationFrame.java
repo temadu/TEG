@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 import ui.GameUI;
 
-public class SituationFrame extends JInternalFrame {
+public class SituationFrame extends JInternalFrame implements GraphicUpdate {
 
 	private static final long serialVersionUID = 1L;
 
@@ -58,7 +58,7 @@ public class SituationFrame extends JInternalFrame {
     	
     	panel.add(situation);
     	
-    	changeSituation(GameUI.getInstance().getSituation());
+    	graphicUpdate();
 
     	add(panel);
     	
@@ -77,5 +77,12 @@ public class SituationFrame extends JInternalFrame {
     	}
     	
     }
+
+	@Override
+	public void graphicUpdate() {
+		
+		changeSituation(GameUI.getInstance().getSituation());
+		
+	}
     
 }

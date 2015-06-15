@@ -118,6 +118,16 @@ public class GameUI {
 		
 	}
 	
+	public PlayerUI getOwnerUI(String countryName) {
+		
+		for(int i = 0; i < players.size(); i++) {
+			if(players.get(i).getCountries().contains(countryName))
+				return players.get(i);
+		}
+		return null;
+		
+	}
+	
 }
 
 //

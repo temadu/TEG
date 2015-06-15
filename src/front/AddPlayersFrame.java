@@ -30,6 +30,8 @@ public class AddPlayersFrame extends JInternalFrame {
 	private static final int LAYOUT_COLS = 2;
 	private static final int LAYOUT_GAP_X = 20;
 	private static final int LAYOUT_GAP_Y = 10;
+	
+	private static final int TEXT_GAP = -122;
     
 	private JTextField playerNameField;
     private JPanel panel;
@@ -80,8 +82,10 @@ public class AddPlayersFrame extends JInternalFrame {
 
 			public void actionPerformed(ActionEvent arg0) {
 				
+				// Add player
 				GameManager.getInstance().addPlayer(playerNameField.getText(), colors[selectColor.getSelectedIndex()]);
 				
+				// Print selected color's name player
 				playerTable[selectColor.getSelectedIndex()].setText(playerNameField.getText().toUpperCase());
 				
 			}
@@ -117,7 +121,7 @@ public class AddPlayersFrame extends JInternalFrame {
     	playerTable = new JLabel[GameManager.MAX_NUM_PLAYERS];
     	for(int i = 0; i < playerTable.length ; i++) {
     		playerTable[i] = new JLabel("",new ImageIcon("assets/Fields/addPlayerField.png"),0);
-    		playerTable[i].setIconTextGap(-122);
+    		playerTable[i].setIconTextGap(TEXT_GAP);
     	}
     	playerColorTable = new JLabel[GameManager.MAX_NUM_PLAYERS];
     	for(int i = 0; i < playerColorTable.length ; i++) {

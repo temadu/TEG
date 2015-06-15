@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
-public class CardsFrame extends JInternalFrame {
+public class CardsFrame extends JInternalFrame implements GraphicUpdate {
 
 	private static final long serialVersionUID = 1L;
 
@@ -45,5 +45,11 @@ public class CardsFrame extends JInternalFrame {
 
     	
     }
+
+	@Override
+	public void graphicUpdate() {
+		// TODO Auto-generated method stub
+		
+	}
     
 }

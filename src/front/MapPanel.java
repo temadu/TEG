@@ -15,9 +15,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import assets.GameManager;
 import ui.GameUI;
 
-public class MapPanel extends JPanel {
+public class MapPanel extends JPanel implements GraphicUpdate {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -118,7 +119,10 @@ public class MapPanel extends JPanel {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					
-					TEGWindow.getInstance().getSelectionFrame().setFrom(s);
+					GameManager.getInstance().setAttacker(s);
+					
+					// Graphic Update
+					TEGWindow.getInstance().getSelectionFrame().graphicUpdate();
 					
 				}
 				
@@ -131,7 +135,10 @@ public class MapPanel extends JPanel {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					
-					TEGWindow.getInstance().getSelectionFrame().setTo(s);
+					GameManager.getInstance().setDefender(s);
+					
+					// Graphic Update
+					TEGWindow.getInstance().getSelectionFrame().graphicUpdate();
 					
 				}
 				
@@ -142,8 +149,8 @@ public class MapPanel extends JPanel {
 			
 			troopsLabel.setLocation(coordinate.x+ELEMENT_SIZE+X_GAP, coordinate.y);
 			troopsLabel.setSize(ELEMENT_SIZE, ELEMENT_SIZE);
-			troopsLabel.setIconTextGap(-13);
-			troopsLabel.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 10));
+			troopsLabel.setIconTextGap(-10);
+			troopsLabel.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
 			
 			cHUD = new CountryHUD(infoButton,fromButton,toButton,flagLabel,troopsLabel);
 			
@@ -224,6 +231,27 @@ public class MapPanel extends JPanel {
 					
 			}
 			
+		}
+		
+	}
+	
+	// Print flag
+	public void changeFlagColor(String countryName, String color) {
+		countryHUDs.get(countryName).setFlagIcon(new ImageIcon("assets/Flags/" + color.toLowerCase() + "Flag.png"));
+	}
+	
+	// Print troop number
+	public void changeTroopsNumber(String countryName, Integer number) {
+		countryHUDs.get(countryName).setTroopsNumber(number);
+	}
+
+	@Override
+	public void graphicUpdate() {
+		
+		if(GameUI.getInstance().getDefender() != null && GameUI.getInstance().getAttacker() != null) {
+			changeFlagColor(GameUI.getInstance().getDefender(),GameUI.getInstance().getOwnerUI(GameUI.getInstance().getDefender()).getColor());
+			changeTroopsNumber(GameUI.getInstance().getDefender(),GameUI.getInstance().getCountryUI(GameUI.getInstance().getDefender()).getSoldiers());
+			changeTroopsNumber(GameUI.getInstance().getAttacker(),GameUI.getInstance().getCountryUI(GameUI.getInstance().getAttacker()).getSoldiers());
 		}
 		
 	}

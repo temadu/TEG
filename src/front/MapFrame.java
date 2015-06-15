@@ -42,5 +42,9 @@ public class MapFrame extends JInternalFrame {
     	add(panel);
     	
     }
+
+	public MapPanel getPanel() {
+		return panel;
+	}
     
 }

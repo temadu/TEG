@@ -12,6 +12,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ui.GameUI;
 import assets.GameManager;
 
 public class InfoFrame extends JInternalFrame {
@@ -68,7 +69,12 @@ public class InfoFrame extends JInternalFrame {
 			@Override
 			public void actionPerformed(ActionEvent a) {
 				
+				
 				GameManager.getInstance().addTroop();
+				
+				// Graphic update
+				TEGWindow.getInstance().getMapFrame().getPanel().changeTroopsNumber(name.getText(), GameUI.getInstance().getCountryUI(name.getText()).getSoldiers());
+				TEGWindow.getInstance().getInfoFrame().setTroopNumber(GameUI.getInstance().getCountryUI(name.getText()).getSoldiers());
 				
 			}
 			
@@ -84,7 +90,7 @@ public class InfoFrame extends JInternalFrame {
     	
     	owner = new JLabel(new ImageIcon("assets/Fields/infoField.png"));
     	owner.setIconTextGap(TEXT_GAP);
-    	owner.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, TEXT_SIZE));
+    	owner.setFont(new Font(Font.SANS_SERIF, Font.BOLD, TEXT_SIZE+1));
     	
     	troops = new JLabel(new ImageIcon("assets/Fields/infoField.png"));
     	troops.setIconTextGap(TEXT_GAP);
