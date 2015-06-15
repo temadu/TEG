@@ -9,6 +9,8 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ui.GameUI;
+
 public class DiceFrame extends JInternalFrame implements GraphicUpdate {
 
 	private static final long serialVersionUID = 1L;
@@ -63,7 +65,9 @@ public class DiceFrame extends JInternalFrame implements GraphicUpdate {
     	defenderDice = new JLabel[MAX_NUM_OF_DICE];
     	
     	attackerName = new JLabel();
+    	attackerName.setHorizontalAlignment(JLabel.CENTER);
     	defenderName = new JLabel();
+    	defenderName.setHorizontalAlignment(JLabel.CENTER);
     	
     	panel.add(attackerName);
     	panel.add(defenderName);
@@ -72,6 +76,8 @@ public class DiceFrame extends JInternalFrame implements GraphicUpdate {
     		
     		attackerDice[i] = new JLabel();
     		defenderDice[i] = new JLabel();
+    		attackerDice[i].setHorizontalAlignment(JLabel.CENTER);
+    		defenderDice[i].setHorizontalAlignment(JLabel.CENTER);
     		
     		panel.add(attackerDice[i]);
     		panel.add(defenderDice[i]);
@@ -84,25 +90,24 @@ public class DiceFrame extends JInternalFrame implements GraphicUpdate {
     
     // Print attacker name
     public void setAttackerName(String name) {
-    	attackerName.setText("    " + name);
+    	attackerName.setText("<html>"+name+"</html>");
     }
     
     // Print defender name
     public void setDefenderName(String name) {
-    	defenderName.setText("    " + name);
+    	defenderName.setText("<html>"+name+"</html>");
     }
     
     // Print attacker's dice
     public void setAttackerDice(ArrayList<Integer> attackerDice) {
     	
-    	for(int i = 0; i < MAX_NUM_OF_DICE; i++) {
-    		
+    	int i = 0;
+    	for(; i < attackerDice.size(); i++) {
     		Integer number = attackerDice.get(i);
-    		if(number == null)
-    			this.attackerDice[i].setIcon(null);
-    		else
-    			this.attackerDice[i].setIcon(new ImageIcon("assets/Dice/" + number.toString() + ".png"));
-    		
+    		this.attackerDice[i].setIcon(new ImageIcon("assets/Dice/" + number.toString() + ".png"));
+    	}
+    	for(; i < MAX_NUM_OF_DICE; i++) {
+    		this.attackerDice[i].setIcon(null);
     	}
     	
     }
@@ -110,14 +115,13 @@ public class DiceFrame extends JInternalFrame implements GraphicUpdate {
     // Print defender's dice
     public void setDefenderDice(ArrayList<Integer> defenderDice) {
     	
-    	for(int i = 0; i < MAX_NUM_OF_DICE; i++) {
-    		
-    		Integer number =defenderDice.get(i);
-    		if(number == null)
-    			this.defenderDice[i].setIcon(null);
-    		else
-    			this.defenderDice[i].setIcon(new ImageIcon("assets/Dice/" + number.toString() + ".png"));
-    		
+    	int i = 0;
+    	for(; i < defenderDice.size(); i++) {
+    		Integer number = defenderDice.get(i);
+    		this.defenderDice[i].setIcon(new ImageIcon("assets/Dice/" + number.toString() + ".png"));
+    	}
+    	for(; i < MAX_NUM_OF_DICE; i++) {
+    		this.defenderDice[i].setIcon(null);
     	}
     	
     }
@@ -125,7 +129,10 @@ public class DiceFrame extends JInternalFrame implements GraphicUpdate {
 	@Override
 	public void graphicUpdate() {
 		
-		
+		setAttackerDice(GameUI.getInstance().getDice().getAttackerDice());
+		setDefenderDice(GameUI.getInstance().getDice().getDefenderDice());
+		setAttackerName(GameUI.getInstance().getOwnerUI(GameUI.getInstance().getAttacker()).getName());
+		setDefenderName(GameUI.getInstance().getOwnerUI(GameUI.getInstance().getDefender()).getName());
 		
 	}
     

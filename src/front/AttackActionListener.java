@@ -14,6 +14,7 @@ public class AttackActionListener implements ActionListener {
 		TEGWindow.getInstance().getDiceFrame().graphicUpdate();
 		TEGWindow.getInstance().getMapFrame().getPanel().graphicUpdate();
 		TEGWindow.getInstance().getPlayersFrame().graphicUpdate();
+		TEGWindow.getInstance().getInfoFrame().graphicUpdate();
 		
 	}
 
