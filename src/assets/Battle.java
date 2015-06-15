@@ -30,17 +30,18 @@ public abstract class Battle{
 		else
 			attackerDice = Dice.rollDice(attackerSoldiers-1);
 		
-		if(defenderSoldiers > 5)
+		if(defenderSoldiers >= 5)
 			defenderDice = Dice.rollDice(4);
 		else
-			defenderDice = Dice.rollDice(defenderSoldiers-1);
+			defenderDice = Dice.rollDice(defenderSoldiers);
 		
 		int[] kills = diceComparator(attackerDice, defenderDice);
 		
 		attacker.killSoldiers(kills[0]);
-		if(defender.killSoldiers(kills[1]))
+		if(defender.killSoldiers(kills[1])){
 			defender.changeOwner(attacker.getOwner());
-
+			attacker.killSoldiers(1);
+		}
 		observer.handleUpdate(attackerDice, defenderDice);
 		
 		return attacker.getOwner().equals(defender.getOwner());

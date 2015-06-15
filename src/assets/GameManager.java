@@ -174,6 +174,8 @@ public class GameManager implements Observable {
 			System.out.println("Cannot attack. Need to select a sender and a receiver.");
 			return;
 		}
+		if(!attacker.getOwner().equals(defender.getOwner()))
+			return;
 		if(subturn != SubTurn.MOVETROOPS)
 			subturn = SubTurn.MOVETROOPS;
 		attacker.moveSoldiers(defender);
@@ -224,13 +226,14 @@ public class GameManager implements Observable {
 				return;
 			}
 			
-			troopsToAdd = getTurnPlayer().getLeftOverSoldiers();
-			countryConquered = false;
-			
 			if(turn == players.size()){
 				turn = 0;
 				changeSituation();
 			}
+			
+			troopsToAdd = getTurnPlayer().getLeftOverSoldiers();
+			countryConquered = false;
+
 		}while(getTurnPlayer().hasLost());
 		notifyObservers();
 		System.out.println("Turno de: " + getTurnPlayer().getName());
