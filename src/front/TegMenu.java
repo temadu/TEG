@@ -139,14 +139,31 @@ public class TegMenu extends JMenuBar {
 	@SuppressWarnings("deprecation")
 	public void createActionMenu() {
 		
+		JMenuItem 	addTroop, attack, moveTroop, takeCard, endTurn;
+		
 		actionMenu = new JMenu("Action");
 		actionMenu.disable();
 		add(actionMenu);
-		actionMenu.add(new JMenuItem("Add troop"));
-		actionMenu.add(new JMenuItem("Attack"));
-		actionMenu.add(new JMenuItem("Move troop"));
-		actionMenu.add(new JMenuItem("Take card"));
-		actionMenu.add(new JMenuItem("End turn"));
+		
+		addTroop = new JMenuItem("Add troop");
+		addTroop.addActionListener(new AddTroopActionListener());
+		actionMenu.add(addTroop);
+		
+		attack = new JMenuItem("Attack");
+		attack.addActionListener(new AttackActionListener());
+		actionMenu.add(attack);
+		
+		moveTroop = new JMenuItem("Move troop");
+		moveTroop.addActionListener(new MoveTroopActionListener());
+		actionMenu.add(moveTroop);
+		
+		takeCard = new JMenuItem("Take card");
+		takeCard.addActionListener(new TakeCardActionListener());
+		actionMenu.add(takeCard);
+		
+		endTurn = new JMenuItem("End turn");
+		endTurn.addActionListener(new EndTurnActionListener());
+		actionMenu.add(endTurn);
 		
 	}
 	

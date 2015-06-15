@@ -2,8 +2,6 @@ package front;
 
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -11,9 +9,6 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import ui.GameUI;
-import assets.GameManager;
 
 public class InfoFrame extends JInternalFrame {
 
@@ -64,21 +59,7 @@ public class InfoFrame extends JInternalFrame {
     	panel.setLayout(new GridLayout(LAYOUT_ROWS,LAYOUT_COLS,LAYOUT_GAPS,LAYOUT_GAPS));
     	
     	addTroop = new JButton("Add Troop");
-    	addTroop.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent a) {
-				
-				
-				GameManager.getInstance().addTroop();
-				
-				// Graphic update
-				TEGWindow.getInstance().getMapFrame().getPanel().changeTroopsNumber(name.getText(), GameUI.getInstance().getCountryUI(name.getText()).getSoldiers());
-				TEGWindow.getInstance().getInfoFrame().setTroopNumber(GameUI.getInstance().getCountryUI(name.getText()).getSoldiers());
-				
-			}
-			
-		});
+    	addTroop.addActionListener(new AddTroopActionListener());
     	
     	name = new JLabel(new ImageIcon("assets/Fields/infoField.png"));
     	name.setIconTextGap(TEXT_GAP);
@@ -129,5 +110,9 @@ public class InfoFrame extends JInternalFrame {
     public void setTroopNumber(Integer troopNumber) {
     	this.troops.setText(troopNumber.toString());
     }
+
+	public JLabel getCountryNameLabel() {
+		return name;
+	}
     
 }

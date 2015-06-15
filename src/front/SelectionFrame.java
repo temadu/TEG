@@ -2,8 +2,6 @@ package front;
 
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,7 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ui.GameUI;
-import assets.GameManager;
 
 public class SelectionFrame extends JInternalFrame implements GraphicUpdate {
 
@@ -72,32 +69,10 @@ public class SelectionFrame extends JInternalFrame implements GraphicUpdate {
     	to.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, TEXT_SIZE));
     	
     	attack = new JButton("Attack", new ImageIcon("assets/Icons/attack.png"));
-    	attack.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent a) {
-	
-				GameManager.getInstance().attack();
-				TEGWindow.getInstance().getDiceFrame().graphicUpdate();
-				TEGWindow.getInstance().getMapFrame().getPanel().graphicUpdate();
-				TEGWindow.getInstance().getPlayersFrame().graphicUpdate();
-				
-			}
-    		
-    	});
+    	attack.addActionListener(new AttackActionListener());
     	
     	moveTroop = new JButton("Move", new ImageIcon("assets/Icons/move.png"));
-    	moveTroop.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent a) {
-	
-				GameManager.getInstance().moveSoldiers();
-				TEGWindow.getInstance().getMapFrame().getPanel().graphicUpdate();
-				
-			}
-    		
-    	});
+    	moveTroop.addActionListener(new MoveTroopActionListener());
     	
     	panel.add(new JLabel("From:"));
     	panel.add(from);

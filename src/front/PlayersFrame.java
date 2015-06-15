@@ -2,16 +2,15 @@ package front;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 import ui.GameUI;
-import assets.GameManager;
 
 public class PlayersFrame extends JInternalFrame implements GraphicUpdate {
 
@@ -79,33 +78,10 @@ public class PlayersFrame extends JInternalFrame implements GraphicUpdate {
     	troopsToAdd.setText(Integer.toString(GameUI.getInstance().getTroopsToAdd()));
     	
     	takeCard = new JButton("Take Card");
-    	takeCard.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent a) {
-				
-				GameManager.getInstance().takeCard();
-				TEGWindow.getInstance().getCardsFrame().graphicUpdate();
-			
-			}
-			
-		});
+    	takeCard.addActionListener(new TakeCardActionListener());
     	
     	endTurn = new JButton("End Turn");
-    	endTurn.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent a) {
-				
-				GameManager.getInstance().changeTurn();
-				
-				// Graphic update.
-				TEGWindow.getInstance().getPlayersFrame().graphicUpdate();
-				TEGWindow.getInstance().getSituationFrame().graphicUpdate();
-			
-			}
-			
-		});
+    	endTurn.addActionListener(new EndTurnActionListener());
     	
     	for(int i = 0 ; i < numPlayers ; i++) {
     		
