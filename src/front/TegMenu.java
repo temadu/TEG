@@ -1,5 +1,7 @@
 package front;
 
+import io.GameIO;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -26,7 +28,7 @@ public class TegMenu extends JMenuBar {
 	
 	public void createGameMenu() {
 		
-		JMenuItem exit, newGame;
+		JMenuItem exit, newGame, saveGame, loadGame;
 		
 		exit = new JMenuItem("Exit");
 		exit.addActionListener(new ActionListener() {
@@ -48,12 +50,29 @@ public class TegMenu extends JMenuBar {
 			}
 			
 		});
+		
+		saveGame = new JMenuItem("Save Game");
+		saveGame.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				GameIO.setGame(GameManager.getInstance());
+				GameIO.saveGame();
+			}
+		});
 
+		loadGame = new JMenuItem("Load Game");
+		loadGame.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				GameIO.loadGame();
+			}
+		});
+		
 		gameMenu = new JMenu("Game");
 		add(gameMenu);
 		gameMenu.add(newGame);
-		gameMenu.add(new JMenuItem("Load Game"));
-		gameMenu.add(new JMenuItem("Save Game"));
+		gameMenu.add(loadGame);
+		gameMenu.add(saveGame);
 		gameMenu.add(new JMenuItem("End Game"));
 		gameMenu.add(exit);
 		
