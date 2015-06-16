@@ -15,7 +15,7 @@ public class TakeCardActionListener implements ActionListener {
 			GameManager.getInstance().takeCard();
 			TEGWindow.getInstance().getCardsFrame().graphicUpdate();
 		} catch (TEGException e) {
-			e.printStackTrace();
+
 		}
 		
 	}

@@ -19,7 +19,7 @@ public class AttackActionListener implements ActionListener {
 			TEGWindow.getInstance().getPlayersFrame().graphicUpdate();
 			TEGWindow.getInstance().getInfoFrame().graphicUpdate();
 		} catch(TEGException e) {
-			e.printStackTrace();
+
 		}
 		
 	}
