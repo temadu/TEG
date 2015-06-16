@@ -102,7 +102,7 @@ public class MapPanel extends JPanel implements GraphicUpdate {
 			infoButton.addActionListener( new ActionListener() {
 
 				@Override
-				public void actionPerformed(ActionEvent arg0) {
+				public void actionPerformed(ActionEvent a) {
 					
 					GameManager.getInstance().setInformationCountry(s);
 					
