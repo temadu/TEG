@@ -86,8 +86,10 @@ public class PlayersFrame extends JInternalFrame implements GraphicUpdate {
     	for(int i = 0 ; i < numPlayers ; i++) {
     		
     		namePlayers[i] = new JLabel(GameUI.getInstance().getPlayers().get(i).getName().toUpperCase());
-    		colorPlayers[i] = new JLabel(new ImageIcon("assets/Colors/" + GameUI.getInstance().getPlayers().get(i).getColor() + ".png"));
     		namePlayers[i].setIconTextGap(TEXT_GAP);
+    		namePlayers[i].setHorizontalAlignment(JLabel.CENTER);
+    		
+    		colorPlayers[i] = new JLabel(new ImageIcon("assets/Colors/" + GameUI.getInstance().getPlayers().get(i).getColor() + ".png"));
     	
     	}
     	   	

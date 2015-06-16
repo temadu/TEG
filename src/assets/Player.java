@@ -145,7 +145,6 @@ public class Player implements Observable {
 	
 	public void setName(String name) {
 		this.name = name;
-		notifyObservers();
 	}
 
 	public Boolean getIsDead() {

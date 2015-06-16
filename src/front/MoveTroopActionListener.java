@@ -15,7 +15,7 @@ public class MoveTroopActionListener implements ActionListener {
 			GameManager.getInstance().moveSoldiers();
 			TEGWindow.getInstance().getMapFrame().getPanel().graphicUpdate();	
 		} catch(TEGException e) {
-			e.printStackTrace();
+
 		}
 		
 	}

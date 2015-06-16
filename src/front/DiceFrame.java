@@ -32,6 +32,8 @@ public class DiceFrame extends JInternalFrame implements GraphicUpdate {
     private JLabel[] defenderDice;
     private JLabel attackerName, defenderName;
     
+    private String attackerOwnerName, defenderOwnerName; 
+    
     
     public DiceFrame() {
         super("Dice", 
@@ -125,14 +127,19 @@ public class DiceFrame extends JInternalFrame implements GraphicUpdate {
     	}
     	
     }
+    
+    public void updateNames() {
+    	attackerOwnerName = GameUI.getInstance().getAttackerOwner();
+    	defenderOwnerName = GameUI.getInstance().getDefenderOwner();
+    }
 
 	@Override
 	public void graphicUpdate() {
 		
 		setAttackerDice(GameUI.getInstance().getDice().getAttackerDice());
 		setDefenderDice(GameUI.getInstance().getDice().getDefenderDice());
-		setAttackerName(GameUI.getInstance().getOwnerUI(GameUI.getInstance().getAttacker()).getName());
-		setDefenderName(GameUI.getInstance().getOwnerUI(GameUI.getInstance().getDefender()).getName());
+		setAttackerName(attackerOwnerName);
+		setDefenderName(defenderOwnerName);	
 		
 	}
     

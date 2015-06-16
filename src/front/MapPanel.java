@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import assets.GameManager;
+import ui.CountryUI;
 import ui.GameUI;
 
 public class MapPanel extends JPanel implements GraphicUpdate {
@@ -101,7 +102,7 @@ public class MapPanel extends JPanel implements GraphicUpdate {
 			infoButton.addActionListener( new ActionListener() {
 
 				@Override
-				public void actionPerformed(ActionEvent arg0) {
+				public void actionPerformed(ActionEvent a) {
 					
 					GameManager.getInstance().setInformationCountry(s);
 					
@@ -162,10 +163,10 @@ public class MapPanel extends JPanel implements GraphicUpdate {
 		}
 		
 		for(int j = 0; j < GameUI.getInstance().getPlayers().size(); j++) {
-			for(Iterator<String> itr = GameUI.getInstance().getPlayers().get(j).getCountries().iterator() ; itr.hasNext();) {
-				String countryName = itr.next();
-				countryHUDs.get(countryName).setFlagIcon(new ImageIcon("assets/Flags/" + GameUI.getInstance().getPlayers().get(j).getColor().toLowerCase() + "Flag.png"));
-				// PONER NUMERO DE TROPAS --> RATA: DE DONDE SACO LA CANTIDAD DE EJERCITOS DE UN PAIS ??? PLAYERUI NO DEBERIA TENER UN SET DE COUNTRYUI ?
+			for(Iterator<CountryUI> itr = GameUI.getInstance().getPlayers().get(j).getCountries().iterator() ; itr.hasNext();) {
+				CountryUI countryUI = itr.next();
+				countryHUDs.get(countryUI.getName()).setFlagIcon(new ImageIcon("assets/Flags/" + GameUI.getInstance().getPlayers().get(j).getColor().toLowerCase() + "Flag.png"));
+				countryHUDs.get(countryUI.getName()).setTroopsNumber(countryUI.getSoldiers());
 			}
 		}
 		
