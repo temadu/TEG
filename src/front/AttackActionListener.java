@@ -12,6 +12,7 @@ public class AttackActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		
 		try {
+			TEGWindow.getInstance().getDiceFrame().updateNames();
 			GameManager.getInstance().attack();
 			TEGWindow.getInstance().getDiceFrame().graphicUpdate();
 			TEGWindow.getInstance().getMapFrame().getPanel().graphicUpdate();

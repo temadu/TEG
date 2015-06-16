@@ -1,6 +1,7 @@
 package ui;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import assets.SubTurn;
 
@@ -18,8 +19,11 @@ public class GameUI {
 	private ArrayList<CountryUI> countries;
 	
 	private CountryUI informationCountry;
-	private String attacker;
-	private String defender;
+	
+	private String attacker;	// Name of the country that is attacking
+	private String defender;	// Name of the country that is defending
+	private String attackerOwner;
+	private String defenderOwner;
 	
     private DiceUI dice;
     
@@ -72,6 +76,9 @@ public class GameUI {
 
 	public void setAttacker(String attacker) {
 		this.attacker = attacker;
+		if(attacker != null) {
+			attackerOwner = getOwnerUI(attacker).getName();
+		}
 	}
 
 	public String getDefender() {
@@ -80,6 +87,9 @@ public class GameUI {
 
 	public void setDefender(String defender) {
 		this.defender = defender;
+		if(defender != null) {
+			defenderOwner = getOwnerUI(defender).getName();
+		}
 	}
     
     public void setDice(DiceUI dice){
@@ -127,8 +137,11 @@ public class GameUI {
 	public PlayerUI getOwnerUI(String countryName) {
 		
 		for(int i = 0; i < players.size(); i++) {
-			if(players.get(i).getCountries().contains(countryName))
-				return players.get(i);
+			for(Iterator<CountryUI> itr = players.get(i).getCountries().iterator(); itr.hasNext();) {
+				String playerCountryName = itr.next().getName();
+				if(playerCountryName.equals(countryName))
+					return players.get(i);
+			}
 		}
 		return null;
 		
@@ -136,6 +149,14 @@ public class GameUI {
 
 	public DiceUI getDice() {
 		return dice;
+	}
+
+	public String getAttackerOwner() {
+		return attackerOwner;
+	}
+
+	public String getDefenderOwner() {
+		return defenderOwner;
 	}
 	
 }
