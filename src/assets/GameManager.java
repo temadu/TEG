@@ -63,7 +63,9 @@ public class GameManager implements Observable {
 	public void startGame(){
 		gameBox = new GameBox();
 		dealCountries();
-		gameBox.initializeObjectives();
+		
+		if(players.size() > 3)
+			gameBox.initializeObjectives();
 		dealObjectives();
 		
 		gameStatus = InitialGameStatus.FIRST_TURN;
@@ -175,6 +177,9 @@ public class GameManager implements Observable {
 		if(!attacker.getOwner().equals(defender.getOwner()))
 			throw new TEGException("");
 		
+		if(attacker.equals(defender))
+			throw new TEGException("");
+		
 		if(!attacker.getOwner().equals(getTurnPlayer()))
 			throw new TEGException("");
 		
@@ -210,6 +215,7 @@ public class GameManager implements Observable {
 	
 	//TODO FINISH THE GAME
 	private void endGame(Player player){
+		gameStatus = InitialGameStatus.END_GAME;
 		System.out.println("CONGRATULATIONS PLAYER " + player.getName() + ".");
 		System.out.println("YOU HAVE WON THIS GAME!!!");
 	}
@@ -250,8 +256,11 @@ public class GameManager implements Observable {
 			
 			if(gameStatus == InitialGameStatus.FIRST_TURN)
 				gameStatus = InitialGameStatus.SECOND_TURN;
-			else if(gameStatus == InitialGameStatus.SECOND_TURN)
+			else if(gameStatus == InitialGameStatus.SECOND_TURN){
 				gameStatus = InitialGameStatus.NORMAL_GAME;
+				changeSituation();
+				System.out.println(turnSituation.getDescription());
+			}
 		}
 		if(gameStatus == InitialGameStatus.FIRST_TURN)
 			troopsToAdd = 8;

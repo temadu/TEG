@@ -12,6 +12,7 @@ import java.util.Random;
 import java.util.Set;
 
 import objectives.Objective;
+import objectives.WorldDominationObjective;
 import situations.Situation;
 import situations.SituationFactory;
 
@@ -42,6 +43,8 @@ public class GameBox implements Serializable{
 	}
 	
 	public Objective getRandomObjective(){
+		if(objectives == null)
+			return new WorldDominationObjective();
 		Objective objective = objectives.get(0);
 		objectives.remove(0);
 		return objective;
