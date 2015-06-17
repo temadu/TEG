@@ -4,9 +4,13 @@ import java.util.ArrayList;
 
 public class DiceUI {
 	
-	private ArrayList<Integer> attackerDice = new ArrayList<Integer>();
-	private ArrayList<Integer> defenderDice = new ArrayList<Integer>();
+	private ArrayList<Integer> attackerDice;
+	private ArrayList<Integer> defenderDice;
 	
+	public DiceUI() {
+		attackerDice = new ArrayList<Integer>();
+		defenderDice = new ArrayList<Integer>();
+	}
 	public ArrayList<Integer> getAttackerDice() {
 		return attackerDice;
 	}
