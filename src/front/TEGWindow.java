@@ -107,9 +107,6 @@ public class TEGWindow extends JFrame {
     
     // Game starts ..
     public void createNewGameWindow() {
-    
-    	if(addPlayersFrame != null)
-    		addPlayersFrame.dispose();
     	
     	addPlayersFrame = new AddPlayersFrame();
         panel.add(addPlayersFrame);
@@ -195,6 +192,10 @@ public class TEGWindow extends JFrame {
 
 	public WinnerFrame getWinnerFrame() {
 		return winnerFrame;
+	}
+
+	public TegMenu getMenu() {
+		return menu;
 	}
 	
 }

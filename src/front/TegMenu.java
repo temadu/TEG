@@ -17,6 +17,11 @@ public class TegMenu extends JMenuBar {
 
 	private JMenu gameMenu, showMenu, actionMenu, helpMenu;
 	
+	private boolean newGameEnabled = true;
+	private boolean loadGameEnabled = true;
+	private boolean endGameEnabled = false;
+	private boolean saveGameEnabled = false;
+	
 	public TegMenu() {
 		
 		createGameMenu();
@@ -28,7 +33,9 @@ public class TegMenu extends JMenuBar {
 	
 	public void createGameMenu() {
 		
-		JMenuItem exit, newGame, saveGame, loadGame;
+		JMenuItem exit,newGame, saveGame, loadGame, endGame;
+		
+		endGame = new JMenuItem("End Game");
 		
 		exit = new JMenuItem("Exit");
 		exit.addActionListener(new ActionListener() {
@@ -43,10 +50,11 @@ public class TegMenu extends JMenuBar {
 		newGame.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				
-				GameManager.getInstance().newGame();
-				TEGWindow.getInstance().createNewGameWindow();
-				TEGWindow.getInstance().setVisible(true);
+				if(TEGWindow.getInstance().getMenu().isNewGameEnabled()) {
+					TEGWindow.getInstance().getMenu().setNewGameEnabled(false);
+					GameManager.getInstance().newGame();
+					TEGWindow.getInstance().createNewGameWindow();
+				}
 			}
 			
 		});
@@ -55,8 +63,10 @@ public class TegMenu extends JMenuBar {
 		saveGame.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				GameIO.setGame(GameManager.getInstance());
-				GameIO.saveGame();
+				if(TEGWindow.getInstance().getMenu().isSaveGameEnabled()) {
+					GameIO.setGame(GameManager.getInstance());
+					GameIO.saveGame();
+				}
 			}
 		});
 
@@ -64,7 +74,8 @@ public class TegMenu extends JMenuBar {
 		loadGame.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				GameIO.loadGame();
+				if(TEGWindow.getInstance().getMenu().isLoadGameEnabled())
+					GameIO.loadGame();
 			}
 		});
 		
@@ -73,7 +84,7 @@ public class TegMenu extends JMenuBar {
 		gameMenu.add(newGame);
 		gameMenu.add(loadGame);
 		gameMenu.add(saveGame);
-		gameMenu.add(new JMenuItem("End Game"));
+		gameMenu.add(endGame);
 		gameMenu.add(exit);
 		
 	}
@@ -216,6 +227,42 @@ public class TegMenu extends JMenuBar {
 
 	public JMenu getHelpMenu() {
 		return helpMenu;
+	}
+
+	public boolean isNewGameEnabled() {
+		return newGameEnabled;
+	}
+
+	public void setNewGameEnabled(boolean newGameEnabled) {
+		this.newGameEnabled = newGameEnabled;
+	}
+
+	public boolean isLoadGameEnabled() {
+		return loadGameEnabled;
+	}
+
+	public void setLoadGameEnabled(boolean loadGameEnabled) {
+		this.loadGameEnabled = loadGameEnabled;
+	}
+
+	public boolean isSaveGameEnabled() {
+		return saveGameEnabled;
+	}
+
+	public void setSaveGameEnabled(boolean saveGameEnabled) {
+		this.saveGameEnabled = saveGameEnabled;
+	}
+
+	public void setShowMenu(JMenu showMenu) {
+		this.showMenu = showMenu;
+	}
+
+	public boolean isEndGameEnabled() {
+		return endGameEnabled;
+	}
+
+	public void setEndGameEnabled(boolean endGameEnabled) {
+		this.endGameEnabled = endGameEnabled;
 	}
 
 }
