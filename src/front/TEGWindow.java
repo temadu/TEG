@@ -147,6 +147,8 @@ public class TEGWindow extends JFrame {
 		showGameWindows();
 		menu.getShowMenu().enable();
 		menu.getActionMenu().enable();
+		menu.setLoadGameEnabled(false);
+		menu.setEndGameEnabled(true);
 	
 	}
 
