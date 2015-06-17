@@ -15,6 +15,7 @@ public class Player implements Observable {
 	private String color;
 	
 	private Boolean isDead;
+	private Boolean isWinner;
 	
 	private Objective objective;
 	
@@ -42,6 +43,10 @@ public class Player implements Observable {
 	
 	public boolean hasLost(){
 		return isDead;
+	}
+	
+	public boolean hasWon(){
+		return isWinner;
 	}
 	
 	public int countriesNumber(){
@@ -90,6 +95,7 @@ public class Player implements Observable {
 		cards.remove(card2);
 		cards.remove(card3);
 		cardExchangeNumber++;
+		notifyObservers();
 		return true;
 	}
 	
@@ -154,8 +160,13 @@ public class Player implements Observable {
 
 	public void setIsDead(Boolean isDead) {
 		this.isDead = isDead;
+		notifyObservers();
 	}
 
+	public void setIsWinner(Boolean isWinner) {
+		this.isWinner = isWinner;
+		notifyObservers();
+	}
 
 	@Override
 	public int hashCode() {

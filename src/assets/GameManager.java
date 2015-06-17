@@ -216,8 +216,9 @@ public class GameManager implements Observable {
 	//TODO FINISH THE GAME
 	private void endGame(Player player){
 		gameStatus = InitialGameStatus.END_GAME;
-		System.out.println("CONGRATULATIONS PLAYER " + player.getName() + ".");
-		System.out.println("YOU HAVE WON THIS GAME!!!");
+		player.setIsWinner(true);
+//		System.out.println("CONGRATULATIONS PLAYER " + player.getName() + ".");
+//		System.out.println("YOU HAVE WON THIS GAME!!!");
 	}
 	
 	

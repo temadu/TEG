@@ -33,6 +33,10 @@ public class PlayerHandler implements Observer<Player> {
 		ui.setCards(cardsToUI(data.getCards()));
 		ui.setIsDead(data.getIsDead());	
 		ui.setCardExchangeNumber(data.getCardExchangeNumber());
+		
+		if(data.hasWon()){
+			GameUI.getInstance().setWinner(ui);
+		}
 	}
 
 	public Set<CountryUI> countriesToCountryUI(Set<Country> countries){
@@ -51,5 +55,5 @@ public class PlayerHandler implements Observer<Player> {
 		}
 		return aux;
 	}
-	
+
 }
