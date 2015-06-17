@@ -151,7 +151,7 @@ public class PlayersFrame extends JInternalFrame implements GraphicUpdate {
     	changeTurn(GameUI.getInstance().getTurn());
     	setTroopsToAdd(GameUI.getInstance().getTroopsToAdd());
     	setNumberOfCountries(GameUI.getInstance().getPlayers().get(GameUI.getInstance().getTurn()).getCountries().size());
-    	//setNumberOfExchanges();
+    	setNumberOfExchanges(GameUI.getInstance().getPlayers().get(GameUI.getInstance().getTurn()).getCardExchangeNumber());
 		
 	}
 	
