@@ -19,6 +19,7 @@ public class TEGWindow extends JFrame {
 	private SituationFrame situationFrame;
 	private ObjectiveFrame objectiveFrame;
 	private CardsFrame cardsFrame;
+	private ConsoleFrame consoleFrame;
 	
 	private TegMenu menu;
 	
@@ -70,6 +71,9 @@ public class TEGWindow extends JFrame {
 
 	// Create internal frames.
     private void createFrames() {
+    	
+        consoleFrame = new ConsoleFrame();
+        panel.add(consoleFrame);
     	
         mapFrame = new MapFrame();
         panel.add(mapFrame);
@@ -179,6 +183,10 @@ public class TEGWindow extends JFrame {
 
 	public AddPlayersFrame getAddPlayersFrame() {
 		return addPlayersFrame;
+	}
+
+	public ConsoleFrame getConsoleFrame() {
+		return consoleFrame;
 	}
 	
 }

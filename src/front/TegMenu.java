@@ -83,7 +83,7 @@ public class TegMenu extends JMenuBar {
 		
 		JMenuItem 	showMap, showPlayers, showSelection, showDice,
 					showObjective, showCards, showSituation,
-					showCountryInfo;
+					showCountryInfo, showConsole;
 		
 		showMap = new JMenuItem("Map");
 		showMap.addActionListener(new ActionListener() {
@@ -140,6 +140,13 @@ public class TegMenu extends JMenuBar {
 				TEGWindow.getInstance().getInfoFrame().setVisible(true);
 			}
 		});
+		
+		showConsole = new JMenuItem("Console");
+		showConsole.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TEGWindow.getInstance().getConsoleFrame().setVisible(true);
+			}
+		});
 
 		showMenu = new JMenu("Show");
 		showMenu.disable();
@@ -152,6 +159,7 @@ public class TegMenu extends JMenuBar {
 		showMenu.add(showCards);
 		showMenu.add(showSituation);
 		showMenu.add(showCountryInfo);
+		showMenu.add(showConsole);
 		
 	}
 	
