@@ -65,12 +65,17 @@ public class Player implements Observable {
 	}
 	
 	//TODO Add troops if player has the country.
-	public void addCountryCard(CountryCard card){
-		cards.add(card);
-		System.out.println("Player card:" + card.getCountry().getName());
-		if(countries.contains(card.getCountry()))
-			card.getCountry().incrementSoldiers();
-		notifyObservers();
+	public boolean addCountryCard(){
+		if(cards.size() < 5){
+			CountryCard card = GameManager.getInstance().getGameBox().getRandomCard();
+			cards.add(card);
+			System.out.println("Player card:" + card.getCountry().getName());
+			if(countries.contains(card.getCountry()))
+				card.getCountry().incrementSoldiers();
+			notifyObservers();
+			return true;
+		}
+		return false;
 	}
 	
 	public boolean returnCountryCards(String cardName1, String cardName2, String cardName3){
