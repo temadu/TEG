@@ -19,6 +19,7 @@ public class TakeCardActionListener implements ActionListener {
 			TEGWindow.getInstance().getSituationFrame().graphicUpdate();
 			TEGWindow.getInstance().getObjectiveFrame().graphicUpdate();
 			TEGWindow.getInstance().getWinnerFrame().graphicUpdate();
+			TEGWindow.getInstance().getConsoleFrame().graphicUpdate();
 		} catch (TEGException e) {
 
 		}

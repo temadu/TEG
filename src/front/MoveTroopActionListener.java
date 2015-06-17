@@ -13,7 +13,8 @@ public class MoveTroopActionListener implements ActionListener {
 		
 		try {
 			GameManager.getInstance().moveSoldiers();
-			TEGWindow.getInstance().getMapFrame().getPanel().graphicUpdate();	
+			TEGWindow.getInstance().getMapFrame().getPanel().graphicUpdate();
+			TEGWindow.getInstance().getConsoleFrame().graphicUpdate();
 		} catch(TEGException e) {
 
 		}

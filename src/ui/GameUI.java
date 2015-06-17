@@ -179,4 +179,8 @@ public class GameUI {
 		this.console = console;
 	}
 
+	public ConsoleUI getConsole() {
+		return console;
+	}
+
 }

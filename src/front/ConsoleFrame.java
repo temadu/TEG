@@ -8,6 +8,8 @@ import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import ui.GameUI;
+
 public class ConsoleFrame extends JInternalFrame implements GraphicUpdate {
 
 	private static final long serialVersionUID = 1L;
@@ -54,7 +56,7 @@ public class ConsoleFrame extends JInternalFrame implements GraphicUpdate {
 		 
 		scroll = new JScrollPane(text,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		
-		text.setBackground(new Color(136,29,4));
+		text.setBackground(new Color(45,10,34));
 		text.setForeground(Color.white);
 		text.setLineWrap(true);
 		text.setWrapStyleWord(true);
@@ -87,7 +89,13 @@ public class ConsoleFrame extends JInternalFrame implements GraphicUpdate {
 
 	@Override
 	public void graphicUpdate() {
-		// TODO Auto-generated method stub
+		
+		System.out.println("Actualizando consola");
+		System.out.println("Cantidad de mensajes: " + GameUI.getInstance().getConsole().getConsole().size());
+		for(int i = lineCount; i < GameUI.getInstance().getConsole().getConsole().size(); i++) {
+			System.out.println("Console " + i + " " +  GameUI.getInstance().getConsole().getConsole().get(i));
+			addLine(GameUI.getInstance().getConsole().getConsole().get(i));
+		}
 		
 	}
 	
