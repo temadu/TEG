@@ -10,7 +10,7 @@ import java.util.LinkedList;
 public class Console  {
 
 	private static LinkedList<String> console;
-	private static int LINES = 6;
+	private static int LINES = 50;
 	private static ConsoleHandler observer;
 	
 	public Console() {

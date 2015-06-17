@@ -82,7 +82,7 @@ public class GameManager implements Observable {
 		observers.add(new GameHandler());
 		notifyObservers();
 		
-		Console.add("Iniciando Juego");
+		Console.add("Iniciando Juego.");
 		System.out.println("troops to add: " + troopsToAdd);
 		System.out.println("Terminado START GAME");
 	}
@@ -198,6 +198,7 @@ public class GameManager implements Observable {
 	public void takeCard() throws TEGException{
 		if(countryConquered && cardStrategy.cardTakeCheck()){
 			getTurnPlayer().addCountryCard(gameBox.getRandomCard());
+			Console.add(getTurnPlayer().getName() + " took a card.");
 			changeTurn();
 		}
 	}
@@ -220,9 +221,8 @@ public class GameManager implements Observable {
 	//TODO FINISH THE GAME
 	private void endGame(Player player){
 		gameStatus = InitialGameStatus.END_GAME;
+		Console.add(player.getName() + " has won the game! Congratulations!");
 		player.setIsWinner(true);
-//		System.out.println("CONGRATULATIONS PLAYER " + player.getName() + ".");
-//		System.out.println("YOU HAVE WON THIS GAME!!!");
 	}
 	
 	

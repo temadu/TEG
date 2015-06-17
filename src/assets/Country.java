@@ -25,7 +25,6 @@ public class Country implements Observable{
 		this.soldiers = 1;
 		observers = new HashSet<Observer>();
 		this.addObserver(new CountryHandler(this));
-		System.out.println("Creado pais " + name + ".");
 	}
 
 	public boolean attack(Country enemy){
@@ -38,9 +37,13 @@ public class Country implements Observable{
 		if(!frontierStrategy.attackSituationChecker(this, enemy))
 			return false;
 		if(Battle.conflict(this, enemy)){
+			Console.add(owner.getName() + " won the battle and conquered " + enemy.getName() + ".");
 			GameManager.getInstance().objectivesCheck();
 			GameManager.getInstance().conqueredACountry();
 			notifyObservers();
+		}
+		else{
+			Console.add(enemy.getOwner().getName() + " won the battle and defended " + enemy.getName() + "successfully.");
 		}
 		return true;
 	}
@@ -54,6 +57,7 @@ public class Country implements Observable{
 			return false;
 		ally.incrementSoldiers();
 		this.soldiers--;
+		Console.add(owner.getName() + " moved a soldier from " + this.getName() + " to " + ally.getName() + ".");
 		notifyObservers();
 		return true;
 	}
@@ -84,8 +88,7 @@ public class Country implements Observable{
 	public void incrementSoldiers(){
 		soldiers++;
 		notifyObservers();
-		Console.add("Se le agrega un soldado al pais: " + this.name);
-		System.out.println("Se le agrega un soldado al pais: " + this.name);
+		Console.add( this.owner.getName() + " added a soldier to " + this.name + ".");
 	}
 	///////////////////////////
 	/////Getters & Setters/////

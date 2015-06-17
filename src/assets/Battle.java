@@ -22,6 +22,8 @@ public abstract class Battle{
 		ArrayList<Integer> attackerDice;
 		ArrayList<Integer> defenderDice;
 		
+		Console.add(attacker.getName() + " (" + attacker.getOwner().getName() + ") attacked " + defender.getName() +" (" + defender.getOwner().getName() + ").");
+		
 		int attackerSoldiers = attacker.getSoldiers() + handicap.getAttackingHandicap();
 		int defenderSoldiers = defender.getSoldiers() + handicap.getDefendingHandicap();
 		
@@ -42,7 +44,7 @@ public abstract class Battle{
 			defender.changeOwner(attacker.getOwner());
 			attacker.killSoldiers(1);
 		}
-		observer.handleUpdate(attackerDice, defenderDice);
+		observer.handleUpdate(attackerDice, defenderDice);		
 		
 		return attacker.getOwner().equals(defender.getOwner());
 			
