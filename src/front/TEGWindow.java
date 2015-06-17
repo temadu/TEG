@@ -200,4 +200,17 @@ public class TEGWindow extends JFrame {
 		return menu;
 	}
 	
+	public void disposeAllWindows() {
+		
+		playersFrame.dispose();
+		mapFrame.dispose();
+		selectionFrame.dispose();
+		infoFrame.dispose();
+		diceFrame.dispose();
+		situationFrame.dispose();
+		cardsFrame.dispose();
+		consoleFrame.dispose();
+		
+	}
+	
 }

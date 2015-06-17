@@ -9,6 +9,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import ui.GameUI;
 import assets.GameManager;
 
 public class TegMenu extends JMenuBar {
@@ -36,6 +37,23 @@ public class TegMenu extends JMenuBar {
 		JMenuItem exit,newGame, saveGame, loadGame, endGame;
 		
 		endGame = new JMenuItem("End Game");
+		endGame.addActionListener(new ActionListener() {
+
+			@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent arg0) {
+				
+				TEGWindow.getInstance().disposeAllWindows();
+				TEGWindow.getInstance().getMenu().setEndGameEnabled(false);
+				TEGWindow.getInstance().getMenu().setNewGameEnabled(true);;
+				TEGWindow.getInstance().getMenu().setLoadGameEnabled(true);
+				TEGWindow.getInstance().getMenu().setSaveGameEnabled(false);
+				TEGWindow.getInstance().getMenu().getShowMenu().disable();
+				TEGWindow.getInstance().getMenu().getActionMenu().disable();
+				GameUI.getInstance().clean();
+				
+			}
+			
+		});
 		
 		exit = new JMenuItem("Exit");
 		exit.addActionListener(new ActionListener() {

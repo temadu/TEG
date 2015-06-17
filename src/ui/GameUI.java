@@ -159,6 +159,10 @@ public class GameUI {
 		return defenderOwner;
 	}
 	
+	public void clean() {
+		instance = null;
+	}
+	
 }
 
 //
