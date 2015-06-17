@@ -8,13 +8,11 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import ui.GameUI;
-
-public class SituationFrame extends JInternalFrame implements GraphicUpdate {
+public class WinnerFrame extends JInternalFrame implements GraphicUpdate {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final int xOffset = 1110, yOffset = 230;
+	private static final int xOffset = 305, yOffset = 5;
 	
 	private static final int WINDOW_HEIGHT = 200;
 	private static final int WINDOW_WIDTH = 175;
@@ -22,14 +20,14 @@ public class SituationFrame extends JInternalFrame implements GraphicUpdate {
 	private static final int LAYOUT_ROWS = 1;
 	private static final int LAYOUT_COLS = 1;
 	private static final int LAYOUT_GAPS = 0;
-    
+	
     private JPanel panel;
-	private JLabel situation;
-    
-    public SituationFrame() {
-        super("Situation", 
+	private JLabel winMessage;
+	
+	public WinnerFrame() {
+        super("Winner", 
               false, //resizable
-              true, //closable
+              false,  //closable
               false, //maximizable
               false);//iconifiable
         
@@ -43,48 +41,27 @@ public class SituationFrame extends JInternalFrame implements GraphicUpdate {
 
         //Set the window's location.
         setLocation(xOffset, yOffset);
-		
-        // Set the icon
-        setFrameIcon(new ImageIcon("assets/Icons/situation.png"));
         
+        // Set the icon
+        setFrameIcon(new ImageIcon("assets/Icons/clap.png"));
+		
     }
 	
-    private void createComponents() {
-    	
-    	panel = new JPanel();
-    	panel.setLayout(new GridLayout(LAYOUT_ROWS,LAYOUT_COLS,LAYOUT_GAPS,LAYOUT_GAPS));
-    	
-    	situation = new JLabel();
-    	
-    	panel.add(situation);
-    	
-    	graphicUpdate();
-
-    	add(panel);
-    	
-    }
-    
-    // Print situation card
-    public void changeSituation(String situation) {
-    	
-    	System.out.println("Situation: " + situation);
-    	
-    	if(situation == null)
-    		this.situation.setIcon(null);
-    	else {
-    		// Fix the string in order to get the image
-    		String str = situation.toLowerCase().replaceAll("\\s+","");
-    		this.situation.setIcon(new ImageIcon("assets/Situation/" + str + ".png"));
-    		
-    	}
-    	
-    }
-
-	@Override
-	public void graphicUpdate() {
+	public void createComponents() {
 		
-		changeSituation(GameUI.getInstance().getSituation());
+		panel = new JPanel();
+    	panel.setLayout(new GridLayout(LAYOUT_ROWS,LAYOUT_COLS,LAYOUT_GAPS,LAYOUT_GAPS));
+		winMessage = new JLabel();
+		
+		panel.add(winMessage);
+		add(panel);
 		
 	}
-    
+	
+	@Override
+	public void graphicUpdate() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }

@@ -17,6 +17,7 @@ public class EndTurnActionListener implements ActionListener {
 			TEGWindow.getInstance().getPlayersFrame().graphicUpdate();
 			TEGWindow.getInstance().getSituationFrame().graphicUpdate();
 			TEGWindow.getInstance().getObjectiveFrame().graphicUpdate();
+			TEGWindow.getInstance().getWinnerFrame().graphicUpdate();
 		} catch(TEGException e) {
 
 		}

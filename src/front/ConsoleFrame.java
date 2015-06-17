@@ -1,5 +1,7 @@
 package front;
 
+import java.awt.Color;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -25,7 +27,7 @@ public class ConsoleFrame extends JInternalFrame implements GraphicUpdate {
 	 
 	public ConsoleFrame() {
 		super(	"Console", 
-				true, //resizable
+				false, //resizable
 	            true, //closable
 	            false, //maximizable
 	            false);//iconifiable
@@ -52,6 +54,8 @@ public class ConsoleFrame extends JInternalFrame implements GraphicUpdate {
 		 
 		scroll = new JScrollPane(text,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		
+		text.setBackground(new Color(136,29,4));
+		text.setForeground(Color.white);
 		text.setLineWrap(true);
 		text.setWrapStyleWord(true);
 		text.setEditable(false);

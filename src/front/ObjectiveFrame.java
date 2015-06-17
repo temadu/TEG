@@ -55,8 +55,6 @@ public class ObjectiveFrame extends JInternalFrame implements GraphicUpdate {
 	
     private void createComponents() {
     	
-    	String objectiveText = GameUI.getInstance().getPlayers().get(GameUI.getInstance().getTurn()).getObjective();
-    	
     	panel = new JPanel();
     	panel.setLayout(new GridLayout(LAYOUT_ROWS,LAYOUT_COLS,LAYOUT_GAPS,LAYOUT_GAPS));
     	

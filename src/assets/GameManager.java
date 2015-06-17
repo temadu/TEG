@@ -1,4 +1,4 @@
-package assets;
+	package assets;
 
 import handlers.GameHandler;
 import handlers.Observable;

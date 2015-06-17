@@ -5,11 +5,13 @@ import javax.swing.JLabel;
 
 public class JTegCard extends JLabel {
 	
+	private static final long serialVersionUID = 1L;
+	
 	public static final int CARD_WIDTH = 100;
 	public static final int CARD_HEIGHT = 105;
 	private static final int TEXT_GAP = -97;
 
-	private String icon, countryName;
+	private String icon;
 	private boolean selected;
 	
 	public JTegCard() {

@@ -76,9 +76,10 @@ public class CardsFrame extends JInternalFrame implements GraphicUpdate {
     	panel = new JPanel();
     	panel.setLayout(null);
     	
-    	performExchange = new JButton("Exchange");
+    	performExchange = new JButton();
     	performExchange.setSize(EXCHANGE_BUTTON_WIDTH,EXCHANGE_BUTTON_HEIGHT);
     	performExchange.setLocation(X_GAP+(X_GAP+JTegCard.CARD_HEIGHT)*MAX_NUM_CARDS, Y_GAP*4);
+    	performExchange.setIcon(new ImageIcon("assets/Icons/exchange.png"));
     	
     	for(final Integer i : indexs) {
     		
@@ -127,6 +128,7 @@ public class CardsFrame extends JInternalFrame implements GraphicUpdate {
 		
 		Iterator<CountryCardUI> itr = GameUI.getInstance().getPlayers().get(GameUI.getInstance().getTurn()).getCards().iterator();
 		int i = 0;
+		System.out.println("Cartas : " + GameUI.getInstance().getPlayers().get(GameUI.getInstance().getTurn()).getCards().size());
 		for(; i < MAX_NUM_CARDS && itr.hasNext(); i++) {
 			String countryName = itr.next().getCountry();
 			String icon = itr.next().getType().name();
