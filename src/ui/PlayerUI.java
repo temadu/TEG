@@ -14,9 +14,11 @@ public class PlayerUI {
 	
 	private int totalSoldiers;
 	private int leftOverSoldiers;
+	private int cardExchangeNumber;
 	
 	private Set<CountryUI> countries;
 	private Set<CountryCardUI> cards;
+	
 	
 	public PlayerUI(String name, String color) {
 		this.name = name;
@@ -27,11 +29,11 @@ public class PlayerUI {
 		this.name = name;
 		this.color = color;
 		this.objective = objective;
-	
 		this.totalSoldiers = 0;
 		this.leftOverSoldiers = 0;
 		this.countries = new HashSet<CountryUI>();
 		this.cards = new HashSet<CountryCardUI>();
+		this.cardExchangeNumber = 0;
 	}
 
 	public String getObjective() {
@@ -97,6 +99,15 @@ public class PlayerUI {
 	public void setColor(String color) {
 		this.color = color;
 	}
+
+	public int getCardExchangeNumber() {
+		return cardExchangeNumber;
+	}
+
+	public void setCardExchangeNumber(int cardExchangeNumber) {
+		this.cardExchangeNumber = cardExchangeNumber;
+	}
+	
 	
 	
 	

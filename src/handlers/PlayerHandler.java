@@ -32,6 +32,7 @@ public class PlayerHandler implements Observer<Player> {
 		ui.setCountries(countriesToCountryUI(data.getCountries()));
 		ui.setCards(cardsToUI(data.getCards()));
 		ui.setIsDead(data.getIsDead());	
+		ui.setCardExchangeNumber(data.getCardExchangeNumber());
 	}
 
 	public Set<CountryUI> countriesToCountryUI(Set<Country> countries){
