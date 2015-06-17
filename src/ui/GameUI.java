@@ -28,7 +28,7 @@ public class GameUI {
 	
     private DiceUI dice;
     
-//    private ConsoleUI console;
+    private ConsoleUI console;
     
 	// Singleton
 	private GameUI() {
@@ -173,6 +173,10 @@ public class GameUI {
 
 	public void setWinner(PlayerUI winner) {
 		this.winner = winner;
+	}
+
+	public void setConsole(ConsoleUI console) {
+		this.console = console;
 	}
 
 }
