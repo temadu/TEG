@@ -7,16 +7,15 @@ import handlers.Observer;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class Console implements Observable {
+public class Console  {
 
 	private static LinkedList<String> console;
 	private static int LINES = 6;
-	private static ArrayList<Observer> observers;
+	private static ConsoleHandler observer;
 	
 	public Console() {
 		console = new LinkedList<String>();
-		observers = new ArrayList<Observer>();
-		addObserver(new ConsoleHandler());
+		observer = new ConsoleHandler();
 	}
 	
 	public static void add(String message){
@@ -26,23 +25,7 @@ public class Console implements Observable {
 			console.removeFirst();
 			console.addLast(message);	
 		}		
-	}
-
-	@Override
-	public void addObserver(Observer observer) {
-		observers.add(observer);
-	}
-
-	@Override
-	public void removeObserver(Observer observer) {
-		observers.remove(observer);
-	}
-
-	@Override
-	public void notifyObservers() {
-		for (Observer observer : observers) {
-			observer.handleUpdate(this);
-		}
+		observer.handleUpdate(console);
 	}
 
 	public static LinkedList<String> getConsole() {

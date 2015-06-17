@@ -84,6 +84,7 @@ public class Country implements Observable{
 	public void incrementSoldiers(){
 		soldiers++;
 		notifyObservers();
+		Console.add("Se le agrega un soldado al pais: " + this.name);
 		System.out.println("Se le agrega un soldado al pais: " + this.name);
 	}
 	///////////////////////////

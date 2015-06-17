@@ -1,10 +1,13 @@
 package handlers;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 import assets.Console;
 import ui.ConsoleUI;
 import ui.GameUI;
 
-public class ConsoleHandler implements Observer<Console> {
+public class ConsoleHandler {
 
 	private ConsoleUI ui;
 	
@@ -13,9 +16,8 @@ public class ConsoleHandler implements Observer<Console> {
 		GameUI.getInstance().setConsole(ui);
 	}
 	
-	@Override
-	public void handleUpdate(Console data) {
-		ui.setConsole(data.getConsole());
+	public void handleUpdate(LinkedList<String> console) {
+		ui.setConsole(console);
 	}
 
 
