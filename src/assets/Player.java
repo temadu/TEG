@@ -32,6 +32,7 @@ public class Player implements Observable {
 		this.color = color;
 		this.totalSoldiers = 0;
 		this.isDead = false;
+		this.isWinner = false;
 		this.countries = new HashSet<Country>();
 		this.cards = new HashSet<CountryCard>();
 		this.observers = new HashSet<Observer>();
@@ -66,6 +67,7 @@ public class Player implements Observable {
 	//TODO Add troops if player has the country.
 	public void addCountryCard(CountryCard card){
 		cards.add(card);
+		System.out.println("Player card:" + card.getCountry().getName());
 		if(countries.contains(card.getCountry()))
 			card.getCountry().incrementSoldiers();
 		notifyObservers();
