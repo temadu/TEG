@@ -158,7 +158,9 @@ public class GameManager implements Observable {
 		if(subturn == SubTurn.ADDTROOPS && troopsToAdd == 0)
 			subturn = SubTurn.ATTACK;
 		
-		attacker.attack(defender);
+		if(!attacker.attack(defender))
+			throw new TEGException("Those countries cannot attack between themselves");
+			
 		notifyObservers();
 	
 	}
