@@ -130,8 +130,9 @@ public class CardsFrame extends JInternalFrame implements GraphicUpdate {
 		int i = 0;
 		System.out.println("Cartas : " + GameUI.getInstance().getPlayers().get(GameUI.getInstance().getTurn()).getCards().size());
 		for(; i < MAX_NUM_CARDS && itr.hasNext(); i++) {
-			String countryName = itr.next().getCountry();
-			String icon = itr.next().getType().name();
+			CountryCardUI aux = itr.next();
+			String countryName = aux.getCountry();
+			String icon = aux.getType().toString();
 			setCard(countryName,icon,i);
 		}
 		for(;i < MAX_NUM_CARDS;i++) {
