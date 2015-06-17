@@ -197,9 +197,12 @@ public class GameManager implements Observable {
 
 	public void takeCard() throws TEGException{
 		if(countryConquered && cardStrategy.cardTakeCheck()){
-			getTurnPlayer().addCountryCard(gameBox.getRandomCard());
-			changeTurn();
+			if(getTurnPlayer().addCountryCard()){
+				changeTurn();
+				return;
+			}
 		}
+		throw new TEGException("Cannot get countryCard");
 	}
 	
 	public void exchangeCards(String cardName1, String cardName2, String cardName3){
