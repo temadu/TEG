@@ -20,7 +20,7 @@ public class AttackActionListener implements ActionListener {
 			TEGWindow.getInstance().getInfoFrame().graphicUpdate();
 			TEGWindow.getInstance().getConsoleFrame().graphicUpdate();
 		} catch(TEGException e) {
-
+			
 		}
 		
 	}

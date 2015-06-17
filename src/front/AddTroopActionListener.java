@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import ui.GameUI;
 import assets.GameManager;
+import assets.TEGException;
 
 public class AddTroopActionListener implements ActionListener {
 
@@ -15,13 +16,17 @@ public class AddTroopActionListener implements ActionListener {
 		
 		if(countryName != null) {
 			
-			GameManager.getInstance().addTroop();
-			
-			// Graphic update
-			TEGWindow.getInstance().getMapFrame().getPanel().changeTroopsNumber(countryName, GameUI.getInstance().getCountryUI(countryName).getSoldiers());
-			TEGWindow.getInstance().getInfoFrame().setTroopNumber(GameUI.getInstance().getCountryUI(countryName).getSoldiers());
-			TEGWindow.getInstance().getPlayersFrame().setTroopsToAdd(GameUI.getInstance().getTroopsToAdd());
-			TEGWindow.getInstance().getConsoleFrame().graphicUpdate();
+			try {
+				GameManager.getInstance().addTroop();
+				
+				// Graphic update
+				TEGWindow.getInstance().getMapFrame().getPanel().changeTroopsNumber(countryName, GameUI.getInstance().getCountryUI(countryName).getSoldiers());
+				TEGWindow.getInstance().getInfoFrame().setTroopNumber(GameUI.getInstance().getCountryUI(countryName).getSoldiers());
+				TEGWindow.getInstance().getPlayersFrame().setTroopsToAdd(GameUI.getInstance().getTroopsToAdd());
+				TEGWindow.getInstance().getConsoleFrame().graphicUpdate();
+			} catch(TEGException e) {
+				
+			}
 			
 		}
 

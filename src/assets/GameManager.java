@@ -120,15 +120,15 @@ public class GameManager implements Observable {
 		return players.get(randomNumber);
 	}
 	
-	public void addTroop(){
+	public void addTroop() throws TEGException {
 		if(subturn != SubTurn.ADDTROOPS)
-			return;
+			throw new TEGException("");
 		if(troopsToAdd == 0)
-			return;
+			throw new TEGException("");
 		if(informationCountry == null)
-			return;
+			throw new TEGException("");
 		if(!informationCountry.getOwner().equals(getTurnPlayer()))
-			return;
+			throw new TEGException("");
 		informationCountry.incrementSoldiers();
 		troopsToAdd--;
 		notifyObservers();

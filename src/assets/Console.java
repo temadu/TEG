@@ -1,16 +1,13 @@
 package assets;
 
 import handlers.ConsoleHandler;
-import handlers.Observable;
-import handlers.Observer;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Console  {
 
 	private static LinkedList<String> console;
-	private static int LINES = 50;
+	public final static int LINES = 50;
 	private static ConsoleHandler observer;
 	
 	public Console() {

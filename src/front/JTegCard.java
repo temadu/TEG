@@ -42,8 +42,6 @@ public class JTegCard extends JLabel {
 		if(!s2.equals(""))
 			s2 = centerString(s2);
 		
-		System.out.println("s1: " + s1);
-		System.out.println("s2: " + s2);
 		setText("<html><br><br><br><br>" + s1 + "<br>" + s2 + "</html>");
 	
 	}
@@ -63,6 +61,7 @@ public class JTegCard extends JLabel {
 	}
 	
 	public String centerString(String s) {
+		
 		if(s.length()<MAX_TEXT_WIDTH) {
 			String aux = "";
 			for(int i = 0; i < (MAX_TEXT_WIDTH/2)-(s.length()/2)-1; i++)

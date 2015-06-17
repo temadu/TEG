@@ -67,8 +67,6 @@ public class SituationFrame extends JInternalFrame implements GraphicUpdate {
     // Print situation card
     public void changeSituation(String situation) {
     	
-    	System.out.println("Situation: " + situation);
-    	
     	if(situation == null)
     		this.situation.setIcon(null);
     	else {
@@ -82,9 +80,7 @@ public class SituationFrame extends JInternalFrame implements GraphicUpdate {
 
 	@Override
 	public void graphicUpdate() {
-		
 		changeSituation(GameUI.getInstance().getSituation());
-		
 	}
     
 }

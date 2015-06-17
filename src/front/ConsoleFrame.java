@@ -8,6 +8,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import assets.Console;
 import ui.GameUI;
 
 public class ConsoleFrame extends JInternalFrame implements GraphicUpdate {
@@ -19,10 +20,8 @@ public class ConsoleFrame extends JInternalFrame implements GraphicUpdate {
 	private static final int WINDOW_HEIGHT = 250;
 	private static final int WINDOW_WIDTH = 500;
 	
-	private static final int MAX_LINES = 50;
-	
 	private int lineCount;
-	private String console;
+	private String console = "";
     
 	private JScrollPane scroll;
 	private JTextArea text;
@@ -52,7 +51,7 @@ public class ConsoleFrame extends JInternalFrame implements GraphicUpdate {
 		
 	private void createComponents() {
 	    
-		text = new JTextArea(MAX_LINES,MAX_LINES);
+		text = new JTextArea(Console.LINES,Console.LINES);
 		 
 		scroll = new JScrollPane(text,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		
@@ -61,6 +60,7 @@ public class ConsoleFrame extends JInternalFrame implements GraphicUpdate {
 		text.setLineWrap(true);
 		text.setWrapStyleWord(true);
 		text.setEditable(false);
+		text.setText("");
 		
 		lineCount = 0;
 		
@@ -71,11 +71,8 @@ public class ConsoleFrame extends JInternalFrame implements GraphicUpdate {
 	public void addLine(String line) {
 		
 		lineCount++;
-		if(lineCount >= MAX_LINES) {
-			deleteFirstLine();
-		}
 		console += "\n"+line;
-		text.setText(console);
+		text.setText(console.substring(1));
 			
 	}
 	
@@ -83,19 +80,19 @@ public class ConsoleFrame extends JInternalFrame implements GraphicUpdate {
 		
 		String temp = console.replaceFirst("\n", "");
 		int index = temp.indexOf("\n");
-		console = temp.substring(index+1);
+		console = temp.substring(index);
+		lineCount--;
 		
 	}
 
 	@Override
 	public void graphicUpdate() {
 		
-		System.out.println("Actualizando consola");
-		System.out.println("Cantidad de mensajes: " + GameUI.getInstance().getConsole().getConsole().size());
-		for(int i = lineCount; i < GameUI.getInstance().getConsole().getConsole().size(); i++) {
-			System.out.println("Console " + i + " " +  GameUI.getInstance().getConsole().getConsole().get(i));
+		if(lineCount == Console.LINES)
+			deleteFirstLine();
+		
+		for(int i = lineCount; i < GameUI.getInstance().getConsole().getConsole().size(); i++)
 			addLine(GameUI.getInstance().getConsole().getConsole().get(i));
-		}
 		
 	}
 	
