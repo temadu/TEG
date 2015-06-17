@@ -62,6 +62,7 @@ public class GameManager implements Observable {
 	
 	public void startGame(){
 		gameBox = new GameBox();
+		new Console();
 		dealCountries();
 		
 		if(players.size() > 3)
@@ -81,6 +82,7 @@ public class GameManager implements Observable {
 		observers.add(new GameHandler());
 		notifyObservers();
 		
+		Console.add("Iniciando Juego");
 		System.out.println("troops to add: " + troopsToAdd);
 		System.out.println("Terminado START GAME");
 	}
