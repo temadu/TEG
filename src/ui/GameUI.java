@@ -11,7 +11,8 @@ public class GameUI {
 	
 	private String situation;
 	
-	private ArrayList<PlayerUI> players = new ArrayList<PlayerUI>();
+	private ArrayList<PlayerUI> players;
+	private PlayerUI winner;
 	private int turn;
 	private SubTurn subturn;
 	private int troopsToAdd;
@@ -27,10 +28,13 @@ public class GameUI {
 	
     private DiceUI dice;
     
+//    private ConsoleUI console;
+    
 	// Singleton
 	private GameUI() {
 		turn = 0;
 		countries = new ArrayList<CountryUI>();
+		players = new ArrayList<PlayerUI>();
 	}
 	
 	public static GameUI getInstance() {
@@ -158,8 +162,15 @@ public class GameUI {
 	public String getDefenderOwner() {
 		return defenderOwner;
 	}
-	
-}
 
-//
-//turno
+	public PlayerUI getWinner() {
+		return winner;
+	}
+
+	public void setWinner(PlayerUI winner) {
+		this.winner = winner;
+	}
+	
+
+
+}
