@@ -7,7 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import ui.GameUI;
 
 public class ObjectiveFrame extends JInternalFrame implements GraphicUpdate {

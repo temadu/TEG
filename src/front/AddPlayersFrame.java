@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -14,7 +13,6 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import assets.GameManager;
 
 public class AddPlayersFrame extends JInternalFrame {
@@ -126,13 +124,15 @@ public class AddPlayersFrame extends JInternalFrame {
     		playerTable[i] = new JLabel("",new ImageIcon("assets/Fields/addPlayerField.png"),0);
     		playerTable[i].setIconTextGap(TEXT_GAP);
     	}
+    	
     	playerColorTable = new JLabel[GameManager.MAX_NUM_PLAYERS];
     	for(int i = 0; i < playerColorTable.length ; i++) {
     		playerColorTable[i] = new JLabel(colorIcons[i]);
     	}
     	
     	warnings = new JLabel();
-    	warnings.setForeground(Color.red);
+    	warnings.setForeground(Color.RED);
+    	
     	color = new JLabel();
     	color.setIcon(colorIcons[selectColor.getSelectedIndex()]);
     	

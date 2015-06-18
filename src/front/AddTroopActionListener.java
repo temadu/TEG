@@ -2,7 +2,6 @@ package front;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import ui.GameUI;
 import assets.GameManager;
 import assets.TEGException;
@@ -17,6 +16,7 @@ public class AddTroopActionListener implements ActionListener {
 		if(countryName != null) {
 			
 			try {
+				
 				GameManager.getInstance().addTroop();
 				
 				// Graphic update
@@ -24,6 +24,7 @@ public class AddTroopActionListener implements ActionListener {
 				TEGWindow.getInstance().getInfoFrame().setTroopNumber(GameUI.getInstance().getCountryUI(countryName).getSoldiers());
 				TEGWindow.getInstance().getPlayersFrame().setTroopsToAdd(GameUI.getInstance().getTroopsToAdd());
 				TEGWindow.getInstance().getConsoleFrame().graphicUpdate();
+				
 			} catch(TEGException e) {
 				
 			}

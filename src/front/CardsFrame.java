@@ -1,4 +1,3 @@
-
 package front;
 
 import java.awt.Point;
@@ -7,13 +6,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
-
+import javax.swing.WindowConstants;
 import ui.CountryCardUI;
 import ui.GameUI;
 
@@ -45,11 +42,11 @@ public class CardsFrame extends JInternalFrame implements GraphicUpdate {
     public CardsFrame() {
         super("Cards", 
               false, //resizable
-              true, //closable
+              true,  //closable
               false, //maximizable
               false);//iconifiable
         
-        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         
         //...Create the GUI and put it in the window...
         createComponents();
@@ -67,6 +64,7 @@ public class CardsFrame extends JInternalFrame implements GraphicUpdate {
 	
     private void createComponents() {
     	
+    	// Make the indexs final for the action listener to use them
     	final Integer[] indexs = new Integer[MAX_NUM_CARDS];
     	for(int i = 0 ; i < MAX_NUM_CARDS; i++) {
     		indexs[i] = i;
@@ -89,6 +87,7 @@ public class CardsFrame extends JInternalFrame implements GraphicUpdate {
     		cards[i] = new JTegCard();
     		cards[i].setLocation(new Point(X_GAP+(X_GAP+JTegCard.CARD_HEIGHT)*i,Y_GAP));
     		
+    		// Card selection buttons
     		cardSelection[i] = new JButton();
     		cardSelection[i].setLocation(X_GAP-SELECT_BUTTON_WIDTH+(X_GAP+JTegCard.CARD_HEIGHT)*i,Y_GAP);
     		cardSelection[i].setSize(SELECT_BUTTON_WIDTH, JTegCard.CARD_HEIGHT);
@@ -119,6 +118,7 @@ public class CardsFrame extends JInternalFrame implements GraphicUpdate {
     	cards[index].setIcon(icon);
     }
     
+    // Print selected card (red border)
     public void selectCard(int index) {
     	if(!cards[index].getIconText().equals("nocard") && !cards[index].isSelected())
     		cards[index].select();
@@ -143,6 +143,7 @@ public class CardsFrame extends JInternalFrame implements GraphicUpdate {
 		
 	}
 	
+	// Get a list with the player cards names.
 	public List<String> getCardsNames() {
 		List<String> list = new ArrayList<String>();
 		

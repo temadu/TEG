@@ -2,7 +2,6 @@ package front;
 
 import java.awt.Font;
 import java.awt.GridLayout;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -35,7 +34,7 @@ public class InfoFrame extends JInternalFrame implements GraphicUpdate {
     public InfoFrame() {
         super("Country Information", 
               false, //resizable
-              true, //closable
+              true,  //closable
               false, //maximizable
               false);//iconifiable
         

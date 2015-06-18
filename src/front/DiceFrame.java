@@ -2,7 +2,6 @@ package front;
 
 import java.awt.GridLayout;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -32,8 +31,7 @@ public class DiceFrame extends JInternalFrame implements GraphicUpdate {
     private JLabel[] defenderDice;
     private JLabel attackerName, defenderName;
     
-    private String attackerOwnerName, defenderOwnerName; 
-    
+    private String attackerOwnerName, defenderOwnerName;  
     
     public DiceFrame() {
         super("Dice", 
@@ -128,6 +126,7 @@ public class DiceFrame extends JInternalFrame implements GraphicUpdate {
     	
     }
     
+    // Set attacker's & defender's name
     public void updateNames() {
     	attackerOwnerName = GameUI.getInstance().getAttackerOwner();
     	defenderOwnerName = GameUI.getInstance().getDefenderOwner();

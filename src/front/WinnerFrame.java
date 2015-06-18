@@ -2,13 +2,11 @@ package front;
 
 import java.awt.Font;
 import java.awt.GridLayout;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import ui.GameUI;
 
 public class WinnerFrame extends JInternalFrame implements GraphicUpdate {
@@ -23,6 +21,9 @@ public class WinnerFrame extends JInternalFrame implements GraphicUpdate {
 	private static final int LAYOUT_ROWS = 1;
 	private static final int LAYOUT_COLS = 1;
 	private static final int LAYOUT_GAPS = 0;
+	
+	private static final String TEXT_FONT = "Courier New";
+	private static final int TEXT_SIZE = 40;
 	
 	private static final int TEXT_GAP = -300;
 	
@@ -58,7 +59,7 @@ public class WinnerFrame extends JInternalFrame implements GraphicUpdate {
     	panel.setLayout(new GridLayout(LAYOUT_ROWS,LAYOUT_COLS,LAYOUT_GAPS,LAYOUT_GAPS));
 		winMessage = new JLabel(new ImageIcon("assets/Icons/winner.png"));
 		winMessage.setIconTextGap(TEXT_GAP);
-		winMessage.setFont(new Font("Courier New", Font.PLAIN, 40));
+		winMessage.setFont(new Font(TEXT_FONT, Font.PLAIN, TEXT_SIZE));
 		
 		panel.add(winMessage);
 		add(panel);

@@ -2,14 +2,12 @@ package front;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import ui.GameUI;
 
 public class PlayersFrame extends JInternalFrame implements GraphicUpdate {
@@ -35,7 +33,7 @@ public class PlayersFrame extends JInternalFrame implements GraphicUpdate {
     public PlayersFrame() {
         super("Players", 
               false, //resizable
-              true, //closable
+              true,  //closable
               false, //maximizable
               false);//iconifiable
         
