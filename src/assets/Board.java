@@ -1,13 +1,15 @@
 package assets;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 
 // Class that represents the game board, countries and their adjacent relationships.
-public class Board {
+public class Board implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	private int countriesNum;
-	private HashMap<String, Continent> continents;
+	private transient HashMap<String, Continent> continents;
 	private List<Country> countries;
 	private boolean[][] adjacentMatrix;
 	
@@ -22,20 +24,14 @@ public class Board {
 	
 	/**
 	 * Checks if two countries are adjacent or not.
-	 * @param attacker
-	 * @param defender
 	 * @return If countries are adjacent.
 	 */
-	public boolean adjacentCountries(Country attacker, Country defender){
+	public boolean adjacentCountries(Country attacker, Country defender) {
 		return adjacentMatrix[countries.indexOf(attacker)][countries.indexOf(defender)];
 	}
 	
-	/**
-	 * Gives back the continent that contains the country.
-	 * @param country
-	 * @return 
-	 */
-	public Continent continentContainer(Country country){
+	// Gives back the continent that contains the country.
+	public Continent continentContainer(Country country) {
 		
 		Continent container = null;
 		
@@ -50,7 +46,7 @@ public class Board {
 		
 	}
 	
-	public Country parseStringToCountry(String countryName){
+	public Country parseStringToCountry(String countryName) {
 		
 		for (Country country : countries) {
 			if(countryName.equals(country.getName()))
@@ -61,7 +57,7 @@ public class Board {
 		
 	}
 	
-	public Continent getContinent(String continent){
+	public Continent getContinent(String continent) {
 		return continents.get(continent);
 	}
 

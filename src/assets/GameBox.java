@@ -15,12 +15,11 @@ import situations.SituationFactory;
  */
 public class GameBox implements Serializable {
 
-	// Serializable
 	private static final long serialVersionUID = 1L;
 	
 	private Board board;
-	private ArrayList<Objective> objectives;
-	private ArrayList<Situation> situations;
+	private transient ArrayList<Objective> objectives;
+	private transient ArrayList<Situation> situations;
 	private ArrayList<CountryCard> countryCards;
 	
 	public GameBox() {

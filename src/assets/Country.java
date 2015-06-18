@@ -3,20 +3,23 @@ package assets;
 import handlers.CountryHandler;
 import handlers.Observable;
 import handlers.Observer;
+import java.io.Serializable;
 import java.util.HashSet;
 import situationStrategies.AnyFrontierStrategy;
 import situationStrategies.FrontierStrategy;
 
 // Class that represents a country in the game.
-public class Country implements Observable{
-	
-	private static FrontierStrategy frontierStrategy = new AnyFrontierStrategy();
+public class Country implements Observable, Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	private static transient FrontierStrategy frontierStrategy = new AnyFrontierStrategy();
 	
 	private String name;
 	private int soldiers;
 	private Player owner;
 	
-	private HashSet<Observer> observers;
+	private transient HashSet<Observer> observers;
 	
 	public Country(String name) {
 		
@@ -29,7 +32,6 @@ public class Country implements Observable{
 	
 	/**
 	 * Starts a battle between two countries if they can attack one another.
-	 * @param enemy
 	 * @return If a battle could be started.
 	 */
 	public boolean attack(Country enemy) {
@@ -62,7 +64,6 @@ public class Country implements Observable{
 	
 	/**
 	 * Moves one troop to another country if its possible.
-	 * @param ally
 	 * @return If the movement of troops was made.
 	 */
 	public boolean moveSoldiers(Country ally) {
@@ -105,10 +106,7 @@ public class Country implements Observable{
 		
 	}
 	
-	/**
-	 * Changes the owner of the country. Also removes this country from the old owner.
-	 * @param newOwner
-	 */
+	// Changes the owner of the country. Also removes this country from the old owner.
 	public void changeOwner(Player newOwner){
 		
 		if(owner != null)

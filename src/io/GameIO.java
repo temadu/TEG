@@ -12,7 +12,6 @@ import assets.GameManager;
 
 public class GameIO {
 
-
 	public static GameManager game;
 
 	public static void setGame(GameManager game){
@@ -21,7 +20,8 @@ public class GameIO {
 
 	public static void saveGame(){
 
-		File file = new File("TEG.save");
+		File file = new File("savegame/TEG.save");
+		System.out.println("Saved");
 
 		try{
 			FileOutputStream saveFile = new FileOutputStream(file);
@@ -29,6 +29,7 @@ public class GameIO {
 			save.writeObject(game);
 			save.close();
 			saveFile.close();
+			System.out.println("Saved2");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -38,12 +39,13 @@ public class GameIO {
 
 	public static void loadGame(){
 
-		File file = new File("TEG.save");
+		File file = new File("savegame/TEG.save");
 
 		try{
 			FileInputStream saveFile = new FileInputStream(file);
 			ObjectInputStream save = new ObjectInputStream(saveFile);
 			GameManager game = (GameManager) save.readObject();
+			GameManager.getInstance().loadGame(game);
 			save.close();
 			saveFile.close();
 		}catch(IOException e){

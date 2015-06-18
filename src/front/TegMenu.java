@@ -72,10 +72,12 @@ public class TegMenu extends JMenuBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(TEGWindow.getInstance().getMenu().isSaveGameEnabled()) {
+				System.out.println(TEGWindow.getInstance().getMenu().isSaveGameEnabled());
+				//if(TEGWindow.getInstance().getMenu().isSaveGameEnabled()) {
+					System.out.println("front save");
 					GameIO.setGame(GameManager.getInstance());
 					GameIO.saveGame();
-				}
+				//}
 			}
 		});
 

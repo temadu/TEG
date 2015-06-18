@@ -2,13 +2,16 @@ package assets;
 
 import handlers.Observable;
 import handlers.Observer;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 import objectives.Objective;
 
 // Class that represents a player.
-public class Player implements Observable {
+public class Player implements Observable,Serializable {
+
+	private static final long serialVersionUID = 1L;
 	
 	private String name;
 	private String color;
@@ -24,7 +27,7 @@ public class Player implements Observable {
 	private Set<Country> countries;
 	private Set<CountryCard> cards;
 	
-	private HashSet<Observer> observers;
+	private transient HashSet<Observer> observers;
 	
 	public Player(String name, String color, Objective objective) {
 		
