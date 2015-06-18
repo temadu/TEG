@@ -1,14 +1,11 @@
 package front;
 
 import io.GameIO;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-
 import ui.GameUI;
 import assets.GameManager;
 
@@ -39,6 +36,7 @@ public class TegMenu extends JMenuBar {
 		endGame = new JMenuItem("End Game");
 		endGame.addActionListener(new ActionListener() {
 
+			@Override
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -58,6 +56,7 @@ public class TegMenu extends JMenuBar {
 		newGame = new JMenuItem("New Game");
 		newGame.addActionListener(new ActionListener() {
 
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(TEGWindow.getInstance().getMenu().isNewGameEnabled()) {
 					TEGWindow.getInstance().getMenu().setNewGameEnabled(false);
@@ -71,6 +70,7 @@ public class TegMenu extends JMenuBar {
 		saveGame = new JMenuItem("Save Game");
 		saveGame.addActionListener(new ActionListener() {
 			
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(TEGWindow.getInstance().getMenu().isSaveGameEnabled());
 				//if(TEGWindow.getInstance().getMenu().isSaveGameEnabled()) {
@@ -84,6 +84,7 @@ public class TegMenu extends JMenuBar {
 		loadGame = new JMenuItem("Load Game");
 		loadGame.addActionListener(new ActionListener() {
 			
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(TEGWindow.getInstance().getMenu().isLoadGameEnabled())
 					GameIO.loadGame();
@@ -106,6 +107,7 @@ public class TegMenu extends JMenuBar {
 		exit = new JMenuItem("Exit");
 		exit.addActionListener(new ActionListener() {
 
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
 			}
@@ -115,6 +117,7 @@ public class TegMenu extends JMenuBar {
 		exitAndSave = new JMenuItem("Save & Exit");
 		exitAndSave.addActionListener(new ActionListener() {
 
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(TEGWindow.getInstance().getMenu().isSaveGameEnabled()) {
 					GameIO.setGame(GameManager.getInstance());
@@ -141,6 +144,7 @@ public class TegMenu extends JMenuBar {
 		
 		showMap = new JMenuItem("Map");
 		showMap.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				TEGWindow.getInstance().getMapFrame().setVisible(true);
 			}
@@ -148,6 +152,7 @@ public class TegMenu extends JMenuBar {
 		
 		showPlayers = new JMenuItem("Players");
 		showPlayers.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				TEGWindow.getInstance().getPlayersFrame().setVisible(true);
 			}
@@ -155,6 +160,7 @@ public class TegMenu extends JMenuBar {
 		
 		showSelection = new JMenuItem("Selection");
 		showSelection.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				TEGWindow.getInstance().getSelectionFrame().setVisible(true);
 			}
@@ -162,6 +168,7 @@ public class TegMenu extends JMenuBar {
 		
 		showDice = new JMenuItem("Dice");
 		showDice.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				TEGWindow.getInstance().getDiceFrame().setVisible(true);
 			}
@@ -169,6 +176,7 @@ public class TegMenu extends JMenuBar {
 		
 		showObjective = new JMenuItem("Objective");
 		showObjective.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				TEGWindow.getInstance().getObjectiveFrame().setVisible(true);
 			}
@@ -176,6 +184,7 @@ public class TegMenu extends JMenuBar {
 		
 		showCards = new JMenuItem("My Cards");
 		showCards.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				TEGWindow.getInstance().getCardsFrame().setVisible(true);
 			}
@@ -183,6 +192,7 @@ public class TegMenu extends JMenuBar {
 		
 		showSituation = new JMenuItem("Situation");
 		showSituation.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				TEGWindow.getInstance().getSituationFrame().setVisible(true);
 			}
@@ -190,6 +200,7 @@ public class TegMenu extends JMenuBar {
 		
 		showCountryInfo = new JMenuItem("Country Information");
 		showCountryInfo.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				TEGWindow.getInstance().getInfoFrame().setVisible(true);
 			}
@@ -197,6 +208,7 @@ public class TegMenu extends JMenuBar {
 		
 		showConsole = new JMenuItem("Console");
 		showConsole.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				TEGWindow.getInstance().getConsoleFrame().setVisible(true);
 			}

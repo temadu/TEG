@@ -13,6 +13,7 @@ public class JTegCard extends JLabel {
 	private static final int MAX_TEXT_WIDTH = 17;
 	
 	private static final String SPACE = "&nbsp;";
+	private static final String NEW_LINE = "<br>";
 	
 	private String icon;
 	private String countryName;
@@ -48,7 +49,9 @@ public class JTegCard extends JLabel {
 		if(!s2.equals(""))
 			s2 = centerString(s2);
 		
-		setText("<html><br><br><br><br>" + s1 + "<br>" + s2 + "</html>");
+		// (between <html></html> to separate the text in lines)
+		setText("<html>" + NEW_LINE + NEW_LINE + NEW_LINE + NEW_LINE +
+				s1 + NEW_LINE + s2 + "</html>");
 	
 	}
 	

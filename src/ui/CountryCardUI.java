@@ -7,6 +7,7 @@ import assets.CardType;
  * Created and Edited by the PlayerHandler observer for displaying the playerCountryCards.
  * Access for reading to the frontend (Swing).
  */
+
 public class CountryCardUI {
 
 	private String country;
@@ -24,8 +25,5 @@ public class CountryCardUI {
 	public CardType getType() {
 		return type;
 	}
-
-	
-	
 	
 }

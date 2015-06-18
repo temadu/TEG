@@ -1,15 +1,14 @@
 package front;
 
 import java.awt.Color;
-
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-
-import assets.Console;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.WindowConstants;
 import ui.GameUI;
+import assets.Console;
 
 public class ConsoleFrame extends JInternalFrame implements GraphicUpdate {
 
@@ -21,7 +20,7 @@ public class ConsoleFrame extends JInternalFrame implements GraphicUpdate {
 	private static final int WINDOW_WIDTH = 500;
 	
 	private int lineCount;
-	private String console = "";
+	private String console;
     
 	private JScrollPane scroll;
 	private JTextArea text;
@@ -29,11 +28,11 @@ public class ConsoleFrame extends JInternalFrame implements GraphicUpdate {
 	public ConsoleFrame() {
 		super(	"Console", 
 				false, //resizable
-	            true, //closable
+	            true,  //closable
 	            false, //maximizable
 	            false);//iconifiable
 	        
-		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 	        
 		//...Create the GUI and put it in the window...
 		createComponents();
@@ -53,7 +52,7 @@ public class ConsoleFrame extends JInternalFrame implements GraphicUpdate {
 	    
 		text = new JTextArea(Console.LINES,Console.LINES);
 		 
-		scroll = new JScrollPane(text,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scroll = new JScrollPane(text,ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
 		text.setBackground(new Color(45,10,34));
 		text.setForeground(Color.white);
@@ -63,11 +62,13 @@ public class ConsoleFrame extends JInternalFrame implements GraphicUpdate {
 		text.setText("");
 		
 		lineCount = 0;
+		console = "";
 		
 		add(scroll);
 	    	
 	}
-	 
+	
+	// Add line to the console
 	public void addLine(String line) {
 		
 		lineCount++;
@@ -76,6 +77,7 @@ public class ConsoleFrame extends JInternalFrame implements GraphicUpdate {
 			
 	}
 	
+	// Delete the first line of the console
 	private void deleteFirstLine() {
 		
 		String temp = console.replaceFirst("\n", "");
@@ -88,6 +90,7 @@ public class ConsoleFrame extends JInternalFrame implements GraphicUpdate {
 	@Override
 	public void graphicUpdate() {
 		
+		// Delete first line in order to add another one.
 		if(lineCount == Console.LINES)
 			deleteFirstLine();
 		

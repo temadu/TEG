@@ -2,7 +2,6 @@ package ui;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
 import assets.SubTurn;
 
 /**
@@ -12,6 +11,7 @@ import assets.SubTurn;
  * Edited by all the the observers as they have to initialize its variables.
  * Access for reading to the frontend (Swing).
  */
+
 public class GameUI {
 
 	private static GameUI instance;

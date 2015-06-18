@@ -12,6 +12,4 @@ public class ObjectiveUI {
 		return description;
 	}
 	
-	
-	
 }

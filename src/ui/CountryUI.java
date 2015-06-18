@@ -5,6 +5,7 @@ package ui;
  * Created and Edited by the CountryHandler observer.
  * Access for reading to the frontend (Swing).
  */
+
 public class CountryUI {
 
 	private String name;
@@ -49,7 +50,5 @@ public class CountryUI {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
 	
 }

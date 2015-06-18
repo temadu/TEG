@@ -8,6 +8,7 @@ import java.util.Set;
  * Created and Edited by the PLayerHandler observer.
  * Access for reading to the frontend (Swing).
  */
+
 public class PlayerUI {
 
 	private String name;
@@ -112,9 +113,5 @@ public class PlayerUI {
 	public void setCardExchangeNumber(int cardExchangeNumber) {
 		this.cardExchangeNumber = cardExchangeNumber;
 	}
-	
-	
-	
-	
 	
 }

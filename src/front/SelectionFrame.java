@@ -2,14 +2,12 @@ package front;
 
 import java.awt.Font;
 import java.awt.GridLayout;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+import javax.swing.WindowConstants;
 import ui.GameUI;
 
 public class SelectionFrame extends JInternalFrame implements GraphicUpdate {
@@ -28,6 +26,8 @@ public class SelectionFrame extends JInternalFrame implements GraphicUpdate {
 	private static final int LAYOUT_COLS = 2;
 	private static final int LAYOUT_GAPS = 5;
 	
+	private static final String TEXT_FONT = Font.SANS_SERIF;
+	
 	private JPanel panel;
     private JLabel from, to;
     private JButton attack,moveTroop;
@@ -35,11 +35,11 @@ public class SelectionFrame extends JInternalFrame implements GraphicUpdate {
     public SelectionFrame() {
         super("Selection", 
               false, //resizable
-              true, //closable
+              true,  //closable
               false, //maximizable
               false);//iconifiable
         
-        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         
         //...Create the GUI and put it in the window...
         createComponents();
@@ -62,11 +62,11 @@ public class SelectionFrame extends JInternalFrame implements GraphicUpdate {
     	
     	from = new JLabel(new ImageIcon("assets/Fields/FromToField.png"));
     	from.setIconTextGap(TEXT_GAP);
-    	from.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, TEXT_SIZE));
+    	from.setFont(new Font(TEXT_FONT, Font.PLAIN, TEXT_SIZE));
     	
     	to = new JLabel(new ImageIcon("assets/Fields/FromToField.png"));
     	to.setIconTextGap(TEXT_GAP);
-    	to.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, TEXT_SIZE));
+    	to.setFont(new Font(TEXT_FONT, Font.PLAIN, TEXT_SIZE));
     	
     	attack = new JButton("Attack", new ImageIcon("assets/Icons/attack.png"));
     	attack.addActionListener(new AttackActionListener());

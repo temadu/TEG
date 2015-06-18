@@ -3,6 +3,7 @@ package objectives;
 import java.io.Serializable;
 
 import assets.Player;
+
 /**
  * Abstract class that represents the general parts of an objective.
  * To be extended to add the specific parts of the objective.

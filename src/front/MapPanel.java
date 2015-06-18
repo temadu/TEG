@@ -9,12 +9,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Iterator;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import assets.GameManager;
 import ui.CountryUI;
 import ui.GameUI;
@@ -25,6 +23,7 @@ public class MapPanel extends JPanel implements GraphicUpdate {
 	
 	private static final int ELEMENT_SIZE = 15;
 	private static final int X_GAP = 3, Y_GAP = 3, X_CENTER = ELEMENT_SIZE-X_GAP-2;
+	private static final int TROOP_FONT_SIZE = 10;
 	
 	private HashMap<String,Point> countryCoordinates = new HashMap<String,Point>();
 	private HashMap<String,CountryHUD> countryHUDs = new HashMap<String,CountryHUD>();
@@ -87,6 +86,7 @@ public class MapPanel extends JPanel implements GraphicUpdate {
 		ImageIcon infoImg = new ImageIcon("assets/Buttons/info.png");
 		ImageIcon troopImg = new ImageIcon("assets/Flags/troops.png");
 		
+		// For each country in the map
 		for(final String s : countryCoordinates.keySet()) {
 			
 			Point coordinate = countryCoordinates.get(s);
@@ -154,14 +154,16 @@ public class MapPanel extends JPanel implements GraphicUpdate {
 			troopsLabel.setLocation(coordinate.x+ELEMENT_SIZE+X_GAP, coordinate.y);
 			troopsLabel.setSize(ELEMENT_SIZE, ELEMENT_SIZE);
 			troopsLabel.setIconTextGap(-10);
-			troopsLabel.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
+			troopsLabel.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, TROOP_FONT_SIZE));
 			
+			// Create the HUD of the country.
 			cHUD = new CountryHUD(infoButton,fromButton,toButton,flagLabel,troopsLabel);
 			
 			countryHUDs.put(s, cHUD);
 			  
 		}
 		
+		// Set the Flag & Troop Number of each country
 		for(int j = 0; j < GameUI.getInstance().getPlayers().size(); j++) {
 			for(Iterator<CountryUI> itr = GameUI.getInstance().getPlayers().get(j).getCountries().iterator() ; itr.hasNext();) {
 				CountryUI countryUI = itr.next();
@@ -184,6 +186,7 @@ public class MapPanel extends JPanel implements GraphicUpdate {
 		  
 	}
 	    
+	@Override
 	public void paintComponent(Graphics g) {
 
 		g.drawImage(bg, 0, 0, null);

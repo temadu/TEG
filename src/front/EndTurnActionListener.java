@@ -2,7 +2,6 @@ package front;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import assets.GameManager;
 import assets.TEGException;
 
@@ -12,7 +11,9 @@ public class EndTurnActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		
 		try {
+			
 			GameManager.getInstance().changeTurn();
+			
 			// Graphic update.
 			TEGWindow.getInstance().getPlayersFrame().graphicUpdate();
 			TEGWindow.getInstance().getSituationFrame().graphicUpdate();
@@ -21,6 +22,7 @@ public class EndTurnActionListener implements ActionListener {
 			TEGWindow.getInstance().getCardsFrame().graphicUpdate();
 			TEGWindow.getInstance().getConsoleFrame().graphicUpdate();
 			TEGWindow.getInstance().getWinnerFrame().graphicUpdate();
+			
 		} catch(TEGException e) {
 
 		}

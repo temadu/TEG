@@ -1,8 +1,8 @@
 package front;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.WindowConstants;
 
 public class MapFrame extends JInternalFrame {
 
@@ -20,7 +20,7 @@ public class MapFrame extends JInternalFrame {
               false, //maximizable
               false);//iconifiable
         
-        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         
         //...Create the GUI and put it in the window...
         createComponents();

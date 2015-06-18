@@ -3,48 +3,48 @@ package objectives;
 import assets.Board;
 import assets.Continent;
 import assets.GameManager;
+
 /**
  * Abstract Objective that provides functionality for Objective subclasses that are about 
  * conquering some continents or some countries form different continents.
  * For easier and faster creation of objectives.
  */
+
 public abstract class ConquerorObjective extends Objective {
 	
 	private static Board board = GameManager.getInstance().getGameBox().getBoard();
-	private static String schataria = "Schataria";
-	private static String arillia = "Arillia";
-	private static String urza = "Urza";
-	private static String gilacia = "Gilacia";
-	private static String arlas = "Arlas";
-	private static String algos = "Algos";
+	private final static String SCHATARIA = "Schataria";
+	private final static String ARILLIA = "Arillia";
+	private final static String URZA = "Urza";
+	private final static String GILACIA = "Gilacia";
+	private final static String ARLAS = "Arlas";
+	private final static String ALGOS = "Algos";
 	
 	@Override
 	public abstract boolean checkSpecificObjective();
 
 	protected Continent getSchataria() {
-		return board.getContinent(schataria);
+		return board.getContinent(SCHATARIA);
 	}
 
 	protected Continent getArillia() {
-		return board.getContinent(arillia);
+		return board.getContinent(ARILLIA);
 	}
 
 	protected Continent getUrza() {
-		return board.getContinent(urza);
+		return board.getContinent(URZA);
 	}
 
 	protected Continent getGilacia() {
-		return board.getContinent(gilacia);
+		return board.getContinent(GILACIA);
 	}
 
 	protected Continent getArlas() {
-		return board.getContinent(arlas);
+		return board.getContinent(ARLAS);
 	}
 
 	protected Continent getAlgos() {
-		return board.getContinent(algos);
+		return board.getContinent(ALGOS);
 	}
-	
-	
 
 }

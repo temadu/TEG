@@ -64,7 +64,8 @@ public class TEGWindow extends JFrame {
         // Schedule a job for the event-dispatching thread:
         // creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
+            @Override
+			public void run() {
                 createAndShowGUI();
             }
         });
@@ -149,6 +150,7 @@ public class TEGWindow extends JFrame {
 		menu.getActionMenu().enable();
 		menu.setLoadGameEnabled(false);
 		menu.setEndGameEnabled(true);
+		menu.setSaveGameEnabled(true);
 	
 	}
 

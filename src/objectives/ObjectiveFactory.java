@@ -3,10 +3,7 @@ package objectives;
 import java.util.ArrayList;
 import java.util.Collections;
 
-/**
- * Factory Class for initializing the Objectives.
- *
- */
+// Factory Class for initializing the Objectives.
 public class ObjectiveFactory {
 	
 	/**
@@ -14,14 +11,19 @@ public class ObjectiveFactory {
 	 * @return A randomized list of objectives.
 	 */
 	public static ArrayList<Objective> objectiveCreator(){
+		
 		ArrayList<Objective> objectives = new ArrayList<Objective>();
+		
 		objectives.add(new TripleContinentObjective());
 		objectives.add(new SchatariaObjective());
 		objectives.add(new DestroyNextPlayerObjective());
 		objectives.add(new DestroyNextPlayerObjective());
 		objectives.add(new DestroyNextPlayerObjective());
 		objectives.add(new DestroyNextPlayerObjective());
+		
 		Collections.shuffle(objectives);
+		
 		return objectives;
+	
 	}
 }
