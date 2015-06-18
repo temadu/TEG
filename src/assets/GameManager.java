@@ -8,6 +8,7 @@ import handlers.PlayerHandler;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 
 import objectives.Objective;
@@ -242,10 +243,12 @@ public class GameManager implements Observable {
 	 * @param cardName2
 	 * @param cardName3
 	 */
-	public void exchangeCards(String cardName1, String cardName2, String cardName3){
+	public void exchangeCards(List<String> cards) throws TEGException {
 		if(subturn != SubTurn.ADDTROOPS)
-			return;
-		if(getTurnPlayer().returnCountryCards(cardName1, cardName2, cardName3))
+			throw new TEGException("");
+		if(cards.size() != 3) 
+			throw new TEGException("");
+		if(getTurnPlayer().returnCountryCards(cards.get(0),cards.get(1), cards.get(2)))
 			troopsToAdd += (getTurnPlayer().getCardExchangeNumber() * 5);
 	}
 	

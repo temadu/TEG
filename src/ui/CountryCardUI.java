@@ -1,9 +1,6 @@
 package ui;
 
-
 import assets.CardType;
-import assets.Country;
-import assets.CountryCard;
 
 public class CountryCardUI {
 

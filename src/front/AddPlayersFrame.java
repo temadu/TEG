@@ -80,6 +80,7 @@ public class AddPlayersFrame extends JInternalFrame {
     	addPlayerButton = new JButton("Add player!");
     	addPlayerButton.addActionListener(new ActionListener(){
 
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
 				// Add player
@@ -95,6 +96,7 @@ public class AddPlayersFrame extends JInternalFrame {
     	endButton = new JButton("Start!");
     	endButton.addActionListener(new ActionListener(){
 
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(GameManager.getInstance().isPlayable()) {
 					GameManager.getInstance().startGame();
@@ -109,6 +111,7 @@ public class AddPlayersFrame extends JInternalFrame {
     	selectColor = new JComboBox<String>(colors);
     	selectColor.addItemListener(new ItemListener() {
 
+			@Override
 			public void itemStateChanged(ItemEvent event) {
 				if(event.getStateChange() == ItemEvent.SELECTED) {
 					color.setIcon(colorIcons[selectColor.getSelectedIndex()]);

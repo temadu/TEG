@@ -4,13 +4,14 @@ package front;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ui.CountryCardUI;
@@ -81,7 +82,7 @@ public class CardsFrame extends JInternalFrame implements GraphicUpdate {
     	performExchange.setSize(EXCHANGE_BUTTON_WIDTH,EXCHANGE_BUTTON_HEIGHT);
     	performExchange.setLocation(X_GAP+(X_GAP+JTegCard.CARD_HEIGHT)*MAX_NUM_CARDS, Y_GAP*4);
     	performExchange.setIcon(new ImageIcon("assets/Icons/exchange.png"));
-    	performExchange.setVerticalTextPosition(JLabel.TOP);
+    	performExchange.addActionListener(new ExchangeCardsActionListener());
     	
     	for(final Integer i : indexs) {
     		
@@ -140,6 +141,19 @@ public class CardsFrame extends JInternalFrame implements GraphicUpdate {
 			setCard("","nocard",i);
 		}
 		
+	}
+	
+	public List<String> getCardsNames() {
+		List<String> list = new ArrayList<String>();
+		
+		for(int i = 0 ; i < cards.length ; i++) {
+			if(!cards[i].getIconText().equals("nocard")) {
+				if(cards[i].isSelected())
+					list.add(cards[i].getCountryName());
+			}
+		}
+		
+		return list;
 	}
     
 }

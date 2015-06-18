@@ -218,7 +218,7 @@ public class TegMenu extends JMenuBar {
 	@SuppressWarnings("deprecation")
 	public void createActionMenu() {
 		
-		JMenuItem 	addTroop, attack, moveTroop, takeCard, endTurn;
+		JMenuItem 	addTroop, attack, moveTroop, takeCard, endTurn, exchangeCards;
 		
 		actionMenu = new JMenu("Action");
 		actionMenu.disable();
@@ -239,6 +239,10 @@ public class TegMenu extends JMenuBar {
 		takeCard = new JMenuItem("Take card");
 		takeCard.addActionListener(new TakeCardActionListener());
 		actionMenu.add(takeCard);
+		
+		exchangeCards = new JMenuItem("Exchange cards");
+		exchangeCards.addActionListener(new ExchangeCardsActionListener());
+		actionMenu.add(exchangeCards);
 		
 		endTurn = new JMenuItem("End turn");
 		endTurn.addActionListener(new EndTurnActionListener());

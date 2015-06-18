@@ -1,11 +1,11 @@
 package assets;
 
-import java.security.acl.NotOwnerException;
-import java.util.HashSet;
-
 import handlers.CountryHandler;
 import handlers.Observable;
 import handlers.Observer;
+
+import java.util.HashSet;
+
 import situationStrategies.AnyFrontierStrategy;
 import situationStrategies.FrontierStrategy;
 
@@ -50,7 +50,7 @@ public class Country implements Observable{
 			notifyObservers();
 		}
 		else{
-			Console.add(enemy.getOwner().getName() + " won the battle and defended " + enemy.getName() + "successfully.");
+			Console.add(enemy.getOwner().getName() + " won the battle and defended " + enemy.getName() + " successfully.");
 		}
 		return true;
 	}

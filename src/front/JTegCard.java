@@ -12,7 +12,10 @@ public class JTegCard extends JLabel {
 	private static final int TEXT_GAP = -97;
 	private static final int MAX_TEXT_WIDTH = 17;
 	
+	private static final String SPACE = "&nbsp;";
+	
 	private String icon;
+	private String countryName;
 	private boolean selected;
 	
 	public JTegCard() {
@@ -30,7 +33,10 @@ public class JTegCard extends JLabel {
 	}
 	
 	public void setCountryName(String countryName) {
+		
 		String s1 = "", s2 = "";
+		
+		this.countryName = countryName;
 		
 		if(countryName.contains(" ")) {
 			s1 = countryName.substring(0,countryName.indexOf(" "));
@@ -62,14 +68,18 @@ public class JTegCard extends JLabel {
 	
 	public String centerString(String s) {
 		
-		if(s.length()<MAX_TEXT_WIDTH) {
+		if(s.length() < MAX_TEXT_WIDTH) {
 			String aux = "";
 			for(int i = 0; i < (MAX_TEXT_WIDTH/2)-(s.length()/2)-1; i++)
-				aux += "&nbsp;&nbsp;";
+				aux += SPACE + SPACE;
 			aux += s;
 			return aux;
 		}
 		return s;
+	}
+
+	public String getCountryName() {
+		return countryName;
 	}
 	
 }
