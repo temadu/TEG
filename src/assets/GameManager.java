@@ -1,16 +1,14 @@
-	package assets;
+package assets;
 
 import handlers.GameHandler;
 import handlers.Observable;
 import handlers.Observer;
 import handlers.PlayerHandler;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
-
 import objectives.Objective;
 import situationStrategies.AttackStrategy;
 import situationStrategies.NormalAttackStrategy;
@@ -18,6 +16,7 @@ import situationStrategies.NormalTakeCardStrategy;
 import situationStrategies.TakeCardStrategy;
 import situations.NormalSituation;
 import situations.Situation;
+
 /**
  * Singleton Class
  * Main class that controls the game. Contains the gamebox and the players.
@@ -60,19 +59,19 @@ public class GameManager implements Observable {
 		return instance;
 		
 	}
-	/**
-	 * Creates a new game.
-	 */
+	
+	// Creates a new game.
 	public void newGame() {
 		players = new ArrayList<Player>();
 	}
 	
-	/**
-	 * Initializes the game.
-	 */
-	public void startGame(){
+	// Initializes the game.
+	public void startGame() {
+		
 		gameBox = new GameBox();
+		
 		new Console();
+		
 		dealCountries();
 		
 		if(players.size() > 3)
@@ -90,73 +89,80 @@ public class GameManager implements Observable {
 		cardStrategy = new NormalTakeCardStrategy();
 		
 		observers.add(new GameHandler());
+		
 		notifyObservers();
 		
 		Console.add("Iniciando Juego.");
-		System.out.println("troops to add: " + troopsToAdd);
-		System.out.println("Terminado START GAME");
+
 	}
 	
-	/**
-	 * Deals the countries to the players.
-	 */
-	public void dealCountries(){
+	// Deals the countries to the players.
+	public void dealCountries() {
 		Player player = players.get(0);
+		
 		ArrayList<Country> countries = new ArrayList<>(gameBox.getBoard().getCountries());
 		Collections.shuffle(countries);
+		
 		for (Country country : countries) {
 			country.changeOwner(player);
 			System.out.println("Se le asigna el pais " + country.getName() + "al jugador " + player.getName());
 			player = getNextPlayer(player);	
 		}
+		
 	}
-	/**
-	 * Deals the objectives to the players.
-	 */
-	public void dealObjectives(){
+	
+	 //Deals the objectives to the players.
+	public void dealObjectives() {
+		
 		for (Player player : players) {
 			player.setObjective(gameBox.getRandomObjective());
 		}
+		
 	}
 	
-	
-	
-	public Player getNextPlayer(Player player){
+	public Player getNextPlayer(Player player) {
+		
 		int playerIndex = players.indexOf(player);
+		
 		if(playerIndex == (players.size()-1))
 			return players.get(0);
 		else
 			return players.get(playerIndex+1);
+		
 	}
 	
-	public Player getRandomPlayer(){
+	public Player getRandomPlayer() {
+		
 		Random r = new Random();
 		int randomNumber = r.nextInt(players.size());
+		
 		return players.get(randomNumber);
+		
 	}
 	
-	/**
-	 * Adds a troop to the informationCountry selected.
-	 * @throws TEGException
-	 */
+	// Adds a troop to the informationCountry selected.
 	public void addTroop() throws TEGException {
+		
 		if(subturn != SubTurn.ADDTROOPS)
 			throw new TEGException("");
+		
 		if(troopsToAdd == 0)
 			throw new TEGException("");
+		
 		if(informationCountry == null)
 			throw new TEGException("");
+		
 		if(!informationCountry.getOwner().equals(getTurnPlayer()))
 			throw new TEGException("");
+		
 		informationCountry.incrementSoldiers();
 		troopsToAdd--;
+		
 		notifyObservers();
+		
 	}
 	
-	/**
-	 * Performs an attack between the countries selected as attacker and defender if possible.
-	 * @throws TEGException
-	 */
+	// Performs an attack between the countries selected as attacker and defender if possible.
 	public void attack() throws TEGException {
 		
 		if(gameStatus != GameStatus.NORMAL_GAME)
@@ -190,10 +196,7 @@ public class GameManager implements Observable {
 	
 	}
 	
-	/**
-	 * Performs a movement of soldiers between the countries selected as attacker and defender if possible.
-	 * @throws TEGException
-	 */
+	// Performs a movement of soldiers between the countries selected as attacker and defender if possible.
 	public void moveSoldiers() throws TEGException {
 		
 		if(gameStatus != GameStatus.NORMAL_GAME)
@@ -225,9 +228,9 @@ public class GameManager implements Observable {
 	/**
 	 * Gives a country card to the player if he has already conquered a country and the situation
 	 * lets him. Also changes the turn if the card was taken.
-	 * @throws TEGException
 	 */
-	public void takeCard() throws TEGException{
+	public void takeCard() throws TEGException {
+		
 		if(countryConquered && cardStrategy.cardTakeCheck()){
 			if(getTurnPlayer().addCountryCard()){
 				Console.add(getTurnPlayer().getName() + " took a card.");
@@ -235,52 +238,50 @@ public class GameManager implements Observable {
 				return;
 			}
 		}
+		
 		throw new TEGException("Cannot get countryCard");
+		
 	}
 	
-	/**
-	 * Performs an exchange of 3 countryCards for troops if possible.
-	 * @param cardName1
-	 * @param cardName2
-	 * @param cardName3
-	 */
+	// Performs an exchange of 3 countryCards for troops if possible.
 	public void exchangeCards(List<String> cards) throws TEGException {
+		
 		if(subturn != SubTurn.ADDTROOPS)
 			throw new TEGException("");
+		
 		if(cards.size() != 3) 
 			throw new TEGException("");
+		
 		if(getTurnPlayer().returnCountryCards(cards.get(0),cards.get(1), cards.get(2))){
 			troopsToAdd += (getTurnPlayer().getCardExchangeNumber() * 5);
 			notifyObservers();
 		}
+		
 	}
 	
-	/**
-	 * Checks if one of the players has won. If so, it calls endGame.
-	 */
+	// Checks if one of the players has won. If so, it calls endGame.
 	public void objectivesCheck(){
+		
 		for (Player player : players) {
 			if(!player.hasLost())
 				if(player.getObjective().checkObjective())
 					endGame(player);
 		}
+		
 	}
-	/**
-	 * Finishes the game. Called by objectivesCheck if a player has won.
-	 * @param player
-	 */
-	//TODO FINISH THE GAME
+	
+	// Finishes the game. Called by objectivesCheck if a player has won.
 	private void endGame(Player player){
+		
 		gameStatus = GameStatus.END_GAME;
 		Console.add(player.getName() + " has won the game! Congratulations!");
 		player.setIsWinner(true);
+		
 	}
 	
-	/**
-	 * Changes the turn if possible.
-	 * @throws TEGException
-	 */
+	// Changes the turn if possible.
 	public void changeTurn() throws TEGException {
+		
 		if(troopsToAdd != 0)
 			throw new TEGException("Still have troops to add !");
 		do{
@@ -290,29 +291,26 @@ public class GameManager implements Observable {
 			if(gameStatus != GameStatus.NORMAL_GAME){
 				changeInitializingTurn();
 				notifyObservers();
-				System.out.println(gameStatus);
-				System.out.println("Turno de: " + getTurnPlayer().getName());
 				return;
 			}
 			
 			if(turn == players.size()){
 				turn = 0;
 				changeSituation();
-				System.out.println(turnSituation.getDescription());
 			}
 			
 			troopsToAdd = getTurnPlayer().getLeftOverSoldiers();
 			countryConquered = false;
 
-		}while(getTurnPlayer().hasLost());
+		} while(getTurnPlayer().hasLost());
+		
 		notifyObservers();
-		System.out.println("Turno de: " + getTurnPlayer().getName());
+
 	}
 	
-	/**
-	 * Changes the first turns of the game. As they are different from the rest.
-	 */
-	private void changeInitializingTurn(){
+	// Changes the first turns of the game. As they are different from the rest.
+	private void changeInitializingTurn() {
+		
 		if(turn == players.size()){
 			turn = 0;
 			
@@ -324,48 +322,53 @@ public class GameManager implements Observable {
 				System.out.println(turnSituation.getDescription());
 			}
 		}
+		
 		if(gameStatus == GameStatus.FIRST_TURN)
 			troopsToAdd = 8;
+		
 		if(gameStatus == GameStatus.SECOND_TURN)
 			troopsToAdd = 4;
+		
 		if(gameStatus == GameStatus.NORMAL_GAME)
 			troopsToAdd = getTurnPlayer().getLeftOverSoldiers();
+		
 	}
 	
-	/**
-	 * Changes the situation.
-	 */
+	// Changes the situation.
 	private void changeSituation(){
+		
 		if(turnSituation != null)
 			turnSituation.situationEnd();
+		
 		turnSituation = gameBox.getRandomSituation();
 		turnSituation.situationStart();
+		
 	}
 	
-	/**
-	 * Adds a new player to the game. If the color is already used, it overwrites it.
-	 * @param name
-	 * @param color
-	 */
+	// Adds a new player to the game. If the color is already used, it overwrites it.
 	public void addPlayer(String name, String color) {
+		
 		Player newplayer = new Player(name, color, new Objective() {
 			public boolean checkSpecificObjective() {
 				return false;
 			}
 		});
+		
 		for (Player oldplayer : players) {
 			if(oldplayer.equals(newplayer)){
 				oldplayer.setName(name);
 				return;
 			}
 		}
+		
 		if(players.size() < MAX_NUM_PLAYERS){
 			players.add(newplayer);
 			newplayer.addObserver(new PlayerHandler(newplayer));
 		}
+		
 	}
 	
-	public Player getTurnPlayer(){
+	public Player getTurnPlayer() {
 		return players.get(turn);
 	}
 	
@@ -373,7 +376,7 @@ public class GameManager implements Observable {
 		return players.size() >= 2;
 	}
 	
-	public void conqueredACountry(){
+	public void conqueredACountry() {
 		countryConquered = true;
 	}
 	
@@ -398,21 +401,24 @@ public class GameManager implements Observable {
 	}
 
 	public void setAttacker(String attackerName) {
+		
 		this.attacker = gameBox.getBoard().parseStringToCountry(attackerName);
-		System.out.println("Se setea en attacker al pais: " + attacker.getName());
 		notifyObservers();
+	
 	}
 
 	public void setDefender(String defenderName) {
+		
 		this.defender = gameBox.getBoard().parseStringToCountry(defenderName);
-		System.out.println("Se setea en defener al pais: " + defender.getName());
 		notifyObservers();
+	
 	}
 
 	public void setInformationCountry(String informationCountryName) {
+		
 		this.informationCountry = gameBox.getBoard().parseStringToCountry(informationCountryName);
-		System.out.println("Se setea en informationCountry al pais: " + informationCountry.getName());
 		notifyObservers();
+	
 	}
 
 	@Override

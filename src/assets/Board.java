@@ -2,24 +2,22 @@ package assets;
 
 import java.util.HashMap;
 import java.util.List;
-/**
- * 
- * Class that represents the game board, countries and their adjacent relationships.
- *
- */
+
+// Class that represents the game board, countries and their adjacent relationships.
 public class Board {
 	
 	private int countriesNum;
 	private HashMap<String, Continent> continents;
-	
 	private List<Country> countries;
 	private boolean[][] adjacentMatrix;
 	
 	public Board(int countriesNum, HashMap<String, Continent> continents, List<Country> countries, boolean[][] adjacentMatrix) {
+		
 		this.countriesNum = countriesNum;
 		this.continents = continents;
 		this.countries = countries;
 		this.adjacentMatrix = adjacentMatrix;
+		
 	}
 	
 	/**
@@ -38,21 +36,27 @@ public class Board {
 	 * @return 
 	 */
 	public Continent continentContainer(Country country){
+		
 		Continent container = null;
+		
 		for (String continentName : continents.keySet()) {
 			if (continents.get(continentName).contains(country)){
 				container = continents.get(continentName);
 				break;
 			}
 		}
+		
 		return container;
+		
 	}
 	
 	public Country parseStringToCountry(String countryName){
+		
 		for (Country country : countries) {
 			if(countryName.equals(country.getName()))
 				return country;
 		}
+		
 		return null;
 		
 	}
@@ -67,6 +71,10 @@ public class Board {
 
 	public HashMap<String, Continent> getContinents() {
 		return continents;
+	}
+
+	public int getCountriesNum() {
+		return countriesNum;
 	}
 	
 }

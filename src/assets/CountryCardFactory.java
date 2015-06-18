@@ -3,10 +3,10 @@ package assets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-/**
- * Factory class for the creation of the Country Cards.
- */
+
+// Factory class for the creation of the Country Cards.
 public class CountryCardFactory {
+	
 	private static int cardTypeNumber = 1;
 	
 	/**
@@ -14,7 +14,7 @@ public class CountryCardFactory {
 	 * @param countries
 	 * @return
 	 */
-	public static ArrayList<CountryCard> countryCardCreator(List<Country> countries){
+	public static ArrayList<CountryCard> countryCardCreator(List<Country> countries) {
 		ArrayList<CountryCard> countryCards = new ArrayList<CountryCard>();
 		for (Country country : countries) {
 			countryCards.add(new CountryCard(country, getCardType()));
@@ -23,7 +23,8 @@ public class CountryCardFactory {
 		return countryCards;
 	}
 	
-	private static CardType getCardType(){
+	private static CardType getCardType() {
+		
 		switch (cardTypeNumber) {
 		case 1:
 			cardTypeNumber++;
@@ -35,6 +36,8 @@ public class CountryCardFactory {
 			cardTypeNumber = 1;
 			return CardType.TANK;
 		}
+		
 		return CardType.TANK;
+	
 	}
 }

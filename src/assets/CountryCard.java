@@ -1,7 +1,6 @@
 package assets;
-/**
- * Represents the Game's Cards with country names. To be exchanged for troops.
- */
+
+// Represents the Game's Cards with country names. To be exchanged for troops.
 public class CountryCard {
 	
 	private Country country;

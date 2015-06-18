@@ -1,10 +1,12 @@
 package assets;
 
 import java.util.HashSet;
+
 /**
  * Represents a continent, which contains countries and the 
  * number of extra troops to give to owner of this continent.
  */
+
 public class Continent {
 	
 	private String name;
@@ -13,11 +15,12 @@ public class Continent {
 	private int soldiersForConqueror;
 	
 	public Continent(String name, HashSet<Country> countries, int countriesNumber, int soldiersForConqueror) {
+		
 		this.name = name;
 		this.countries = countries;
 		this.countriesNumber = countriesNumber;
 		this.soldiersForConqueror = soldiersForConqueror;
-		System.out.println("Creado continente " + name + ".");
+		
 	}
 	
 	public boolean contains(Country country){
@@ -32,16 +35,9 @@ public class Continent {
 		return countriesNumber;
 	}
 	
-	/**
-	 * Gives the number of troops to give to the owner of the continent.
-	 * @return
-	 */
+	// Gives the number of troops to give to the owner of the continent.
 	public int getSoldiersForConqueror() {
 		return soldiersForConqueror;
 	}
-	
-	
-	
-	
 
 }
