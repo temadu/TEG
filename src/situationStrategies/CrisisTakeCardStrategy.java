@@ -4,9 +4,8 @@ import java.io.Serializable;
 
 import assets.GameManager;
 import assets.Player;
-/**
- * Strategy that doesn't let a certain player to takeCard.
- */
+
+// Strategy that doesn't let a certain player to takeCard.
 public class CrisisTakeCardStrategy implements TakeCardStrategy,Serializable {
 
 	private static final long serialVersionUID = 1L;

@@ -3,6 +3,8 @@ package objectives;
 // Objective to be used in 2-3 player games. Player has to conquer the world.
 public class WorldDominationObjective extends Objective {
 
+	private static final long serialVersionUID = 1L;
+	
 	private static final int COUNTRIESNUMBER = 42;
 	
 	public WorldDominationObjective() {

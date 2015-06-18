@@ -6,6 +6,7 @@ import situationStrategies.WindHandicapStrategy;
  * Situation that gives the attacker country an extra dice for attacking.
  * Changes the HandicapStrategy in Battle.
  */
+
 public class DownWindSituation extends HandicapSituation {
 
 	private static final long serialVersionUID = 1L;
@@ -20,6 +21,5 @@ public class DownWindSituation extends HandicapSituation {
 	public String getDescription() {
 		return description;
 	}
-
 	
 }

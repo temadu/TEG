@@ -12,6 +12,8 @@ import assets.GameManager;
 
 public abstract class ConquerorObjective extends Objective {
 	
+	private static final long serialVersionUID = 1L;
+	
 	private static Board board = GameManager.getInstance().getGameBox().getBoard();
 	private final static String SCHATARIA = "Schataria";
 	private final static String ARILLIA = "Arillia";

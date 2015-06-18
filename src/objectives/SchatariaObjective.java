@@ -2,6 +2,8 @@ package objectives;
 
 public class SchatariaObjective extends ConquerorObjective {
 	
+	private static final long serialVersionUID = 1L;
+	
 	private final int ARILIANUM = 3;
 	private final int URZANUM = 3;
 

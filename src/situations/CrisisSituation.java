@@ -10,6 +10,7 @@ import assets.Player;
  * Situation that prohibits a random player to take card.
  * Changes the TakeCardStrategy in GameManager.
  */
+
 public class CrisisSituation implements Situation {
 	
 	private static final long serialVersionUID = 1L;
