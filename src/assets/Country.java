@@ -3,7 +3,6 @@ package assets;
 import handlers.CountryHandler;
 import handlers.Observable;
 import handlers.Observer;
-import handlers.PlayerHandler;
 
 import java.io.Serializable;
 import java.util.HashSet;
