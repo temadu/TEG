@@ -2,16 +2,13 @@ package assets;
 
 import handlers.Observable;
 import handlers.Observer;
-
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
-
 import objectives.Objective;
-/**
- * Class that represents a player.
- */
+
+// Class that represents a player.
 public class Player implements Observable,Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -33,6 +30,7 @@ public class Player implements Observable,Serializable {
 	private transient HashSet<Observer> observers;
 	
 	public Player(String name, String color, Objective objective) {
+		
 		this.name = name;
 		this.color = color;
 		this.totalSoldiers = 0;
@@ -43,28 +41,27 @@ public class Player implements Observable,Serializable {
 		this.observers = new HashSet<Observer>();
 		this.setObjective(objective);
 		this.cardExchangeNumber = 0;
-		System.out.println("Creado jugador " + name + " " + color + ".");
+		
 	}
 	
-	
-	public boolean hasLost(){
+	public boolean hasLost() {
 		return isDead;
 	}
 	
-	public boolean hasWon(){
+	public boolean hasWon() {
 		return isWinner;
 	}
 	
-	public int countriesNumber(){
+	public int countriesNumber() {
 		return countries.size();
 	}
 	
-	public void removeCountry(Country country){
+	public void removeCountry(Country country) {
 		countries.remove(country);
 		notifyObservers();
 	}
 	
-	public void addCountry(Country country){
+	public void addCountry(Country country) {
 		countries.add(country);
 		notifyObservers();
 	}
@@ -75,30 +72,32 @@ public class Player implements Observable,Serializable {
 	 * @return If the card could be added.
 	 */
 	//TODO Add troops if player has the country.
-	public boolean addCountryCard(){
-		if(cards.size() < 5){
+	public boolean addCountryCard() {
+		
+		if(cards.size() < 5) {
+			
 			CountryCard card = GameManager.getInstance().getGameBox().getRandomCard();
 			cards.add(card);
-			System.out.println("Player card:" + card.getCountry().getName());
-			if(countries.contains(card.getCountry())){
+
+			if(countries.contains(card.getCountry())) {
 				card.getCountry().incrementSoldiers();
 				card.getCountry().incrementSoldiers();
 				card.getCountry().incrementSoldiers();
 			}
+			
 			notifyObservers();
 			return true;
+			
 		}
 		return false;
 	}
 	
 	/**
 	 * Exchanges 3 of the player's CountryCards for troops.
-	 * @param cardName1
-	 * @param cardName2
-	 * @param cardName3
 	 * @return If the exchange could be made.
 	 */
-	public boolean returnCountryCards(String cardName1, String cardName2, String cardName3){
+	public boolean returnCountryCards(String cardName1, String cardName2, String cardName3) {
+		
 		CountryCard card1 = null;
 		CountryCard card2 = null;
 		CountryCard card3 = null;
@@ -117,30 +116,35 @@ public class Player implements Observable,Serializable {
 		else if(!CardType.cardExchangeCheck(card1.getType(), card2.getType(), card3.getType()))
 			return false;
 		else
+			
 		GameManager.getInstance().getGameBox().returnCountryCards(card1, card2, card3);
+		
 		cards.remove(card1);
 		cards.remove(card2);
 		cards.remove(card3);
+		
 		cardExchangeNumber++;
+		
 		notifyObservers();
+		
 		return true;
+		
 	}
 	
-	/**
-	 * Calculates the number of countries that the player has of a certain continent.
-	 * @param continent
-	 * @return
-	 */
-	public int continentCountries(Continent continent){
+	// Calculates the number of countries that the player has of a certain continent.
+	public int continentCountries(Continent continent) {
+		
 		int i = 0;
 		for (Country country : countries) {
 			if(continent.contains(country))
 				i++;
 		}
+		
 		return i;
+		
 	}
 	
-	public boolean hasContinent(Continent continent){
+	public boolean hasContinent(Continent continent) {
 		return (continentCountries(continent) == continent.getCountriesNumber());
 	}
 	
@@ -158,7 +162,9 @@ public class Player implements Observable,Serializable {
 			if(hasContinent(continents.get(continentName)))
 				troops += continents.get(continentName).getSoldiersForConqueror();
 		}
+		
 		return troops;
+		
 	}
 
 	public String getName() {
@@ -192,7 +198,6 @@ public class Player implements Observable,Serializable {
 	public Boolean getIsDead() {
 		return isDead;
 	}
-
 
 	public void setIsDead(Boolean isDead) {
 		this.isDead = isDead;
@@ -250,7 +255,6 @@ public class Player implements Observable,Serializable {
 			observer.handleUpdate(this);
 		}	
 	}
-
 
 	public int getCardExchangeNumber() {
 		return cardExchangeNumber;

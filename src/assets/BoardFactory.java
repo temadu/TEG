@@ -5,14 +5,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-
 import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
-/**
- * A Factory that creates a board from a spreadsheet.
- */
+
+// A Factory that creates a board from a spreadsheet.
 public abstract class BoardFactory {
 	
 	private static Sheet mapDataSheet;
@@ -28,7 +26,9 @@ public abstract class BoardFactory {
 	 * @return 
 	 */
 	public static Board boardCreator(String mapDataOrigin){
+		
 		try {
+		
 			Workbook workbook = Workbook.getWorkbook(new File(mapDataOrigin));
 			mapDataSheet = workbook.getSheet(0);
 			
@@ -44,6 +44,7 @@ public abstract class BoardFactory {
 		continents = continentMapCreator();
 		
 		return new Board(countriesNum, continents, countries, adjacentMatrix);
+		
 	}
 	
 	/**
@@ -51,14 +52,18 @@ public abstract class BoardFactory {
 	 * @return
 	 */
 	private static ArrayList<Country> countryCreator(){
+		
 		ArrayList<Country> countries = new ArrayList<Country>();
 		Cell workingCell;
+		
 		for (int i = 0; i < countriesNum; i++) {
 			workingCell = mapDataSheet.getCell( 0 , 4+i);
 			String countryName = workingCell.getContents();
 			countries.add(new Country(countryName));
 		}
+		
 		return countries;
+		
 	}
 	
 	/**
@@ -66,8 +71,10 @@ public abstract class BoardFactory {
 	 * @return
 	 */
 	private static boolean[][] adjacentCountriesMatrixCreator(){
+		
 		boolean[][] adjacentMatrix = new boolean[countriesNum][countriesNum];
 		Cell workingCell;
+		
 		for (int i = 0; i < countriesNum; i++) {
 			for (int j = 0; j < countriesNum; j++) {
 				workingCell = mapDataSheet.getCell( 1+i , 4+j);
@@ -77,12 +84,16 @@ public abstract class BoardFactory {
 					adjacentMatrix[i][j] = false;
 			}
 		}
+		
 		return adjacentMatrix;
 	}
 	
 	private static int getCountriesNum(){
+		
 		Cell countriesNumberCell = mapDataSheet.getCell(1, 0);
+		
 		return Integer.parseInt(countriesNumberCell.getContents());
+		
 	}
 	
 	/**
@@ -90,9 +101,11 @@ public abstract class BoardFactory {
 	 * @return
 	 */
 	private static HashMap<String, Continent> continentMapCreator(){
+		
 		HashMap<String, Continent> continents = new HashMap<>();
 		Cell workingCell;
 		continentsNum =  Integer.parseInt(mapDataSheet.getCell(1, 1).getContents());
+		
 		for (int i = 0; i < continentsNum; i++) {
 			
 			workingCell = mapDataSheet.getCell(0, 3 + countriesNum + 3 + i);
@@ -116,6 +129,7 @@ public abstract class BoardFactory {
 			}
 			continents.put(continentName, new Continent(continentName, countries, continentCountriesNum, soldiersForConqueror));
 		}
+		
 		return continents;
 	}
 	
@@ -125,13 +139,16 @@ public abstract class BoardFactory {
 	 * @return
 	 */
 	private static Country findCountry(String countryName){
+		
 		for (Country each : countries) {
 			if(each.getName().equals(countryName)){
 				System.out.println("adding " + each.getName());
 				return each;
 			}
 		}
+		
 		return null;
+		
 	}
 	
 

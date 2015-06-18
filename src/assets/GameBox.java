@@ -1,21 +1,14 @@
 package assets;
 
-import handlers.Observable;
-import handlers.Observer;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
-
 import objectives.Objective;
 import objectives.ObjectiveFactory;
 import objectives.WorldDominationObjective;
 import situations.Situation;
 import situations.SituationFactory;
+
 /**
  * Represents the GameBox and contains all the resources for the game.
  * That means the board, objectives, situations and country cards.
@@ -30,14 +23,14 @@ public class GameBox implements Serializable {
 	private ArrayList<CountryCard> countryCards;
 	
 	public GameBox() {
-		System.out.println("Iniciando GAMEBOX");
+		
 		board = BoardFactory.boardCreator("assets/tormap/torAdjacentMatrix.xls");
 		situations = SituationFactory.situationCreator();
 		countryCards = CountryCardFactory.countryCardCreator(board.getCountries());
-		System.out.println("Terminando GAMEBOX");
+
 	}
 	
-	public void initializeObjectives(){
+	public void initializeObjectives() {
 		objectives = ObjectiveFactory.objectiveCreator();
 	}
 
@@ -45,34 +38,42 @@ public class GameBox implements Serializable {
 		return board;
 	}
 	
-	public Objective getRandomObjective(){
+	public Objective getRandomObjective() {
+		
 		if(objectives == null)
 			return new WorldDominationObjective();
+		
 		Objective objective = objectives.get(0);
 		objectives.remove(0);
+		
 		return objective;
+		
 	}
 	
-	public Situation getRandomSituation(){
+	public Situation getRandomSituation() {
+		
 		Collections.shuffle(situations);
+		
 		return situations.get(0);
+		
 	}
 	
-	public CountryCard getRandomCard(){
+	public CountryCard getRandomCard() {
+		
 		CountryCard card = countryCards.get(0);
 		countryCards.remove(0);
+		
 		return card;
+		
 	}
-	/**
-	 * Returns three CountryCards to the deck. To be used for exchanges.
-	 * @param card1
-	 * @param card2
-	 * @param card3
-	 */
-	public void returnCountryCards(CountryCard card1, CountryCard card2, CountryCard card3){
+	
+	// Returns three CountryCards to the deck. To be used for exchanges.
+	public void returnCountryCards(CountryCard card1, CountryCard card2, CountryCard card3) {
+		
 		countryCards.add(card1);
 		countryCards.add(card2);
 		countryCards.add(card3);
+	
 	}
 	
 }
