@@ -2,10 +2,14 @@ package assets;
 
 import handlers.Observable;
 import handlers.Observer;
+import handlers.PlayerHandler;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+
 import objectives.Objective;
 
 // Class that represents a player.
@@ -239,6 +243,11 @@ public class Player implements Observable,Serializable {
 		return name + " - " + color;
 	}
 
+	public void initializeObserver() {
+		observers = new HashSet<Observer>();
+		observers.add(new PlayerHandler(this));
+	}
+	
 	@Override
 	public void addObserver(Observer observer) {
 		observers.add(observer);

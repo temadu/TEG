@@ -129,11 +129,11 @@ public class GameManager implements Observable, Serializable {
 	
 	private void initializeAllObservers(){
 		for (Player player : players) {
-			player.addObserver(new PlayerHandler(player));
+			player.initializeObserver();
 		}
 		
 		for (Country country : gameBox.getBoard().getCountries()) {
-			country.addObserver(new CountryHandler(country));
+			country.initializeObserver();
 		}
 		
 	}

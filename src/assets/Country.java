@@ -3,8 +3,11 @@ package assets;
 import handlers.CountryHandler;
 import handlers.Observable;
 import handlers.Observer;
+import handlers.PlayerHandler;
+
 import java.io.Serializable;
 import java.util.HashSet;
+
 import situationStrategies.AnyFrontierStrategy;
 import situationStrategies.FrontierStrategy;
 
@@ -149,6 +152,11 @@ public class Country implements Observable, Serializable {
 		Country.frontierStrategy = frontierStrategy;
 	}
 
+	public void initializeObserver() {
+		observers = new HashSet<Observer>();
+		observers.add(new CountryHandler(this));
+	}
+	
 	@Override
 	public void addObserver(Observer observer) {
 		observers.add(observer);
