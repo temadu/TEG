@@ -2,6 +2,10 @@ package situations;
 
 import situationStrategies.ClosedFrontierStrategy;
 
+/**
+ * Situation that prohibits a any country to attack a country in a different continent.
+ * Changes the FrontierStrategy in Country.
+ */
 public class ClosedFrontierSituation extends FrontierCheckSituation {
 
 	private String description;

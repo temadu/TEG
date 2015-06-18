@@ -2,6 +2,10 @@ package situations;
 
 import situationStrategies.WindHandicapStrategy;
 
+/**
+ * Situation that gives the attacker country an extra dice for attacking.
+ * Changes the HandicapStrategy in Battle.
+ */
 public class DownWindSituation extends HandicapSituation {
 
 	private String description;

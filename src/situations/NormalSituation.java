@@ -1,5 +1,8 @@
 package situations;
 
+/**
+ * Simple Situation where no special rules are in place.
+ */
 public class NormalSituation implements Situation {
 
 	@Override

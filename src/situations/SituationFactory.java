@@ -1,9 +1,15 @@
 package situations;
 
 import java.util.ArrayList;
-
+/**
+ * Factory class for implementing Situations.
+ */
 public class SituationFactory {
 	
+	/**
+	 * Method for initializing Situations.
+	 * @return
+	 */
 	public static ArrayList<Situation> situationCreator(){
 		ArrayList<Situation> situations = new ArrayList<Situation>();
 		situations.add(new DownWindSituation());

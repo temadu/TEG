@@ -3,7 +3,11 @@ package objectives;
 import assets.Board;
 import assets.Continent;
 import assets.GameManager;
-
+/**
+ * Abstract Objective that provides functionality for Objective subclasses that are about 
+ * conquering some continents or some countries form different continents.
+ * For easier and faster creation of objectives.
+ */
 public abstract class ConquerorObjective extends Objective {
 	
 	private static Board board = GameManager.getInstance().getGameBox().getBoard();

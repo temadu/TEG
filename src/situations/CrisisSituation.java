@@ -6,6 +6,10 @@ import situationStrategies.TakeCardStrategy;
 import assets.GameManager;
 import assets.Player;
 
+/**
+ * Situation that prohibits a random player to take card.
+ * Changes the TakeCardStrategy in GameManager.
+ */
 public class CrisisSituation implements Situation {
 	
 	private TakeCardStrategy normalStrategy;

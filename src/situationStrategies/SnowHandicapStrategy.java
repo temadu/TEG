@@ -1,5 +1,8 @@
 package situationStrategies;
 
+/**
+ * Strategy that gives the defender country an extra dice.
+ */
 public class SnowHandicapStrategy implements HandicapStrategy {
 
 	@Override
