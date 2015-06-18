@@ -1,5 +1,6 @@
 package assets;
 
+import java.io.Serializable;
 import java.util.HashSet;
 
 /**
@@ -7,7 +8,9 @@ import java.util.HashSet;
  * number of extra troops to give to owner of this continent.
  */
 
-public class Continent {
+public class Continent implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private String name;
 	private HashSet<Country> countries;

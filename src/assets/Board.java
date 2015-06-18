@@ -9,7 +9,7 @@ public class Board implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	private int countriesNum;
-	private transient HashMap<String, Continent> continents;
+	private HashMap<String, Continent> continents;
 	private List<Country> countries;
 	private boolean[][] adjacentMatrix;
 	
