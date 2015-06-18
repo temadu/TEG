@@ -36,6 +36,7 @@ public class PlayerHandler implements Observer<Player> {
 		ui.setCards(cardsToUI(data.getCards()));
 		ui.setIsDead(data.getIsDead());	
 		ui.setCardExchangeNumber(data.getCardExchangeNumber());
+		ui.setColor(data.getColor());
 		
 		if(data.hasWon()){
 			GameUI.getInstance().setWinner(ui);

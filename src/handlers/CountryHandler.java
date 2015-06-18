@@ -16,6 +16,7 @@ public class CountryHandler implements Observer<Country> {
 	
 	@Override
 	public void handleUpdate(Country data) {
+		ui.setName(data.getName());
 		ui.setOwner(data.getOwner().getName());
 		ui.setSoldiers(data.getSoldiers());	
 		ui.setContinent(data.getContinent().getName());
