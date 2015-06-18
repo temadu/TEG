@@ -167,7 +167,7 @@ public class GameManager implements Observable {
 		if(subturn == SubTurn.MOVETROOPS)
 			throw new TEGException("Cannot Attack. Already moved troops.");
 		
-		if(attacker == null && defender == null)
+		if(attacker == null || defender == null)
 			throw new TEGException("Cannot attack. Need to select an attacker and a defender.");
 		
 		if(!attacker.getOwner().equals(getTurnPlayer()))
@@ -248,8 +248,10 @@ public class GameManager implements Observable {
 			throw new TEGException("");
 		if(cards.size() != 3) 
 			throw new TEGException("");
-		if(getTurnPlayer().returnCountryCards(cards.get(0),cards.get(1), cards.get(2)))
+		if(getTurnPlayer().returnCountryCards(cards.get(0),cards.get(1), cards.get(2))){
 			troopsToAdd += (getTurnPlayer().getCardExchangeNumber() * 5);
+			notifyObservers();
+		}
 	}
 	
 	/**

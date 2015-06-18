@@ -111,7 +111,7 @@ public class Player implements Observable {
 		
 		if(card1 == null || card2 == null || card3 == null)
 			return false;
-		else if(CardType.cardExchangeCheck(card1.getType(), card2.getType(), card3.getType()))
+		else if(!CardType.cardExchangeCheck(card1.getType(), card2.getType(), card3.getType()))
 			return false;
 		else
 		GameManager.getInstance().getGameBox().returnCountryCards(card1, card2, card3);
