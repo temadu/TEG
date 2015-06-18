@@ -1,7 +1,5 @@
 package situations;
 
-import java.io.Serializable;
-
 import situationStrategies.AnyFrontierStrategy;
 import situationStrategies.FrontierStrategy;
 import assets.Country;
@@ -13,6 +11,8 @@ import assets.Country;
  */
 public abstract class FrontierCheckSituation implements Situation {
 
+	private static final long serialVersionUID = 1L;
+	
 	private static FrontierStrategy normalStrategy = new AnyFrontierStrategy();
 	private FrontierStrategy attackStrategy;
 	

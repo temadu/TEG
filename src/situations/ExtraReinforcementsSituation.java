@@ -7,6 +7,8 @@ import situationStrategies.NobodyAttackStrategy;
  */
 public class ExtraReinforcementsSituation extends NoAttackSituation {
 	
+	private static final long serialVersionUID = 1L;
+	
 	private String description;
 
 	public ExtraReinforcementsSituation() {

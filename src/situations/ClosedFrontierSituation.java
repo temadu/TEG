@@ -8,6 +8,8 @@ import situationStrategies.ClosedFrontierStrategy;
  */
 public class ClosedFrontierSituation extends FrontierCheckSituation {
 
+	private static final long serialVersionUID = 1L;
+	
 	private String description;
 	
 	public ClosedFrontierSituation() {

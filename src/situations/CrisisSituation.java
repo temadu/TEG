@@ -12,6 +12,8 @@ import assets.Player;
  */
 public class CrisisSituation implements Situation {
 	
+	private static final long serialVersionUID = 1L;
+	 
 	private TakeCardStrategy normalStrategy;
 	private Player sufferer;
 	private String description;

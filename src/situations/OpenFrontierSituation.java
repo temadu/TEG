@@ -8,6 +8,8 @@ import situationStrategies.OpenFrontiersStrategy;
  */
 public class OpenFrontierSituation extends FrontierCheckSituation {
 
+	private static final long serialVersionUID = 1L;
+	
 	private String description;
 	
 	public OpenFrontierSituation() {

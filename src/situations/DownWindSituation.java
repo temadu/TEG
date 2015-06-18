@@ -8,6 +8,8 @@ import situationStrategies.WindHandicapStrategy;
  */
 public class DownWindSituation extends HandicapSituation {
 
+	private static final long serialVersionUID = 1L;
+	
 	private String description;
 	
 	public DownWindSituation() {
