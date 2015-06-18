@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ui.CountryCardUI;
@@ -80,6 +81,7 @@ public class CardsFrame extends JInternalFrame implements GraphicUpdate {
     	performExchange.setSize(EXCHANGE_BUTTON_WIDTH,EXCHANGE_BUTTON_HEIGHT);
     	performExchange.setLocation(X_GAP+(X_GAP+JTegCard.CARD_HEIGHT)*MAX_NUM_CARDS, Y_GAP*4);
     	performExchange.setIcon(new ImageIcon("assets/Icons/exchange.png"));
+    	performExchange.setVerticalTextPosition(JLabel.TOP);
     	
     	for(final Integer i : indexs) {
     		
