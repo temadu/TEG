@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import ui.DiceUI;
 import ui.GameUI;
 
+/**
+ * Observer of the Battle class that changes the DiceUI according to how the dice rolled.
+ */
 public class BattleHandler{
 
 	DiceUI ui;

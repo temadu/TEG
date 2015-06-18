@@ -19,6 +19,7 @@ import situationStrategies.TakeCardStrategy;
 import situations.NormalSituation;
 import situations.Situation;
 /**
+ * Singleton Class
  * Main class that controls the game. Contains the gamebox and the players.
  * Also receives the commands from the user. 
  */

@@ -1,5 +1,10 @@
 package ui;
 
+/**
+ * UI counterpart the the Country class in the backend.
+ * Created and Edited by the CountryHandler observer.
+ * Access for reading to the frontend (Swing).
+ */
 public class CountryUI {
 
 	private String name;

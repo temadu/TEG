@@ -2,6 +2,11 @@ package ui;
 
 import java.util.ArrayList;
 
+/**
+ * UI counterpart the the Battle/Dice classes in the backend.
+ * Created and Edited by the BattleHandler observer.
+ * Access for reading to the frontend (Swing).
+ */
 public class DiceUI {
 	
 	private ArrayList<Integer> attackerDice;

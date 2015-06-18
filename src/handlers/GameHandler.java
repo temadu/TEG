@@ -7,6 +7,9 @@ import ui.GameUI;
 import assets.Country;
 import assets.GameManager;
 
+/**
+ * Observer of the GameManager class that changes the GameUI accordingly.
+ */
 public class GameHandler implements Observer<GameManager> {
 
 	GameUI ui;

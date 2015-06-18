@@ -3,6 +3,11 @@ package ui;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * UI counterpart the the Player class in the backend.
+ * Created and Edited by the PLayerHandler observer.
+ * Access for reading to the frontend (Swing).
+ */
 public class PlayerUI {
 
 	private String name;

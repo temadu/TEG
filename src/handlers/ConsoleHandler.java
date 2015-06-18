@@ -6,7 +6,9 @@ import java.util.LinkedList;
 import assets.Console;
 import ui.ConsoleUI;
 import ui.GameUI;
-
+/**
+ * Observer of the Console class that changes the ConsoleUI accordingly.
+ */
 public class ConsoleHandler {
 
 	private ConsoleUI ui;
