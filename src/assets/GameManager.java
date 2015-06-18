@@ -18,7 +18,8 @@ import situationStrategies.TakeCardStrategy;
 import situations.NormalSituation;
 import situations.Situation;
 /**
- * 
+ * Main class that controls the game. Contains the gamebox and the players.
+ * Also receives the commands from the user. 
  */
 public class GameManager implements Observable {
 	
@@ -57,11 +58,16 @@ public class GameManager implements Observable {
 		return instance;
 		
 	}
-	
+	/**
+	 * Creates a new game.
+	 */
 	public void newGame() {
 		players = new ArrayList<Player>();
 	}
 	
+	/**
+	 * Initializes the game.
+	 */
 	public void startGame(){
 		gameBox = new GameBox();
 		new Console();
@@ -89,6 +95,9 @@ public class GameManager implements Observable {
 		System.out.println("Terminado START GAME");
 	}
 	
+	/**
+	 * Deals the countries to the players.
+	 */
 	public void dealCountries(){
 		Player player = players.get(0);
 		ArrayList<Country> countries = new ArrayList<>(gameBox.getBoard().getCountries());
@@ -99,7 +108,9 @@ public class GameManager implements Observable {
 			player = getNextPlayer(player);	
 		}
 	}
-	
+	/**
+	 * Deals the objectives to the players.
+	 */
 	public void dealObjectives(){
 		for (Player player : players) {
 			player.setObjective(gameBox.getRandomObjective());
@@ -122,6 +133,10 @@ public class GameManager implements Observable {
 		return players.get(randomNumber);
 	}
 	
+	/**
+	 * Adds a troop to the informationCountry selected.
+	 * @throws TEGException
+	 */
 	public void addTroop() throws TEGException {
 		if(subturn != SubTurn.ADDTROOPS)
 			throw new TEGException("");
@@ -136,6 +151,10 @@ public class GameManager implements Observable {
 		notifyObservers();
 	}
 	
+	/**
+	 * Performs an attack between the countries selected as attacker and defender if possible.
+	 * @throws TEGException
+	 */
 	public void attack() throws TEGException {
 		
 		if(gameStatus != GameStatus.NORMAL_GAME)
@@ -169,6 +188,10 @@ public class GameManager implements Observable {
 	
 	}
 	
+	/**
+	 * Performs a movement of soldiers between the countries selected as attacker and defender if possible.
+	 * @throws TEGException
+	 */
 	public void moveSoldiers() throws TEGException {
 		
 		if(gameStatus != GameStatus.NORMAL_GAME)
@@ -196,7 +219,12 @@ public class GameManager implements Observable {
 		notifyObservers();
 	
 	}
-
+	
+	/**
+	 * Gives a country card to the player if he has already conquered a country and the situation
+	 * lets him. Also changes the turn if the card was taken.
+	 * @throws TEGException
+	 */
 	public void takeCard() throws TEGException{
 		if(countryConquered && cardStrategy.cardTakeCheck()){
 			if(getTurnPlayer().addCountryCard()){
@@ -208,6 +236,12 @@ public class GameManager implements Observable {
 		throw new TEGException("Cannot get countryCard");
 	}
 	
+	/**
+	 * Performs an exchange of 3 countryCards for troops if possible.
+	 * @param cardName1
+	 * @param cardName2
+	 * @param cardName3
+	 */
 	public void exchangeCards(String cardName1, String cardName2, String cardName3){
 		if(subturn != SubTurn.ADDTROOPS)
 			return;
@@ -215,6 +249,9 @@ public class GameManager implements Observable {
 			troopsToAdd += (getTurnPlayer().getCardExchangeNumber() * 5);
 	}
 	
+	/**
+	 * Checks if one of the players has won. If so, it calls endGame.
+	 */
 	public void objectivesCheck(){
 		for (Player player : players) {
 			if(!player.hasLost())
@@ -222,7 +259,10 @@ public class GameManager implements Observable {
 					endGame(player);
 		}
 	}
-	
+	/**
+	 * Finishes the game. Called by objectivesCheck if a player has won.
+	 * @param player
+	 */
 	//TODO FINISH THE GAME
 	private void endGame(Player player){
 		gameStatus = GameStatus.END_GAME;
@@ -230,7 +270,10 @@ public class GameManager implements Observable {
 		player.setIsWinner(true);
 	}
 	
-	
+	/**
+	 * Changes the turn if possible.
+	 * @throws TEGException
+	 */
 	public void changeTurn() throws TEGException {
 		if(troopsToAdd != 0)
 			throw new TEGException("Still have troops to add !");
@@ -260,6 +303,9 @@ public class GameManager implements Observable {
 		System.out.println("Turno de: " + getTurnPlayer().getName());
 	}
 	
+	/**
+	 * Changes the first turns of the game. As they are different from the rest.
+	 */
 	private void changeInitializingTurn(){
 		if(turn == players.size()){
 			turn = 0;
@@ -280,6 +326,9 @@ public class GameManager implements Observable {
 			troopsToAdd = getTurnPlayer().getLeftOverSoldiers();
 	}
 	
+	/**
+	 * Changes the situation.
+	 */
 	private void changeSituation(){
 		if(turnSituation != null)
 			turnSituation.situationEnd();
@@ -287,6 +336,11 @@ public class GameManager implements Observable {
 		turnSituation.situationStart();
 	}
 	
+	/**
+	 * Adds a new player to the game. If the color is already used, it overwrites it.
+	 * @param name
+	 * @param color
+	 */
 	public void addPlayer(String name, String color) {
 		Player newplayer = new Player(name, color, new Objective() {
 			public boolean checkSpecificObjective() {
