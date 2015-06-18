@@ -215,6 +215,8 @@ public class MapPanel extends JPanel implements GraphicUpdate {
 			
 			}
 			
+			System.out.println("Continent: " + GameUI.getInstance().getCountries().get(i).getContinent());
+			
 			switch(continentIndex) {
 			
 				case YELLOW_CONTINENT : 	
