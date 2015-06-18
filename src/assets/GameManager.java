@@ -1,18 +1,18 @@
 package assets;
 
-import handlers.CountryHandler;
 import handlers.GameHandler;
+
 import handlers.Observable;
 import handlers.Observer;
 import handlers.PlayerHandler;
-import io.GameIO;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
-import jdk.nashorn.internal.runtime.regexp.joni.ast.AnyCharNode;
+
 import objectives.Objective;
 import situationStrategies.AnyFrontierStrategy;
 import situationStrategies.AttackStrategy;
@@ -21,11 +21,13 @@ import situationStrategies.NormalTakeCardStrategy;
 import situationStrategies.TakeCardStrategy;
 import situations.NormalSituation;
 import situations.Situation;
+
 /**
  * Singleton Class
  * Main class that controls the game. Contains the gamebox and the players.
  * Also receives the commands from the user. 
  */
+
 public class GameManager implements Observable, Serializable {
 	
 
@@ -122,7 +124,7 @@ public class GameManager implements Observable, Serializable {
 		defender = game.getDefender();
 		Country.setFrontierStrategy(new AnyFrontierStrategy());
 		turnSituation.situationStart();
-		System.out.println(players.get(0).getName());
+
 		notifyObservers();
 		initializeAllObservers();
 	}
@@ -385,7 +387,6 @@ public class GameManager implements Observable, Serializable {
 			else if(gameStatus == GameStatus.SECOND_TURN){
 				gameStatus = GameStatus.NORMAL_GAME;
 				changeSituation();
-				System.out.println(turnSituation.getDescription());
 			}
 		}
 		

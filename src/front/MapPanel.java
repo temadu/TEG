@@ -166,7 +166,6 @@ public class MapPanel extends JPanel implements GraphicUpdate {
 		// Set the Flag & Troop Number of each country
 		for(int j = 0; j < GameUI.getInstance().getPlayers().size(); j++) {
 			for(Iterator<CountryUI> itr = GameUI.getInstance().getPlayers().get(j).getCountries().iterator() ; itr.hasNext();) {
-				System.out.println(GameUI.getInstance().getPlayers().get(j).getCountries());
 				CountryUI countryUI = itr.next();
 				countryHUDs.get(countryUI.getName()).setFlagIcon(new ImageIcon("assets/Flags/" + GameUI.getInstance().getPlayers().get(j).getColor().toLowerCase() + "Flag.png"));
 				countryHUDs.get(countryUI.getName()).setTroopsNumber(countryUI.getSoldiers());

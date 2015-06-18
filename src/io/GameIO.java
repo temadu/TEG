@@ -28,7 +28,6 @@ public class GameIO {
 			save.writeObject(game);
 			save.close();
 			saveFile.close();
-			System.out.println("Saved2");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
