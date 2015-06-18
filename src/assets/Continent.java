@@ -26,7 +26,7 @@ public class Continent implements Serializable {
 		
 	}
 	
-	public boolean contains(Country country){
+	public boolean contains(Country country) {
 		return countries.contains(country);
 	}
 

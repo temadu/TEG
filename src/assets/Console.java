@@ -4,7 +4,7 @@ import handlers.ConsoleHandler;
 import java.util.LinkedList;
 
 // A console to be used to give feedback to the player.
-public class Console  {
+public class Console {
 
 	private static LinkedList<String> console;
 	private static ConsoleHandler observer;
@@ -22,7 +22,7 @@ public class Console  {
 	 * Adds a message to the console.
 	 * @param message
 	 */
-	public static void add(String message){
+	public static void add(String message) {
 		
 		if(console.size() < LINES)
 			console.addLast(message);

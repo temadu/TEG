@@ -19,7 +19,7 @@ public abstract class Battle{
 	 * @param defender Defender Country
 	 * @return If the defender country was conquered.
 	 */
-	public static boolean conflict(Country attacker, Country defender){
+	public static boolean conflict(Country attacker, Country defender) {
 		
 		// No more than 4 dice!!!
 		ArrayList<Integer> attackerDice;
@@ -62,7 +62,7 @@ public abstract class Battle{
 	 * @param defenderDice
 	 * @return A vector with the number of kills by the attacker and the number of kills by the defender.
 	 */
-	private static int[] diceComparator(ArrayList<Integer> attackerDice, ArrayList<Integer> defenderDice){
+	private static int[] diceComparator(ArrayList<Integer> attackerDice, ArrayList<Integer> defenderDice) {
 		
 		int[] kills = {0,0};
 		
