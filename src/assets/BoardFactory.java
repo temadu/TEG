@@ -10,8 +10,10 @@ import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
-
-public class BoardFactory {
+/**
+ * A Factory that creates a board from a spreadsheet.
+ */
+public abstract class BoardFactory {
 	
 	private static Sheet mapDataSheet;
 	private static int countriesNum;
@@ -20,7 +22,11 @@ public class BoardFactory {
 	private static boolean[][] adjacentMatrix;
 	private static HashMap<String, Continent> continents;
 	
-	
+	/**
+	 * The factory method that creates a board from a spreadsheet.
+	 * @param mapDataOrigin The spreadsheet's location.
+	 * @return 
+	 */
 	public static Board boardCreator(String mapDataOrigin){
 		try {
 			Workbook workbook = Workbook.getWorkbook(new File(mapDataOrigin));
@@ -40,6 +46,10 @@ public class BoardFactory {
 		return new Board(countriesNum, continents, countries, adjacentMatrix);
 	}
 	
+	/**
+	 * Creates an ArrayList of countries from the spreadsheet.
+	 * @return
+	 */
 	private static ArrayList<Country> countryCreator(){
 		ArrayList<Country> countries = new ArrayList<Country>();
 		Cell workingCell;
@@ -51,6 +61,10 @@ public class BoardFactory {
 		return countries;
 	}
 	
+	/**
+	 * Creates an adjacent matrix of booleans that represents the neighbouring countries.
+	 * @return
+	 */
 	private static boolean[][] adjacentCountriesMatrixCreator(){
 		boolean[][] adjacentMatrix = new boolean[countriesNum][countriesNum];
 		Cell workingCell;
@@ -71,6 +85,10 @@ public class BoardFactory {
 		return Integer.parseInt(countriesNumberCell.getContents());
 	}
 	
+	/**
+	 * Creates a HashMap from the name of the continent to the continent.
+	 * @return
+	 */
 	private static HashMap<String, Continent> continentMapCreator(){
 		HashMap<String, Continent> continents = new HashMap<>();
 		Cell workingCell;
@@ -101,7 +119,11 @@ public class BoardFactory {
 		return continents;
 	}
 	
-	//TODO: EXCEPTION???
+	/**
+	 * Finds a country from his name.
+	 * @param countryName
+	 * @return
+	 */
 	private static Country findCountry(String countryName){
 		for (Country each : countries) {
 			if(each.getName().equals(countryName)){

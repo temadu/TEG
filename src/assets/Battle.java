@@ -7,7 +7,9 @@ import java.util.ArrayList;
 
 import situationStrategies.HandicapStrategy;
 import situationStrategies.NoHandicapStrategy;
-
+/**
+ * Abstract class that represents the battleground between countries.
+ */
 public abstract class Battle{
 	
 	public static HandicapStrategy handicap = new NoHandicapStrategy();
@@ -16,7 +18,13 @@ public abstract class Battle{
 //	public static ArrayList<Integer> defenderDice;
 	
 	public static BattleHandler observer = new BattleHandler();
-	
+	/**
+	 * Performs a battle between two countries using Dice and substracts troops from each country.
+	 * 
+	 * @param attacker Attacker Country
+	 * @param defender Defender Country
+	 * @return If the defender country was conquered.
+	 */
 	public static boolean conflict(Country attacker, Country defender){
 		//no more than 4 dice!!!
 		ArrayList<Integer> attackerDice;
@@ -49,7 +57,13 @@ public abstract class Battle{
 		return attacker.getOwner().equals(defender.getOwner());
 			
 	}
-	
+	/**
+	 * Compares two arraylists as the game's Dice.
+	 * 
+	 * @param attackerDice 
+	 * @param defenderDice
+	 * @return A vector with the number of kills by the attacker and the number of kills by the defender.
+	 */
 	private static int[] diceComparator(ArrayList<Integer> attackerDice, ArrayList<Integer> defenderDice){
 		int[] kills = {0,0};
 		for (Integer num : attackerDice) {

@@ -8,7 +8,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import objectives.Objective;
-
+/**
+ * Class that represents a player.
+ */
 public class Player implements Observable {
 	
 	private String name;
@@ -64,20 +66,35 @@ public class Player implements Observable {
 		notifyObservers();
 	}
 	
+	/**
+	 * Adds a CountryCard to the player if he has less than 5. Also increments troops in the country 
+	 * represented by the card if the player owns it.
+	 * @return If the card could be added.
+	 */
 	//TODO Add troops if player has the country.
 	public boolean addCountryCard(){
 		if(cards.size() < 5){
 			CountryCard card = GameManager.getInstance().getGameBox().getRandomCard();
 			cards.add(card);
 			System.out.println("Player card:" + card.getCountry().getName());
-			if(countries.contains(card.getCountry()))
+			if(countries.contains(card.getCountry())){
 				card.getCountry().incrementSoldiers();
+				card.getCountry().incrementSoldiers();
+				card.getCountry().incrementSoldiers();
+			}
 			notifyObservers();
 			return true;
 		}
 		return false;
 	}
 	
+	/**
+	 * Exchanges 3 of the player's CountryCards for troops.
+	 * @param cardName1
+	 * @param cardName2
+	 * @param cardName3
+	 * @return If the exchange could be made.
+	 */
 	public boolean returnCountryCards(String cardName1, String cardName2, String cardName3){
 		CountryCard card1 = null;
 		CountryCard card2 = null;
@@ -106,6 +123,11 @@ public class Player implements Observable {
 		return true;
 	}
 	
+	/**
+	 * Calculates the number of countries that the player has of a certain continent.
+	 * @param continent
+	 * @return
+	 */
 	public int continentCountries(Continent continent){
 		int i = 0;
 		for (Country country : countries) {
@@ -119,6 +141,10 @@ public class Player implements Observable {
 		return (continentCountries(continent) == continent.getCountriesNumber());
 	}
 	
+	/**
+	 * Calculates the number of troops to be added at the beginning of the turn.
+	 * @return Number of troops to me added at the beginning of the turn.
+	 */
 	public int getLeftOverSoldiers() {
 		
 		int troops = Math.floorDiv(countriesNumber(), 2);

@@ -1,6 +1,6 @@
 package assets;
 
-public enum InitialGameStatus {
+public enum GameStatus {
 	BEFORE_GAME,
 	FIRST_TURN,
 	SECOND_TURN,

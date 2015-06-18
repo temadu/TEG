@@ -16,7 +16,10 @@ import objectives.ObjectiveFactory;
 import objectives.WorldDominationObjective;
 import situations.Situation;
 import situations.SituationFactory;
-
+/**
+ * Represents the GameBox and contains all the resources for the game.
+ * That means the board, objectives, situations and country cards.
+ */
 public class GameBox implements Serializable{
 
 	// Serializable
@@ -61,7 +64,12 @@ public class GameBox implements Serializable{
 		countryCards.remove(0);
 		return card;
 	}
-	
+	/**
+	 * Returns three CountryCards to the deck. To be used for exchanges.
+	 * @param card1
+	 * @param card2
+	 * @param card3
+	 */
 	public void returnCountryCards(CountryCard card1, CountryCard card2, CountryCard card3){
 		countryCards.add(card1);
 		countryCards.add(card2);

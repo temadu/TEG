@@ -17,14 +17,16 @@ import situationStrategies.NormalTakeCardStrategy;
 import situationStrategies.TakeCardStrategy;
 import situations.NormalSituation;
 import situations.Situation;
-
+/**
+ * 
+ */
 public class GameManager implements Observable {
 	
 	public static final int MAX_NUM_PLAYERS = 6;
 
 	private static GameManager instance;
 	private GameBox gameBox;
-	private InitialGameStatus gameStatus;
+	private GameStatus gameStatus;
 	private Situation turnSituation;
 	private TakeCardStrategy cardStrategy;
 	private AttackStrategy attackStrategy;
@@ -43,7 +45,7 @@ public class GameManager implements Observable {
 	
 	// Singleton
 	private GameManager() {
-		gameStatus = InitialGameStatus.BEFORE_GAME;
+		gameStatus = GameStatus.BEFORE_GAME;
 		observers = new HashSet<Observer>();
 	}
 	
@@ -69,7 +71,7 @@ public class GameManager implements Observable {
 			gameBox.initializeObjectives();
 		dealObjectives();
 		
-		gameStatus = InitialGameStatus.FIRST_TURN;
+		gameStatus = GameStatus.FIRST_TURN;
 		troopsToAdd = 8;
 		turn = 0;
 		subturn = SubTurn.ADDTROOPS;
@@ -136,7 +138,7 @@ public class GameManager implements Observable {
 	
 	public void attack() throws TEGException {
 		
-		if(gameStatus != InitialGameStatus.NORMAL_GAME)
+		if(gameStatus != GameStatus.NORMAL_GAME)
 			throw new TEGException("Cannot attack.");
 		
 		if(subturn == SubTurn.ADDTROOPS && troopsToAdd > 0)
@@ -169,7 +171,7 @@ public class GameManager implements Observable {
 	
 	public void moveSoldiers() throws TEGException {
 		
-		if(gameStatus != InitialGameStatus.NORMAL_GAME)
+		if(gameStatus != GameStatus.NORMAL_GAME)
 			throw new TEGException("Cannot move soldiers.");
 
 		if(subturn == SubTurn.ADDTROOPS && troopsToAdd > 0)
@@ -223,7 +225,7 @@ public class GameManager implements Observable {
 	
 	//TODO FINISH THE GAME
 	private void endGame(Player player){
-		gameStatus = InitialGameStatus.END_GAME;
+		gameStatus = GameStatus.END_GAME;
 		Console.add(player.getName() + " has won the game! Congratulations!");
 		player.setIsWinner(true);
 	}
@@ -236,7 +238,7 @@ public class GameManager implements Observable {
 			turn++;
 			subturn = SubTurn.ADDTROOPS;
 			
-			if(gameStatus != InitialGameStatus.NORMAL_GAME){
+			if(gameStatus != GameStatus.NORMAL_GAME){
 				changeInitializingTurn();
 				notifyObservers();
 				System.out.println(gameStatus);
@@ -262,19 +264,19 @@ public class GameManager implements Observable {
 		if(turn == players.size()){
 			turn = 0;
 			
-			if(gameStatus == InitialGameStatus.FIRST_TURN)
-				gameStatus = InitialGameStatus.SECOND_TURN;
-			else if(gameStatus == InitialGameStatus.SECOND_TURN){
-				gameStatus = InitialGameStatus.NORMAL_GAME;
+			if(gameStatus == GameStatus.FIRST_TURN)
+				gameStatus = GameStatus.SECOND_TURN;
+			else if(gameStatus == GameStatus.SECOND_TURN){
+				gameStatus = GameStatus.NORMAL_GAME;
 				changeSituation();
 				System.out.println(turnSituation.getDescription());
 			}
 		}
-		if(gameStatus == InitialGameStatus.FIRST_TURN)
+		if(gameStatus == GameStatus.FIRST_TURN)
 			troopsToAdd = 8;
-		if(gameStatus == InitialGameStatus.SECOND_TURN)
+		if(gameStatus == GameStatus.SECOND_TURN)
 			troopsToAdd = 4;
-		if(gameStatus == InitialGameStatus.NORMAL_GAME)
+		if(gameStatus == GameStatus.NORMAL_GAME)
 			troopsToAdd = getTurnPlayer().getLeftOverSoldiers();
 	}
 	
@@ -382,7 +384,7 @@ public class GameManager implements Observable {
 		this.attackStrategy = attackStrategy;
 	}
 
-	public InitialGameStatus getGameStatus() {
+	public GameStatus getGameStatus() {
 		return gameStatus;
 	}
 

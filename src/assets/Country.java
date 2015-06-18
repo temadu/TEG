@@ -9,7 +9,10 @@ import handlers.Observer;
 import situationStrategies.AnyFrontierStrategy;
 import situationStrategies.FrontierStrategy;
 
-
+/**
+ *  Class that represents a country in the game.
+ *
+ */
 public class Country implements Observable{
 	
 	private static FrontierStrategy frontierStrategy = new AnyFrontierStrategy();
@@ -26,7 +29,11 @@ public class Country implements Observable{
 		observers = new HashSet<Observer>();
 		this.addObserver(new CountryHandler(this));
 	}
-
+	/**
+	 * Starts a battle between two countries if they can attack one another.
+	 * @param enemy
+	 * @return If a battle could be started.
+	 */
 	public boolean attack(Country enemy){
 		if(this.soldiers == 1)
 			return false;
@@ -48,6 +55,11 @@ public class Country implements Observable{
 		return true;
 	}
 	
+	/**
+	 * Moves one troop to another country if its possible.
+	 * @param ally
+	 * @return If the movement of troops was made.
+	 */
 	public boolean moveSoldiers(Country ally){
 		if(this.soldiers == 1)
 			return false;
@@ -61,7 +73,11 @@ public class Country implements Observable{
 		notifyObservers();
 		return true;
 	}
-	
+	/**
+	 * Removes troops and tells if the country was conquered.
+	 * @param kills number of troops to be substracted.
+	 * @return If the country was conquered.
+	 */
 	public boolean killSoldiers(int kills){
 		if(kills >= soldiers){
 			soldiers = 1;
@@ -72,7 +88,10 @@ public class Country implements Observable{
 		notifyObservers();
 		return false;
 	}
-	
+	/**
+	 * Changes the owner of the country. Also removes this country from the old owner.
+	 * @param newOwner
+	 */
 	public void changeOwner(Player newOwner){
 		if(owner != null)
 			owner.removeCountry(this);
@@ -84,7 +103,9 @@ public class Country implements Observable{
 	public Continent getContinent(){
 		return GameManager.getInstance().getGameBox().getBoard().continentContainer(this);
 	}
-	
+	/**
+	 * Increments troops by one.
+	 */
 	public void incrementSoldiers(){
 		soldiers++;
 		notifyObservers();

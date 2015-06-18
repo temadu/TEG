@@ -2,7 +2,11 @@ package assets;
 
 import java.util.HashMap;
 import java.util.List;
-
+/**
+ * 
+ * Class that represents the game board, countries and their adjacent relationships.
+ *
+ */
 public class Board {
 	
 	private int countriesNum;
@@ -17,15 +21,22 @@ public class Board {
 		this.countries = countries;
 		this.adjacentMatrix = adjacentMatrix;
 	}
-
-	public Continent getContinent(String continent){
-		return continents.get(continent);
-	}
 	
+	/**
+	 * Checks if two countries are adjacent or not.
+	 * @param attacker
+	 * @param defender
+	 * @return If countries are adjacent.
+	 */
 	public boolean adjacentCountries(Country attacker, Country defender){
 		return adjacentMatrix[countries.indexOf(attacker)][countries.indexOf(defender)];
 	}
 	
+	/**
+	 * Gives back the continent that contains the country.
+	 * @param country
+	 * @return 
+	 */
 	public Continent continentContainer(Country country){
 		Continent container = null;
 		for (String continentName : continents.keySet()) {
@@ -45,6 +56,10 @@ public class Board {
 		return null;
 		
 	}
+	
+	public Continent getContinent(String continent){
+		return continents.get(continent);
+	}
 
 	public List<Country> getCountries() {
 		return countries;
@@ -53,4 +68,5 @@ public class Board {
 	public HashMap<String, Continent> getContinents() {
 		return continents;
 	}
+	
 }

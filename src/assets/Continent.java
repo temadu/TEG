@@ -1,7 +1,10 @@
 package assets;
 
 import java.util.HashSet;
-
+/**
+ * Represents a continent, which contains countries and the 
+ * number of extra troops to give to owner of this continent.
+ */
 public class Continent {
 	
 	private String name;
@@ -28,7 +31,11 @@ public class Continent {
 	public int getCountriesNumber() {
 		return countriesNumber;
 	}
-
+	
+	/**
+	 * Gives the number of troops to give to the owner of the continent.
+	 * @return
+	 */
 	public int getSoldiersForConqueror() {
 		return soldiersForConqueror;
 	}
