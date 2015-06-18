@@ -1,5 +1,6 @@
 	package assets;
 
+import handlers.CountryHandler;
 import handlers.GameHandler;
 import handlers.Observable;
 import handlers.Observer;
@@ -120,7 +121,20 @@ public class GameManager implements Observable, Serializable {
 		defender = game.getDefender();
 		Country.setFrontierStrategy(new AnyFrontierStrategy());
 		turnSituation.situationStart();
+		System.out.println(players.get(0).getName());
 		notifyObservers();
+		initializeAllObservers();
+	}
+	
+	private void initializeAllObservers(){
+		for (Player player : players) {
+			player.addObserver(new PlayerHandler(player));
+		}
+		
+		for (Country country : gameBox.getBoard().getCountries()) {
+			country.addObserver(new CountryHandler(country));
+		}
+		
 	}
 	
 	/**
