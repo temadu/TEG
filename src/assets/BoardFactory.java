@@ -25,7 +25,7 @@ public abstract class BoardFactory {
 	 * @param mapDataOrigin The spreadsheet's location.
 	 * @return 
 	 */
-	public static Board boardCreator(String mapDataOrigin){
+	public static Board boardCreator(String mapDataOrigin) {
 		
 		try {
 		
@@ -51,7 +51,7 @@ public abstract class BoardFactory {
 	 * Creates an ArrayList of countries from the spreadsheet.
 	 * @return
 	 */
-	private static ArrayList<Country> countryCreator(){
+	private static ArrayList<Country> countryCreator() {
 		
 		ArrayList<Country> countries = new ArrayList<Country>();
 		Cell workingCell;
@@ -70,7 +70,7 @@ public abstract class BoardFactory {
 	 * Creates an adjacent matrix of booleans that represents the neighbouring countries.
 	 * @return
 	 */
-	private static boolean[][] adjacentCountriesMatrixCreator(){
+	private static boolean[][] adjacentCountriesMatrixCreator() {
 		
 		boolean[][] adjacentMatrix = new boolean[countriesNum][countriesNum];
 		Cell workingCell;
@@ -88,7 +88,7 @@ public abstract class BoardFactory {
 		return adjacentMatrix;
 	}
 	
-	private static int getCountriesNum(){
+	private static int getCountriesNum() {
 		
 		Cell countriesNumberCell = mapDataSheet.getCell(1, 0);
 		
@@ -100,7 +100,7 @@ public abstract class BoardFactory {
 	 * Creates a HashMap from the name of the continent to the continent.
 	 * @return
 	 */
-	private static HashMap<String, Continent> continentMapCreator(){
+	private static HashMap<String, Continent> continentMapCreator() {
 		
 		HashMap<String, Continent> continents = new HashMap<>();
 		Cell workingCell;
@@ -131,6 +131,7 @@ public abstract class BoardFactory {
 		}
 		
 		return continents;
+		
 	}
 	
 	/**
@@ -138,7 +139,7 @@ public abstract class BoardFactory {
 	 * @param countryName
 	 * @return
 	 */
-	private static Country findCountry(String countryName){
+	private static Country findCountry(String countryName) {
 		
 		for (Country each : countries) {
 			if(each.getName().equals(countryName)){
@@ -150,6 +151,5 @@ public abstract class BoardFactory {
 		return null;
 		
 	}
-	
 
 }
