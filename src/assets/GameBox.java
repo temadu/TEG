@@ -12,6 +12,7 @@ import java.util.Random;
 import java.util.Set;
 
 import objectives.Objective;
+import objectives.ObjectiveFactory;
 import objectives.WorldDominationObjective;
 import situations.Situation;
 import situations.SituationFactory;

@@ -1,11 +1,6 @@
-package assets;
+package objectives;
 
 import java.util.ArrayList;
-
-import objectives.DestroyNextPlayerObjective;
-import objectives.Objective;
-import objectives.SchatariaObjective;
-import objectives.TripleContinentObjective;
 
 
 public class ObjectiveFactory {
