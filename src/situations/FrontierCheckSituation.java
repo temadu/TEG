@@ -1,5 +1,7 @@
 package situations;
 
+import java.io.Serializable;
+
 import situationStrategies.AnyFrontierStrategy;
 import situationStrategies.FrontierStrategy;
 import assets.Country;

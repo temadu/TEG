@@ -1,5 +1,7 @@
 package situationStrategies;
 
+import java.io.Serializable;
+
 /**
  * Strategy that lets any form of attack.
  */

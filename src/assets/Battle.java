@@ -14,9 +14,6 @@ public abstract class Battle{
 	
 	public static HandicapStrategy handicap = new NoHandicapStrategy();
 	
-//	public static ArrayList<Integer> attackerDice;
-//	public static ArrayList<Integer> defenderDice;
-	
 	public static BattleHandler observer = new BattleHandler();
 	/**
 	 * Performs a battle between two countries using Dice and substracts troops from each country.

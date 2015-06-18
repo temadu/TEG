@@ -1,5 +1,6 @@
 package assets;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 /**
@@ -7,10 +8,13 @@ import java.util.List;
  * Class that represents the game board, countries and their adjacent relationships.
  *
  */
-public class Board {
+public class Board implements Serializable{
+	
+	
+	private static final long serialVersionUID = 1L;
 	
 	private int countriesNum;
-	private HashMap<String, Continent> continents;
+	private transient HashMap<String, Continent> continents;
 	
 	private List<Country> countries;
 	private boolean[][] adjacentMatrix;

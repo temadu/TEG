@@ -6,6 +6,8 @@ import assets.Country;
  */
 public class AnyFrontierStrategy implements FrontierStrategy {
 
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public boolean attackSituationChecker(Country attacker, Country defender) {
 		return true;

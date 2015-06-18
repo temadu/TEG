@@ -4,14 +4,18 @@ import handlers.GameHandler;
 import handlers.Observable;
 import handlers.Observer;
 import handlers.PlayerHandler;
+import io.GameIO;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 
+import jdk.nashorn.internal.runtime.regexp.joni.ast.AnyCharNode;
 import objectives.Objective;
+import situationStrategies.AnyFrontierStrategy;
 import situationStrategies.AttackStrategy;
 import situationStrategies.NormalAttackStrategy;
 import situationStrategies.NormalTakeCardStrategy;
@@ -23,16 +27,19 @@ import situations.Situation;
  * Main class that controls the game. Contains the gamebox and the players.
  * Also receives the commands from the user. 
  */
-public class GameManager implements Observable {
+public class GameManager implements Observable, Serializable {
 	
+
+	private static final long serialVersionUID = 1L;
+
 	public static final int MAX_NUM_PLAYERS = 6;
 
 	private static GameManager instance;
 	private GameBox gameBox;
 	private GameStatus gameStatus;
 	private Situation turnSituation;
-	private TakeCardStrategy cardStrategy;
-	private AttackStrategy attackStrategy;
+	private transient TakeCardStrategy cardStrategy;
+	private transient AttackStrategy attackStrategy;
 	
 	private ArrayList<Player> players;
 	private int turn;
@@ -44,7 +51,7 @@ public class GameManager implements Observable {
 	private Country attacker;
 	private Country defender;
 	
-	private HashSet<Observer> observers;
+	private transient HashSet<Observer> observers;
 	
 	// Singleton
 	private GameManager() {
@@ -95,6 +102,25 @@ public class GameManager implements Observable {
 		Console.add("Iniciando Juego.");
 		System.out.println("troops to add: " + troopsToAdd);
 		System.out.println("Terminado START GAME");
+	}
+	
+	public void loadGame(GameManager game){
+		gameBox = game.getGameBox();
+		gameStatus = game.getGameStatus();
+		turnSituation = game.getSituation();
+		cardStrategy = new NormalTakeCardStrategy();
+		attackStrategy = new NormalAttackStrategy();
+		players = game.getPlayers();
+		turn = game.getTurn();
+		subturn = game.getSubturn();
+		troopsToAdd = game.getTroopsToAdd();
+		countryConquered = game.countryConquered;
+		informationCountry = game.getInformationCountry();
+		attacker = game.getAttacker();
+		defender = game.getDefender();
+		Country.setFrontierStrategy(new AnyFrontierStrategy());
+		turnSituation.situationStart();
+		notifyObservers();
 	}
 	
 	/**
@@ -459,5 +485,26 @@ public class GameManager implements Observable {
 	public Country getDefender() {
 		return defender;
 	}
+
+	public Situation getTurnSituation() {
+		return turnSituation;
+	}
+
+	public AttackStrategy getAttackStrategy() {
+		return attackStrategy;
+	}
+
+	public ArrayList<Player> getPlayers() {
+		return players;
+	}
+
+	public boolean isCountryConquered() {
+		return countryConquered;
+	}
+
+	public HashSet<Observer> getObservers() {
+		return observers;
+	}
+	
 	
 }

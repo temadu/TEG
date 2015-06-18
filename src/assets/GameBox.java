@@ -20,14 +20,13 @@ import situations.SituationFactory;
  * Represents the GameBox and contains all the resources for the game.
  * That means the board, objectives, situations and country cards.
  */
-public class GameBox implements Serializable{
+public class GameBox implements Serializable {
 
-	// Serializable
 	private static final long serialVersionUID = 1L;
 	
 	private Board board;
-	private ArrayList<Objective> objectives;
-	private ArrayList<Situation> situations;
+	private transient ArrayList<Objective> objectives;
+	private transient ArrayList<Situation> situations;
 	private ArrayList<CountryCard> countryCards;
 	
 	public GameBox() {

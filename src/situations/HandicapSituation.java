@@ -1,5 +1,7 @@
 package situations;
 
+import java.io.Serializable;
+
 import assets.Battle;
 import situationStrategies.HandicapStrategy;
 import situationStrategies.NoHandicapStrategy;

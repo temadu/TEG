@@ -4,6 +4,7 @@ import handlers.CountryHandler;
 import handlers.Observable;
 import handlers.Observer;
 
+import java.io.Serializable;
 import java.util.HashSet;
 
 import situationStrategies.AnyFrontierStrategy;
@@ -13,15 +14,17 @@ import situationStrategies.FrontierStrategy;
  *  Class that represents a country in the game.
  *
  */
-public class Country implements Observable{
-	
-	private static FrontierStrategy frontierStrategy = new AnyFrontierStrategy();
+public class Country implements Observable, Serializable{
+
+	private static final long serialVersionUID = 1L;
+
+	private static transient FrontierStrategy frontierStrategy = new AnyFrontierStrategy();
 	
 	private String name;
 	private int soldiers;
 	private Player owner;
 	
-	private HashSet<Observer> observers;
+	private transient HashSet<Observer> observers;
 	
 	public Country(String name) {
 		this.name = name;

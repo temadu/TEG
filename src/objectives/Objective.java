@@ -1,13 +1,17 @@
 package objectives;
 
+import java.io.Serializable;
+
 import assets.Player;
 /**
  * Abstract class that represents the general parts of an objective.
  * To be extended to add the specific parts of the objective.
  * Uses the Template Method Pattern Strategy for that.
  */
-public abstract class Objective {
-	
+public abstract class Objective implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
 	private static final int COUNTRIESTOCONQUER = 26;
 	private Player owner;
 	private String description;
