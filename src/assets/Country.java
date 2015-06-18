@@ -110,7 +110,7 @@ public class Country implements Observable, Serializable {
 	}
 	
 	// Changes the owner of the country. Also removes this country from the old owner.
-	public void changeOwner(Player newOwner){
+	public void changeOwner(Player newOwner) {
 		
 		if(owner != null)
 			owner.removeCountry(this);
@@ -122,12 +122,12 @@ public class Country implements Observable, Serializable {
 		
 	}
 	
-	public Continent getContinent(){
+	public Continent getContinent() {
 		return GameManager.getInstance().getGameBox().getBoard().continentContainer(this);
 	}
 	
 	// Increments troops by one.
-	public void incrementSoldiers(){
+	public void incrementSoldiers() {
 		
 		soldiers++;
 		Console.add( this.owner.getName() + " added a soldier to " + this.name + ".");
