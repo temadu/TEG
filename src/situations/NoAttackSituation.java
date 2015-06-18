@@ -1,7 +1,5 @@
 package situations;
 
-import java.io.Serializable;
-
 import situationStrategies.AttackStrategy;
 import situationStrategies.NormalAttackStrategy;
 import assets.GameManager;
@@ -11,6 +9,8 @@ import assets.GameManager;
  *
  */
 public abstract class NoAttackSituation implements Situation {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private static AttackStrategy normalStrategy = new NormalAttackStrategy();
 	private AttackStrategy attackStrategy;

@@ -5,6 +5,8 @@ package situations;
  */
 public class NormalSituation implements Situation {
 
+	private static final long serialVersionUID = 1L;
+	
 	@Override
 	public void situationStart() {
 	}

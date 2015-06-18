@@ -38,8 +38,8 @@ public class GameManager implements Observable, Serializable {
 	private GameBox gameBox;
 	private GameStatus gameStatus;
 	private Situation turnSituation;
-	private transient TakeCardStrategy cardStrategy;
-	private transient AttackStrategy attackStrategy;
+	private TakeCardStrategy cardStrategy;
+	private AttackStrategy attackStrategy;
 	
 	private ArrayList<Player> players;
 	private int turn;

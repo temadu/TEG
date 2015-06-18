@@ -10,6 +10,8 @@ import assets.Player;
  */
 public class TimeOutSituation extends NoAttackSituation {
 	
+	private static final long serialVersionUID = 1L;
+	
 	private Player sufferer;
 	private String description;
 
