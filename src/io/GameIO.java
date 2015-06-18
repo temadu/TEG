@@ -21,7 +21,6 @@ public class GameIO {
 	public static void saveGame(){
 
 		File file = new File("savegame/TEG.save");
-		System.out.println("Saved");
 
 		try{
 			FileOutputStream saveFile = new FileOutputStream(file);
