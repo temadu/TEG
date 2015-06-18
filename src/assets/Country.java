@@ -155,6 +155,7 @@ public class Country implements Observable, Serializable {
 	public void initializeObserver() {
 		observers = new HashSet<Observer>();
 		observers.add(new CountryHandler(this));
+		notifyObservers();
 	}
 	
 	@Override

@@ -246,6 +246,7 @@ public class Player implements Observable,Serializable {
 	public void initializeObserver() {
 		observers = new HashSet<Observer>();
 		observers.add(new PlayerHandler(this));
+		notifyObservers();
 	}
 	
 	@Override
