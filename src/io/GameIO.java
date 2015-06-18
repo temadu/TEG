@@ -36,22 +36,17 @@ public class GameIO {
 		}
 	}
 
-	public static void loadGame(){
+	public static void loadGame() throws IOException, ClassNotFoundException {
 
 		File file = new File("savegame/TEG.save");
 
-		try{
-			FileInputStream saveFile = new FileInputStream(file);
-			ObjectInputStream save = new ObjectInputStream(saveFile);
-			GameManager game = (GameManager) save.readObject();
-			GameManager.getInstance().loadGame(game);
-			save.close();
-			saveFile.close();
-		}catch(IOException e){
-			e.printStackTrace();
-		}catch(ClassNotFoundException e){
-			e.printStackTrace();
-		}
+		FileInputStream saveFile = new FileInputStream(file);
+		ObjectInputStream save = new ObjectInputStream(saveFile);
+		GameManager game = (GameManager) save.readObject();
+		GameManager.getInstance().loadGame(game);
+		save.close();
+		saveFile.close();
+
 	}		
 
 }

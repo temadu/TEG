@@ -1,11 +1,15 @@
 package front;
 
 import io.GameIO;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+
 import ui.GameUI;
 import assets.GameManager;
 
@@ -84,8 +88,16 @@ public class TegMenu extends JMenuBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(TEGWindow.getInstance().getMenu().isLoadGameEnabled())
-					GameIO.loadGame();
+				if(TEGWindow.getInstance().getMenu().isLoadGameEnabled()) {
+					try {
+						GameIO.loadGame();
+						TEGWindow.getInstance().initiateGameWindows();
+					} catch (ClassNotFoundException e1) {
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+				}
 			}
 		});
 		
