@@ -10,7 +10,9 @@ import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
 
-// A Factory that creates a board from a spreadsheet.
+/**
+ * A Factory that creates a board from a spreadsheet.
+ */
 public abstract class BoardFactory {
 	
 	private static Sheet mapDataSheet;

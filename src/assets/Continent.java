@@ -38,7 +38,10 @@ public class Continent implements Serializable {
 		return countriesNumber;
 	}
 	
-	// Gives the number of troops to give to the owner of the continent.
+	/**
+	 * Gives the number of troops to give to the owner of the continent.
+	 * @return
+	 */
 	public int getSoldiersForConqueror() {
 		return soldiersForConqueror;
 	}

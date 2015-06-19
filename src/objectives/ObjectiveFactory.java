@@ -3,7 +3,9 @@ package objectives;
 import java.util.ArrayList;
 import java.util.Collections;
 
-// Factory Class for initializing the Objectives.
+/**
+ * Factory Class for initializing the Objectives.
+ */
 public class ObjectiveFactory {
 	
 	/**

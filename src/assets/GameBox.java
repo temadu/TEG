@@ -67,7 +67,12 @@ public class GameBox implements Serializable {
 		
 	}
 	
-	// Returns three CountryCards to the deck. To be used for exchanges.
+	/**
+	 * Returns three CountryCards to the deck. To be used for exchanges.
+	 * @param card1
+	 * @param card2
+	 * @param card3
+	 */
 	public void returnCountryCards(CountryCard card1, CountryCard card2, CountryCard card3) {
 		
 		countryCards.add(card1);

@@ -2,7 +2,9 @@ package assets;
 
 import java.io.Serializable;
 
-// Represents the Game's Cards with country names. To be exchanged for troops.
+/**
+ * Represents the Game's Cards with country names. To be exchanged for troops.
+ */
 public class CountryCard implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

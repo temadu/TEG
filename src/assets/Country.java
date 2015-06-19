@@ -10,7 +10,9 @@ import java.util.HashSet;
 import situationStrategies.AnyFrontierStrategy;
 import situationStrategies.FrontierStrategy;
 
-// Class that represents a country in the game.
+/**
+ * Class that represents a country in the game.
+ */
 public class Country implements Observable, Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -108,7 +110,10 @@ public class Country implements Observable, Serializable {
 		
 	}
 	
-	// Changes the owner of the country. Also removes this country from the old owner.
+	/**
+	 * Changes the owner of the country. Also removes this country from the old owner.
+	 * @param newOwner
+	 */
 	public void changeOwner(Player newOwner) {
 		
 		if(owner != null)
@@ -125,7 +130,9 @@ public class Country implements Observable, Serializable {
 		return GameManager.getInstance().getGameBox().getBoard().continentContainer(this);
 	}
 	
-	// Increments troops by one.
+	/**
+	 * Increments troops by one.
+	 */
 	public void incrementSoldiers() {
 		
 		soldiers++;

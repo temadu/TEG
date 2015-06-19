@@ -3,7 +3,9 @@ package assets;
 import handlers.ConsoleHandler;
 import java.util.LinkedList;
 
-// A console to be used to give feedback to the player.
+/**
+ * A console to be used to give feedback to the player.
+ */
 public class Console {
 
 	private static LinkedList<String> console;

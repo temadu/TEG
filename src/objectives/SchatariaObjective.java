@@ -1,5 +1,8 @@
 package objectives;
 
+/**
+ * Objective that gets fulfilled if the player conquers Schataria, 3 arillian countries and 3 urzan countries.
+ */
 public class SchatariaObjective extends ConquerorObjective {
 	
 	private static final long serialVersionUID = 1L;

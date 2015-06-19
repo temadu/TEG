@@ -4,7 +4,9 @@ import ui.CountryUI;
 import ui.GameUI;
 import assets.Country;
 
-// Observer of the Country class that changes the CountryUI accordingly.
+/**
+ * Observer of the Country class that changes the CountryUI accordingly.
+ */
 public class CountryHandler implements Observer<Country> {
 
 	CountryUI ui;

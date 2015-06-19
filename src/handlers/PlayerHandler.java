@@ -10,7 +10,9 @@ import assets.Country;
 import assets.CountryCard;
 import assets.Player;
 
-// Observer of the Player class that changes the PlayerUI and its CountryUIs accordingly.
+/**
+ * Observer of the Player class that changes the PlayerUI and its CountryUIs accordingly.
+ */
 public class PlayerHandler implements Observer<Player> {
 
 	PlayerUI ui;

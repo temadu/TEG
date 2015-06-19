@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-// Factory class for the creation of the Country Cards.
+/**
+ * Factory class for the creation of the Country Cards.
+ */
 public class CountryCardFactory {
 	
 	private static int cardTypeNumber = 1;

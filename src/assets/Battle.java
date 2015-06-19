@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import situationStrategies.HandicapStrategy;
 import situationStrategies.NoHandicapStrategy;
 
-// Abstract class that represents the battleground between countries.
+/**
+ * Abstract class that represents the battleground between countries.
+ */
 public abstract class Battle{
 	
 	public static HandicapStrategy handicap = new NoHandicapStrategy();

@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
 
-// Class that represents the Dice.
+/**
+ * Class that represents the Dice.
+ */
 public abstract class Dice {
 	
 	/**

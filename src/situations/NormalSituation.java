@@ -1,6 +1,8 @@
 package situations;
 
-// Simple Situation where no special rules are in place.
+/**
+ * Simple Situation where no special rules are in place.
+ */
 public class NormalSituation implements Situation {
 
 	private static final long serialVersionUID = 1L;

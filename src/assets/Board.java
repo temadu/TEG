@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 
-// Class that represents the game board, countries and their adjacent relationships.
+/**
+ * Class that represents the game board, countries and their adjacent relationships.
+ */
 public class Board implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -30,7 +32,11 @@ public class Board implements Serializable {
 		return adjacentMatrix[countries.indexOf(attacker)][countries.indexOf(defender)];
 	}
 	
-	// Gives back the continent that contains the country.
+	/**
+	 * Gives back the continent that contains the country.
+	 * @param country
+	 * @return
+	 */
 	public Continent continentContainer(Country country) {
 		
 		Continent container = null;

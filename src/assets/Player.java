@@ -11,7 +11,9 @@ import java.util.Set;
 
 import objectives.Objective;
 
-// Class that represents a player.
+/**
+ * Class that represents a player.
+ */
 public class Player implements Observable,Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -134,7 +136,11 @@ public class Player implements Observable,Serializable {
 		
 	}
 	
-	// Calculates the number of countries that the player has of a certain continent.
+	/**
+	 * Calculates the number of countries that the player has of a certain continent.
+	 * @param continent
+	 * @return
+	 */
 	public int continentCountries(Continent continent) {
 		
 		int i = 0;
@@ -211,6 +217,17 @@ public class Player implements Observable,Serializable {
 		this.isWinner = isWinner;
 		notifyObservers();
 	}
+	
+	public int getCardExchangeNumber() {
+		return cardExchangeNumber;
+	}
+
+
+	public void setObjective(Objective objective) {
+		this.objective = objective;
+		objective.setOwner(this);
+		notifyObservers();
+	}
 
 	@Override
 	public int hashCode() {
@@ -220,7 +237,9 @@ public class Player implements Observable,Serializable {
 		return result;
 	}
 
-	// A nuestros fines, nos es pr�ctico ver dos jugadores iguales si tienen el mismo color.
+	/**
+	 * Equals by Color
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -263,17 +282,6 @@ public class Player implements Observable,Serializable {
 		for (Observer observer : observers) {
 			observer.handleUpdate(this);
 		}	
-	}
-
-	public int getCardExchangeNumber() {
-		return cardExchangeNumber;
-	}
-
-
-	public void setObjective(Objective objective) {
-		this.objective = objective;
-		objective.setOwner(this);
-		notifyObservers();
 	}
 
 }
