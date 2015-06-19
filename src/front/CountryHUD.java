@@ -4,7 +4,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-// Each country in the map has it's own interface.
+/**
+ * 
+ * 	This class represents the HUD of each country:
+ * 	flag, troop number, and buttons to attack, move
+ * 	troops and fetch data of the country.
+ *
+ */
 public class CountryHUD {
 	
 	private JButton infoButton, fromButton, toButton;
